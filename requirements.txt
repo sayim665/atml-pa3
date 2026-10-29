@@ -1,0 +1,9 @@
+# Task 1 (tested on Kaggle T4 x2; Kaggle's preinstalled torch/transformers are used as-is)
+torch>=2.3
+transformers>=4.51
+datasets>=2.19
+safetensors
+accelerate
+pyyaml
+numpy
+lm-eval>=0.4.8
