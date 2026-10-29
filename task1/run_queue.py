@@ -62,6 +62,7 @@ class Queue:
         self.pending = [job for job in jobs if not job_done(job)]
         self.lock = threading.Lock()
         self.status = {job: ("done" if job_done(job) else "pending") for job in jobs}
+        self.running = 0
 
     def take(self):
         with self.lock:
@@ -69,19 +70,28 @@ class Queue:
                 if job_ready(job):
                     self.pending.remove(job)
                     self.status[job] = "running"
+                    self.running += 1
                     return job
             return None
 
-    def has_pending(self):
+    def finish(self, job, result):
         with self.lock:
-            return bool(self.pending)
+            self.running -= 1
+            self.status[job] = result
+
+    def can_progress(self):
+        """False once nothing is running and no pending job can become ready (e.g. its training failed)."""
+        with self.lock:
+            if not self.pending:
+                return False
+            return self.running > 0 or any(job_ready(job) for job in self.pending)
 
 
 def worker(gpu, queue, deadline, log_dir, extra_args, children, status_path):
     while time.time() < deadline:
         job = queue.take()
         if job is None:
-            if not queue.has_pending():
+            if not queue.can_progress():
                 return
             time.sleep(POLL_SECONDS)
             continue
@@ -109,7 +119,7 @@ def worker(gpu, queue, deadline, log_dir, extra_args, children, status_path):
                 time.sleep(5)
         children.pop(gpu, None)
         result = "done" if job_done(job) else f"stopped(rc={process.returncode})"
-        queue.status[job] = result
+        queue.finish(job, result)
         save_json(status_path, queue.status)
         print(f"[gpu{gpu}] {job}: {result}", flush=True)
         if result != "done":

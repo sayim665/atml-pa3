@@ -87,6 +87,21 @@ def load_condition_model(condition, tokenizer, device):
 
 
 def run_lm_eval(model, tokenizer, tasks, apply_chat_template, batch_size, gen_kwargs=None, limit=None):
+    """lm-eval at the given batch size, halving it after a CUDA out-of-memory error."""
+    while True:
+        try:
+            results = run_lm_eval_once(model, tokenizer, tasks, apply_chat_template, batch_size, gen_kwargs, limit)
+            results["eval_batch_size"] = batch_size
+            return results
+        except torch.cuda.OutOfMemoryError:
+            if batch_size <= 1:
+                raise
+            batch_size //= 2
+            torch.cuda.empty_cache()
+            print(f"CUDA out of memory on {list(tasks)}, retrying with batch size {batch_size}", flush=True)
+
+
+def run_lm_eval_once(model, tokenizer, tasks, apply_chat_template, batch_size, gen_kwargs=None, limit=None):
     from lm_eval import simple_evaluate
     from lm_eval.models.huggingface import HFLM
 
@@ -160,6 +175,11 @@ def save_jsonl_gz(path, rows):
             handle.write(json.dumps(row, default=str) + "\n")
 
 
+def read_jsonl_gz(path):
+    with gzip.open(path, "rt", encoding="utf-8") as handle:
+        return [json.loads(line) for line in handle if line.strip()]
+
+
 def save_raw_samples(path, samples):
     save_jsonl_gz(path, samples)
 
@@ -223,7 +243,7 @@ def generate_qualitative(model, tokenizer, device, batch_size=8):
     return outputs
 
 
-def evaluate(condition, device=None, gen_batch_size=64, likelihood_batch_size=32, skip_benchmarks=False, limit=None):
+def evaluate(condition, device=None, gen_batch_size=32, likelihood_batch_size=8, skip_benchmarks=False, limit=None):
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     seed_everything(SEED)
     raw_dir = output_root() / "eval" / condition
@@ -241,11 +261,23 @@ def evaluate(condition, device=None, gen_batch_size=64, likelihood_batch_size=32
 
     timings = {}
     if not skip_benchmarks:
-        start = time.time()
-        gsm_results = run_lm_eval(model, tokenizer, [GSM8K_TASK], True, gen_batch_size,
-                                  gen_kwargs=f"max_gen_toks={GSM8K_MAX_NEW_TOKENS},do_sample=False", limit=limit)
-        timings["gsm8k_seconds"] = time.time() - start
-        gsm_samples = gsm_results["samples"][GSM8K_TASK]
+        gsm_stage = raw_dir / "GSM8K_DONE"
+        if gsm_stage.exists():
+            gsm_results = load_json(raw_dir / "lm_eval_gsm8k.json")
+            gsm_samples = read_jsonl_gz(raw_dir / "samples_gsm8k.jsonl.gz")
+            print("reusing saved GSM8K generations", flush=True)
+        else:
+            start = time.time()
+            gsm_results = run_lm_eval(model, tokenizer, [GSM8K_TASK], True, gen_batch_size,
+                                      gen_kwargs=f"max_gen_toks={GSM8K_MAX_NEW_TOKENS},do_sample=False",
+                                      limit=limit)
+            gsm_results["seconds"] = time.time() - start
+            gsm_samples = gsm_results["samples"][GSM8K_TASK]
+            save_raw_samples(raw_dir / "samples_gsm8k.jsonl.gz", gsm_samples)
+            save_json(raw_dir / "lm_eval_gsm8k.json", strip_samples(gsm_results))
+            gsm_stage.write_text("ok")
+        timings["gsm8k_seconds"] = gsm_results["seconds"]
+        info["gsm8k_batch_size"] = gsm_results["eval_batch_size"]
         first_prompt = prompt_of(gsm_samples[0])
         info["gsm8k_prompt_example"] = first_prompt
         info["gsm8k_non_thinking_prompt"] = "<think>\n\n</think>" in first_prompt
@@ -254,11 +286,10 @@ def evaluate(condition, device=None, gen_batch_size=64, likelihood_batch_size=32
         likelihood_results = run_lm_eval(model, tokenizer, LIKELIHOOD_TASKS, False, likelihood_batch_size,
                                          limit=limit)
         timings["likelihood_seconds"] = time.time() - start
+        info["likelihood_batch_size"] = likelihood_results["eval_batch_size"]
 
-        save_raw_samples(raw_dir / "samples_gsm8k.jsonl.gz", gsm_samples)
         for task in LIKELIHOOD_TASKS:
             save_raw_samples(raw_dir / f"samples_{task}.jsonl.gz", likelihood_results["samples"][task])
-        save_json(raw_dir / "lm_eval_gsm8k.json", strip_samples(gsm_results))
         save_json(raw_dir / "lm_eval_likelihood.json", strip_samples(likelihood_results))
 
         gsm_rows = compact_gsm8k_samples(gsm_samples, tokenizer)
@@ -310,8 +341,8 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--condition", required=True, choices=EVAL_CONDITIONS)
     parser.add_argument("--device", default=None)
-    parser.add_argument("--gen-batch-size", type=int, default=64)
-    parser.add_argument("--likelihood-batch-size", type=int, default=32)
+    parser.add_argument("--gen-batch-size", type=int, default=32)
+    parser.add_argument("--likelihood-batch-size", type=int, default=8)
     parser.add_argument("--skip-benchmarks", action="store_true")
     parser.add_argument("--limit", type=int, default=None, help="documents per task, for smoke tests only")
     args = parser.parse_args()
