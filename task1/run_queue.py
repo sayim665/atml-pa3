@@ -19,6 +19,7 @@ import torch
 from task1.common import REPO_ROOT, output_root, run_dir, save_json
 
 POLL_SECONDS = 30
+REPORT_SECONDS = 600
 STOP_MARGIN_HOURS = 0.25
 
 
@@ -38,6 +39,15 @@ def job_ready(job):
     if name == "full_ft_mid":
         return (run_dir("full_ft") / "midpoint" / "config.json").exists()
     return (run_dir(name) / "DONE").exists()
+
+
+def last_progress_line(log_path):
+    with open(log_path, "r", encoding="utf-8", errors="replace") as handle:
+        lines = [line.strip() for line in handle.read().splitlines()[-200:] if line.strip()]
+    for line in reversed(lines):
+        if line.startswith("[") or "%|" in line or "Error" in line:
+            return line[-200:]
+    return lines[-1][-200:] if lines else "(no output yet)"
 
 
 def job_command(job, extra_args):
@@ -82,7 +92,11 @@ def worker(gpu, queue, deadline, log_dir, extra_args, children, status_path):
             process = subprocess.Popen(job_command(job, extra_args), cwd=REPO_ROOT, env=environment,
                                        stdout=log_handle, stderr=subprocess.STDOUT)
             children[gpu] = process
+            last_report = time.time()
             while process.poll() is None:
+                if time.time() - last_report >= REPORT_SECONDS:
+                    last_report = time.time()
+                    print(f"[gpu{gpu}] {job} | {last_progress_line(log_path)}", flush=True)
                 if time.time() >= deadline:
                     print(f"[gpu{gpu}] budget reached, stopping {job}", flush=True)
                     process.terminate()
