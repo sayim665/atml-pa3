@@ -6,8 +6,11 @@ Resumes automatically from <ATML_OUT>/runs/<run>/recovery if present.
 """
 
 import argparse
+import os
 import shutil
 import time
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
 
 import torch
 import torch.nn.functional as F
@@ -50,13 +53,13 @@ def unique_trainable_parameters(model):
     return named
 
 
-def build_optimizer(named_parameters, peak_lr):
+def build_optimizer(named_parameters, peak_lr, use_fused):
     decay = [parameter for _, parameter in named_parameters if parameter.ndim >= 2]
     no_decay = [parameter for _, parameter in named_parameters if parameter.ndim < 2]
     groups = [{"params": decay, "weight_decay": WEIGHT_DECAY}]
     if no_decay:
         groups.append({"params": no_decay, "weight_decay": 0.0})
-    return torch.optim.AdamW(groups, lr=peak_lr, betas=ADAM_BETAS, eps=ADAM_EPS)
+    return torch.optim.AdamW(groups, lr=peak_lr, betas=ADAM_BETAS, eps=ADAM_EPS, fused=use_fused)
 
 
 def reference_dtype(model):
@@ -216,7 +219,7 @@ def train(run_name, max_updates=None, device=None, keep_recovery=False):
             "reference_max_abs_error": reference_check(named_trainable, reference),
         }
 
-    optimizer = build_optimizer(named_trainable, run.peak_lr)
+    optimizer = build_optimizer(named_trainable, run.peak_lr, use_fused=use_amp)
     scheduler = get_cosine_schedule_with_warmup(optimizer, WARMUP_UPDATES, TOTAL_UPDATES)
     scaler = torch.amp.GradScaler("cuda", enabled=use_amp)
 

@@ -37,6 +37,7 @@ def main():
     subprocess.run(["bash", "-c", f"cat {scratch}/out/runs/*/train_summary.json | grep -E "
                                   f"'trainable_parameters|displacement|basis_bytes|peak_memory_allocated'; "
                                   f"cat {scratch}/results/eval/*/merge_check.json; "
+                                  f"grep -h -A1 'gsm8k_non_thinking_prompt' {scratch}/results/eval/*/eval_info.json; "
                                   f"cat {scratch}/results/eval/*/scores.json | head -n 60"])
     print("SMOKE TEST PASSED", flush=True)
 
