@@ -112,6 +112,11 @@ def worker(gpu, queue, deadline, log_dir, extra_args, children, status_path):
         queue.status[job] = result
         save_json(status_path, queue.status)
         print(f"[gpu{gpu}] {job}: {result}", flush=True)
+        if result != "done":
+            with open(log_path, "r", encoding="utf-8", errors="replace") as handle:
+                tail = handle.read().splitlines()[-25:]
+            for line in tail:
+                print(f"[gpu{gpu}] | {line}", flush=True)
 
 
 def main():

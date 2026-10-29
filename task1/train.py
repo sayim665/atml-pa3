@@ -25,7 +25,8 @@ from task1.config import (ADAM_BETAS, ADAM_EPS, CHECKPOINT_UPDATES, DIAGNOSTIC_L
 from task1.data import collate, example_tensors, prepare_training_set
 from task1.lora import export_adapter_factors, find_adapters, inject_adapters
 
-LOSS_CHUNK_TOKENS = 1024
+LOSS_CHUNK_TOKENS = 256
+PARAMETER_CHUNK_ELEMENTS = 1 << 24
 
 
 def build_model(run, device):
@@ -83,13 +84,20 @@ def reference_check(named_parameters, reference):
     return worst
 
 
+def flat_chunks(*tensors):
+    """Matching slices of flattened tensors, so large parameters never need a full-size temporary."""
+    flats = [tensor.reshape(-1) for tensor in tensors]
+    return zip(*(flat.split(PARAMETER_CHUNK_ELEMENTS) for flat in flats))
+
+
 @torch.no_grad()
 def squared_displacement(named_parameters, reference):
-    total = 0.0
+    total = torch.zeros((), dtype=torch.float64, device=named_parameters[0][1].device)
     for (_, parameter), anchor in zip(named_parameters, reference):
-        difference = parameter.detach() - anchor.to(parameter.device)
-        total += difference.float().square_().sum(dtype=torch.float64).item()
-    return total
+        anchor = anchor.to(parameter.device)
+        for parameter_chunk, anchor_chunk in flat_chunks(parameter.detach(), anchor):
+            total += (parameter_chunk.float() - anchor_chunk.float()).square_().sum(dtype=torch.float64)
+    return total.item()
 
 
 @torch.no_grad()
@@ -97,7 +105,8 @@ def add_l2sp_gradient(named_parameters, reference, strength):
     for (_, parameter), anchor in zip(named_parameters, reference):
         if parameter.grad is None:
             continue
-        parameter.grad.add_(parameter.detach() - anchor, alpha=strength)
+        for grad_chunk, parameter_chunk, anchor_chunk in flat_chunks(parameter.grad, parameter.detach(), anchor):
+            grad_chunk.add_(parameter_chunk - anchor_chunk, alpha=strength)
 
 
 def chunk_loss_sum(hidden, targets, lm_head):
