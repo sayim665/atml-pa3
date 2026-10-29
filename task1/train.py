@@ -72,7 +72,10 @@ def reference_dtype(model):
 
 def snapshot_reference(named_parameters, dtype, device):
     """theta_0, stored losslessly in the checkpoint's own dtype (bf16 for Qwen3-0.6B)."""
-    return [parameter.detach().to(device=device, dtype=dtype).clone() for _, parameter in named_parameters]
+    reference = [parameter.detach().to(device=device, dtype=dtype).clone() for _, parameter in named_parameters]
+    if device == "cpu" and torch.cuda.is_available():
+        reference = [anchor.pin_memory() for anchor in reference]
+    return reference
 
 
 @torch.no_grad()
@@ -105,6 +108,7 @@ def add_l2sp_gradient(named_parameters, reference, strength):
     for (_, parameter), anchor in zip(named_parameters, reference):
         if parameter.grad is None:
             continue
+        anchor = anchor.to(parameter.device, non_blocking=True)
         for grad_chunk, parameter_chunk, anchor_chunk in flat_chunks(parameter.grad, parameter.detach(), anchor):
             grad_chunk.add_(parameter_chunk - anchor_chunk, alpha=strength)
 
@@ -219,7 +223,7 @@ def train(run_name, max_updates=None, device=None, keep_recovery=False):
     reference_info = {}
     if run.is_full_ft():
         reference_dtype_used = reference_dtype(model)
-        reference_device = device if run.l2sp_lambda > 0 else "cpu"
+        reference_device = "cpu"
         reference = snapshot_reference(named_trainable, reference_dtype_used, reference_device)
         reference_info = {
             "reference_dtype": str(reference_dtype_used),
