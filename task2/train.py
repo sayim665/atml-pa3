@@ -313,9 +313,9 @@ def train(run_name):
             "lr": learning_rates, "skipped": skipped, "seconds": time.time() - update_started,
             "mixture_counts": dict(sampler.counts),
         })
-        if update % 50 == 0:
-            print(f"[{run_name}] update {update}/{TOTAL_UPDATES} stage={stage['name']} loss={np.mean(losses):.4f}",
-                  flush=True)
+        if update % 50 == 0 or update <= start_update + 5:
+            print(f"[{run_name}] update {update}/{TOTAL_UPDATES} stage={stage['name']} loss={np.mean(losses):.4f} "
+                  f"sec/update={time.time() - update_started:.2f}", flush=True)
 
         if update in STAGE_END_UPDATES:
             save_stage_weights(model, directory, stage)
