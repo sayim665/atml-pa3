@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrr}
+\toprule
+Run & Trainable params & Train time (h) & Peak alloc. (GB) & Checkpoint (MB) \\
+\midrule
+Full FT & 596M & 2.31 & 11.9 & 6822 \\
+L2-SP & 596M & 2.76 & 10.8 & 6822 \\
+LoRA r=4 & 2.5M & 2.61 & 3.1 & 29 \\
+LoRA r=16 & 10.1M & 2.59 & 3.3 & 116 \\
+OPLoRA r=16 & 10.1M & 3.46 & 3.6 & 116 \\
+\bottomrule
+\end{tabular}

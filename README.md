@@ -38,6 +38,7 @@ Per-condition files are in `results/task1/eval/<condition>/` (`scores.json`, per
 | `task1/train.py` | FP16 AMP training loop with FP32 master weights or FP32 adapters, L2-SP penalty, resumable checkpoints at updates 312/625/937/1250 |
 | `task1/evaluate.py` | lm-eval benchmarks (zero-shot; GSM8K with the non-thinking chat template, greedy, 1,024 tokens), per-example outputs, truncation flags, qualitative generations, merged-vs-unmerged adapter check |
 | `task1/run_queue.py` | Runs train/eval jobs across GPUs with a wall-clock budget (Kaggle 12 h sessions) |
+| `task1/plots.py` | Report figures (`results/task1/figures/`) and LaTeX tables (`results/task1/tables/`) from the committed results |
 | `task1/diagnostics.py` | Weight-space (`rho_k`, input-side fraction, `eta`) and activation-ratio diagnostics on `down_proj` in layers 0, 13, 27 (CPU) |
 | `kaggle/task1_runner.ipynb` | Thin Kaggle notebook: clone repo, restore previous outputs, run the queue |
 | `kaggle/task1_finalize.ipynb` | Packs scores, per-example rows, logs and summaries (without weights) into one zip |
