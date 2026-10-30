@@ -5,7 +5,7 @@ Code, configurations, split IDs and machine-readable results for Programming Ass
 | Task | Folder | Status |
 |---|---|---|
 | 1. LLM fine-tuning (Full FT, L2-SP, LoRA-4/16, OPLoRA-16) | `task1/` | done |
-| 2. Vision-language model and visual grounding | `task2/` | not started |
+| 2. Vision-language model and visual grounding | `task2/` | code ready, Kaggle run pending |
 | 3. Test-time compute | `task3/` | not started |
 
 ## Task 1: Large Language Model Fine-Tuning
@@ -56,8 +56,38 @@ On Kaggle (GPU T4 x2, internet enabled), run `kaggle/task1_runner.ipynb` with "S
 
 Set `ATML_SMOKE_TEST=1` to run a 4-update CPU smoke test of the full pipeline.
 
-### External resources
+## Task 2: Vision-Language Model and Visual Grounding
+
+Frozen SigLIP-base features (196 x 768, cached in FP16) feed a trainable two-layer MLP connector into frozen Qwen3-0.6B (thinking disabled). Training runs three stages on one model: caption alignment (connector only, 2,250 updates), visual instruction tuning on generated presence/counting pairs with caption replay (connector + LoRA r16 on q/k/v/o, 1,500 updates), and natural VQAv2 specialization with replay (750 updates). Grounding is measured on complementary pairs with correct, complementary-swap, mismatched and no-image inputs.
+
+### Layout
+
+| File | Purpose |
+|---|---|
+| `task2/config.py` | All fixed settings from the manual (seed 6304, split sizes, stage budgets and learning rates, token caps) |
+| `task2/data.py` | Downloads COCO 2014 / VQAv2 annotations; selects captions, generated presence/counting pairs (with label-quality filters) and VQAv2 complementary pairs (consensus >= 8/10, differing answers); image-disjoint dev/test splits; image download |
+| `task2/features.py` | Deterministic preprocessing and FP16 SigLIP feature cache (post-layernorm applied once, checked) |
+| `task2/model.py` | Connector, 2 x 2 pooling for the 49-token variant, chat-format sequence building, example-weighted loss, generation |
+| `task2/train.py` | Curriculum sampler, per-stage warmup + cosine schedule, FP16 autocast with FP32 trainable weights, connector calibration, resumable checkpoints every 250 updates, dev evaluation every 500 updates and at stage ends |
+| `task2/evaluate.py` | Final-test generation and reference NLL under four image conditions, VQA soft accuracy, pair metrics, pair-bootstrap intervals, qualitative examples |
+| `task2/vqa_eval.py` | VQA answer normalization and soft-consensus score |
+| `task2/smoke.py` | Synthetic manifest for a CPU smoke test (`ATML_SMOKE_TEST=1`) |
+| `kaggle/task2_data.ipynb` | CPU notebook: data selection and image download |
+| `kaggle/task2_runner.ipynb` | GPU notebook: feature cache, then the 196-token run (GPU 0) and the optional 49-token run (GPU 1) |
+
+### Reproduce
+
+```bash
+python -m task2.data                    # selections + images
+python -m task2.features                # SigLIP feature cache
+python -m task2.train --run vlm196      # vlm196 | vlm49
+python -m task2.evaluate --run vlm196
+```
+
+## External resources
 
 - [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) task definitions (`gsm8k_cot`, `hellaswag`, `boolq`, `arc_easy`), used unmodified.
 - `task1/data/first_plot_questions.yaml` is copied from the [emergent-misalignment](https://github.com/emergent-misalignment/emergent-misalignment) repository (Betley et al.).
+- `task2/vqa_eval.py` follows the answer normalization of the official [VQA evaluation code](https://github.com/GT-Vision-Lab/VQA) (punctuation, number words, articles, contractions).
+- COCO 2014 captions/instances and VQAv2 questions, annotations and complementary pairs are downloaded from their official hosts.
 - LoRA (Hu et al.) and OPLoRA (Xiong and Xie) are implemented from the papers' equations; no adapter library is used.
