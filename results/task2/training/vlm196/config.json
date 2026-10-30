@@ -1,0 +1,56 @@
+{
+  "run": "vlm196",
+  "visual_tokens": 196,
+  "stages": [
+    {
+      "name": "caption",
+      "updates": 2250,
+      "connector_lr": 0.001,
+      "lora_lr": null,
+      "mixture": {
+        "caption": 1.0
+      }
+    },
+    {
+      "name": "instruction",
+      "updates": 1500,
+      "connector_lr": 0.0001,
+      "lora_lr": 2e-05,
+      "mixture": {
+        "presence": 0.5,
+        "counting": 0.25,
+        "caption": 0.25
+      }
+    },
+    {
+      "name": "vqa",
+      "updates": 750,
+      "connector_lr": 5e-05,
+      "lora_lr": 1e-05,
+      "mixture": {
+        "vqa": 0.7,
+        "presence": 0.1,
+        "counting": 0.1,
+        "caption": 0.1
+      }
+    }
+  ],
+  "micro_batch": 8,
+  "grad_accum": 2,
+  "effective_batch": 16,
+  "seed": 6304,
+  "calibration": {
+    "rule": "scale = mean ||text embedding|| / mean ||initial connector output||, 256 training captions",
+    "text_embedding_norm": 0.7990854382514954,
+    "initial_visual_norm": 15.890711784362793,
+    "scale": 0.05028632128598751
+  },
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 16:11:47",
+    "transformers": "5.16.1",
+    "gpu": "Tesla T4"
+  }
+}

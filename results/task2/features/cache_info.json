@@ -1,0 +1,23 @@
+{
+  "images": 9373,
+  "shape": [
+    9373,
+    196,
+    768
+  ],
+  "dtype": "float16",
+  "vision_model": "google/siglip-base-patch16-224",
+  "post_layernorm_check_max_abs_diff": 0.0,
+  "model_load_seconds": 32.99911403656006,
+  "total_seconds": 291.3395266532898,
+  "peak_gpu_memory_gb": 1.183302879333496,
+  "bytes": 2821798016,
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 16:11:11",
+    "transformers": "5.16.1",
+    "gpu": "Tesla T4"
+  }
+}

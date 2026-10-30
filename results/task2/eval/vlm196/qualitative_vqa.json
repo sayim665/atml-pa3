@@ -1,0 +1,461 @@
+[
+  {
+    "pair_id": "vqa-513219000-148614009",
+    "question_type": "number",
+    "question": "How many vases are present?",
+    "sides": [
+      {
+        "image": "val2014/513219",
+        "reference": "2",
+        "all_references": [
+          "3",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2"
+        ],
+        "predictions": {
+          "correct": "2",
+          "complementary": "1",
+          "mismatched": "1",
+          "none": "2"
+        }
+      },
+      {
+        "image": "val2014/148614",
+        "reference": "1",
+        "all_references": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "predictions": {
+          "correct": "1",
+          "complementary": "2",
+          "mismatched": "1",
+          "none": "2"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-406189004-393282009",
+    "question_type": "number",
+    "question": "How many giraffe are pictured?",
+    "sides": [
+      {
+        "image": "val2014/406189",
+        "reference": "9",
+        "all_references": [
+          "9",
+          "9",
+          "9",
+          "9",
+          "8",
+          "9",
+          "9",
+          "9",
+          "9",
+          "8"
+        ],
+        "predictions": {
+          "correct": "4",
+          "complementary": "2",
+          "mismatched": "0",
+          "none": "1"
+        }
+      },
+      {
+        "image": "val2014/393282",
+        "reference": "2",
+        "all_references": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "predictions": {
+          "correct": "2",
+          "complementary": "4",
+          "mismatched": "0",
+          "none": "1"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-524954000-214519003",
+    "question_type": "number",
+    "question": "How many urinals are there?",
+    "sides": [
+      {
+        "image": "val2014/524954",
+        "reference": "4",
+        "all_references": [
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4",
+          "4"
+        ],
+        "predictions": {
+          "correct": "4",
+          "complementary": "2",
+          "mismatched": "0",
+          "none": "1"
+        }
+      },
+      {
+        "image": "val2014/214519",
+        "reference": "2",
+        "all_references": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "predictions": {
+          "correct": "2",
+          "complementary": "4",
+          "mismatched": "1",
+          "none": "1"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-90554002-183715000",
+    "question_type": "other",
+    "question": "What flavor is the cake?",
+    "sides": [
+      {
+        "image": "val2014/90554",
+        "reference": "chocolate",
+        "all_references": [
+          "chocolate",
+          "chocolate",
+          "chocolate",
+          "brown, red, and white",
+          "chocolate",
+          "chocolate",
+          "chocolate",
+          "chocolate",
+          "white",
+          "chocolate"
+        ],
+        "predictions": {
+          "correct": "chocolate",
+          "complementary": "chocolate",
+          "mismatched": "none",
+          "none": "cake"
+        }
+      },
+      {
+        "image": "val2014/183715",
+        "reference": "vanilla",
+        "all_references": [
+          "vanilla",
+          "vanilla",
+          "vanilla",
+          "vanilla",
+          "vanilla",
+          "vanilla",
+          "vanilka",
+          "vanilla",
+          "not sure",
+          "vanilla"
+        ],
+        "predictions": {
+          "correct": "chocolate",
+          "complementary": "chocolate",
+          "mismatched": "milk",
+          "none": "cake"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-378709001-320951004",
+    "question_type": "other",
+    "question": "Lid up, or down?",
+    "sides": [
+      {
+        "image": "val2014/378709",
+        "reference": "down",
+        "all_references": [
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down",
+          "down"
+        ],
+        "predictions": {
+          "correct": "up",
+          "complementary": "up",
+          "mismatched": "lid",
+          "none": "up"
+        }
+      },
+      {
+        "image": "val2014/320951",
+        "reference": "up",
+        "all_references": [
+          "up",
+          "down",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up"
+        ],
+        "predictions": {
+          "correct": "up",
+          "complementary": "up",
+          "mismatched": "no",
+          "none": "up"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-137156002-362714010",
+    "question_type": "other",
+    "question": "What color are the thick stripes on the street?",
+    "sides": [
+      {
+        "image": "val2014/137156",
+        "reference": "red",
+        "all_references": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "predictions": {
+          "correct": "red",
+          "complementary": "blue",
+          "mismatched": "white",
+          "none": "red"
+        }
+      },
+      {
+        "image": "val2014/362714",
+        "reference": "white",
+        "all_references": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "predictions": {
+          "correct": "blue",
+          "complementary": "red",
+          "mismatched": "black",
+          "none": "red"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-289630004-43997006",
+    "question_type": "yes/no",
+    "question": "Does this have graffiti on it?",
+    "sides": [
+      {
+        "image": "val2014/289630",
+        "reference": "yes",
+        "all_references": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "predictions": {
+          "correct": "yes",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      },
+      {
+        "image": "val2014/43997",
+        "reference": "no",
+        "all_references": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "predictions": {
+          "correct": "no",
+          "complementary": "yes",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-452591000-495980011",
+    "question_type": "yes/no",
+    "question": "Are they dressed casually?",
+    "sides": [
+      {
+        "image": "val2014/452591",
+        "reference": "no",
+        "all_references": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "predictions": {
+          "correct": "no",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "no"
+        }
+      },
+      {
+        "image": "val2014/495980",
+        "reference": "yes",
+        "all_references": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "predictions": {
+          "correct": "no",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "no"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-134558000-126995008",
+    "question_type": "yes/no",
+    "question": "Is he being watched?",
+    "sides": [
+      {
+        "image": "val2014/134558",
+        "reference": "yes",
+        "all_references": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "predictions": {
+          "correct": "yes",
+          "complementary": "yes",
+          "mismatched": "no",
+          "none": "watch"
+        }
+      },
+      {
+        "image": "val2014/126995",
+        "reference": "no",
+        "all_references": [
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "predictions": {
+          "correct": "yes",
+          "complementary": "yes",
+          "mismatched": "no",
+          "none": "watch"
+        }
+      }
+    ]
+  }
+]

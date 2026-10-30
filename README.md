@@ -5,7 +5,7 @@ Code, configurations, split IDs and machine-readable results for Programming Ass
 | Task | Folder | Status |
 |---|---|---|
 | 1. LLM fine-tuning (Full FT, L2-SP, LoRA-4/16, OPLoRA-16) | `task1/` | done |
-| 2. Vision-language model and visual grounding | `task2/` | code ready, Kaggle run pending |
+| 2. Vision-language model and visual grounding | `task2/` | done |
 | 3. Test-time compute | `task3/` | not started |
 
 ## Task 1: Large Language Model Fine-Tuning
@@ -60,6 +60,19 @@ Set `ATML_SMOKE_TEST=1` to run a 4-update CPU smoke test of the full pipeline.
 ## Task 2: Vision-Language Model and Visual Grounding
 
 Frozen SigLIP-base features (196 x 768, cached in FP16) feed a trainable two-layer MLP connector into frozen Qwen3-0.6B (thinking disabled). Training runs three stages on one model: caption alignment (connector only, 2,250 updates), visual instruction tuning on generated presence/counting pairs with caption replay (connector + LoRA r16 on q/k/v/o, 1,500 updates), and natural VQAv2 specialization with replay (750 updates). Grounding is measured on complementary pairs with correct, complementary-swap, mismatched and no-image inputs.
+
+### Results
+
+Final-test accuracy (%) under four image conditions (questions and references fixed). Grounding uses normalized exact match (64 pairs / 128 questions); VQAv2 uses local soft consensus accuracy against all ten answers (96 pairs / 192 questions). Brackets are 95% pair-bootstrap intervals (4,000 resamples).
+
+| Run | Suite | Correct | Complementary swap | Mismatched | No image | Pair acc. (correct) | Correct - swap |
+|---|---|---|---|---|---|---|---|
+| 196 tokens | Grounding | 71.9 [63.3, 80.5] | 16.4 | 31.2 | 39.1 | 56.2 | +55.5 [40.6, 69.5] |
+| 196 tokens | VQAv2 | 60.7 [54.3, 67.1] | 27.2 | 29.3 | 31.3 | 31.2 | +33.4 [24.1, 42.8] |
+| 49 tokens | Grounding | 68.8 [59.4, 78.1] | 14.1 | 31.2 | 38.3 | 54.7 | +54.7 [39.8, 68.8] |
+| 49 tokens | VQAv2 | 56.1 [49.9, 62.4] | 29.4 | 30.6 | 32.3 | 22.9 | +26.7 [17.4, 35.8] |
+
+Training took 1.86 h (196 tokens) and 0.78 h (49 tokens) on one T4 each; feature caching took 0.08 h. Full metrics, per-example rows and qualitative examples are in `results/task2/eval/<run>/`, learning curves and dev metrics in `results/task2/training/<run>/`, and the selected image/question/pair IDs in `results/task2/splits/`.
 
 ### Layout
 

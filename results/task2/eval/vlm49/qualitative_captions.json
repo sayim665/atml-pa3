@@ -1,0 +1,42 @@
+[
+  {
+    "image": "val2014/578736",
+    "reference": "A surfer carries her surfboard on the beach.",
+    "generated": "A woman standing on a surfboard with a surfboard in the water."
+  },
+  {
+    "image": "val2014/263834",
+    "reference": "Person riding a motorcycle with someone holding a child.",
+    "generated": "A man and a woman are sitting on a motorcycle."
+  },
+  {
+    "image": "val2014/115043",
+    "reference": "A man surfing on the ocean waters waves.",
+    "generated": "A man surfing on a wave while holding a surfboard."
+  },
+  {
+    "image": "val2014/423962",
+    "reference": "Many kids are on the field playing soccer as the adults look on.",
+    "generated": "A group of children playing soccer in a field."
+  },
+  {
+    "image": "val2014/391321",
+    "reference": "A traffic signal with a red stop sign hanging below it.",
+    "generated": "A stop sign and a traffic light on a street."
+  },
+  {
+    "image": "val2014/380706",
+    "reference": "A young person on a scooter in an urban area.",
+    "generated": "A man riding a bike down a street."
+  },
+  {
+    "image": "val2014/374369",
+    "reference": "A man dressed in black snow gear stands on skis in the snow.",
+    "generated": "A person wearing a ski mask and snow boots walking down a slope."
+  },
+  {
+    "image": "val2014/444515",
+    "reference": "some pecans in a bowl next to an apple, orange and some yogurt",
+    "generated": "A box of oranges and a box of juice sitting on a car seat."
+  }
+]

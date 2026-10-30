@@ -1,0 +1,609 @@
+{
+  "run": "vlm196",
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 18:03:19",
+    "transformers": "5.16.1",
+    "gpu": "Tesla T4"
+  },
+  "grounding": {
+    "correct": {
+      "accuracy": 0.71875,
+      "accuracy_ci95": [
+        0.6328125,
+        0.8046875
+      ],
+      "pair_accuracy": 0.5625,
+      "pair_accuracy_ci95": [
+        0.4375,
+        0.6875
+      ],
+      "identical_answer_rate": 0.1875,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 0.8343016304867774,
+      "reference_nll_ci95": [
+        0.5860044341714783,
+        1.1040756703769972
+      ],
+      "generation_seconds_per_answer": 0.040128834545612335,
+      "by_type": {
+        "counting": {
+          "accuracy": 0.5,
+          "pair_accuracy": 0.25,
+          "identical_answer_rate": 0.25,
+          "reference_nll": 1.472832195770934,
+          "questions": 64
+        },
+        "presence": {
+          "accuracy": 0.9375,
+          "pair_accuracy": 0.875,
+          "identical_answer_rate": 0.125,
+          "reference_nll": 0.19577106520262078,
+          "questions": 64
+        }
+      }
+    },
+    "complementary": {
+      "accuracy": 0.1640625,
+      "accuracy_ci95": [
+        0.1015625,
+        0.234375
+      ],
+      "pair_accuracy": 0.046875,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.109375
+      ],
+      "identical_answer_rate": 0.1875,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 3.9983641404214723,
+      "reference_nll_ci95": [
+        3.47816671893288,
+        4.506269068088204
+      ],
+      "generation_seconds_per_answer": 0.03681492246687412,
+      "by_type": {
+        "counting": {
+          "accuracy": 0.265625,
+          "pair_accuracy": 0.09375,
+          "identical_answer_rate": 0.25,
+          "reference_nll": 3.5912404187765787,
+          "questions": 64
+        },
+        "presence": {
+          "accuracy": 0.0625,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 0.125,
+          "reference_nll": 4.405487862066366,
+          "questions": 64
+        }
+      },
+      "follows_partner_answer_rate": 0.71875,
+      "changed_from_correct_image_rate": 0.8125
+    },
+    "mismatched": {
+      "accuracy": 0.3125,
+      "accuracy_ci95": [
+        0.25,
+        0.375
+      ],
+      "pair_accuracy": 0.03125,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.078125
+      ],
+      "identical_answer_rate": 0.65625,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 2.310881681347837,
+      "reference_nll_ci95": [
+        2.0448357966394726,
+        2.5852670284786767
+      ],
+      "generation_seconds_per_answer": 0.03912431746721268,
+      "by_type": {
+        "counting": {
+          "accuracy": 0.15625,
+          "pair_accuracy": 0.03125,
+          "identical_answer_rate": 0.4375,
+          "reference_nll": 2.614313518330164,
+          "questions": 64
+        },
+        "presence": {
+          "accuracy": 0.46875,
+          "pair_accuracy": 0.03125,
+          "identical_answer_rate": 0.875,
+          "reference_nll": 2.00744984436551,
+          "questions": 64
+        }
+      }
+    },
+    "none": {
+      "accuracy": 0.390625,
+      "accuracy_ci95": [
+        0.3359375,
+        0.4375
+      ],
+      "pair_accuracy": 0.0,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.0
+      ],
+      "identical_answer_rate": 1.0,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 1.3022348865051754,
+      "reference_nll_ci95": [
+        1.1569098840787775,
+        1.4664182613050798
+      ],
+      "generation_seconds_per_answer": 0.017759263515472412,
+      "by_type": {
+        "counting": {
+          "accuracy": 0.28125,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 1.0,
+          "reference_nll": 1.7103605880402029,
+          "questions": 64
+        },
+        "presence": {
+          "accuracy": 0.5,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 1.0,
+          "reference_nll": 0.8941091849701479,
+          "questions": 64
+        }
+      }
+    },
+    "advantages": {
+      "correct_vs_complementary": {
+        "accuracy": 0.5546875,
+        "accuracy_ci95": [
+          0.40625,
+          0.6953125
+        ],
+        "pair_accuracy": 0.515625,
+        "pair_accuracy_ci95": [
+          0.375,
+          0.65625
+        ],
+        "delta_nll": 3.164062509934695,
+        "delta_nll_ci95": [
+          2.512805175399035,
+          3.7930938650045207
+        ]
+      },
+      "correct_vs_mismatched": {
+        "accuracy": 0.40625,
+        "accuracy_ci95": [
+          0.3203125,
+          0.4921875
+        ],
+        "pair_accuracy": 0.53125,
+        "pair_accuracy_ci95": [
+          0.40625,
+          0.65625
+        ],
+        "delta_nll": 1.4765800508610596,
+        "delta_nll_ci95": [
+          1.1236814936555888,
+          1.8229973698133677
+        ]
+      },
+      "correct_vs_none": {
+        "accuracy": 0.328125,
+        "accuracy_ci95": [
+          0.25,
+          0.3984375
+        ],
+        "pair_accuracy": 0.5625,
+        "pair_accuracy_ci95": [
+          0.4375,
+          0.6875
+        ],
+        "delta_nll": 0.46793325601839797,
+        "delta_nll_ci95": [
+          0.24290457689034212,
+          0.6808506015633967
+        ]
+      }
+    },
+    "pairs": 64,
+    "mismatch_mapping": {
+      "gtest-counting-00032": "gtest-counting-00035",
+      "gtest-counting-00035": "gtest-presence-00020",
+      "gtest-presence-00020": "gtest-presence-00021",
+      "gtest-presence-00021": "gtest-presence-00031",
+      "gtest-presence-00031": "gtest-presence-00009",
+      "gtest-presence-00009": "gtest-counting-00051",
+      "gtest-counting-00051": "gtest-counting-00048",
+      "gtest-counting-00048": "gtest-presence-00012",
+      "gtest-presence-00012": "gtest-counting-00061",
+      "gtest-counting-00061": "gtest-presence-00000",
+      "gtest-presence-00000": "gtest-presence-00019",
+      "gtest-presence-00019": "gtest-presence-00017",
+      "gtest-presence-00017": "gtest-counting-00040",
+      "gtest-counting-00040": "gtest-counting-00055",
+      "gtest-counting-00055": "gtest-presence-00026",
+      "gtest-presence-00026": "gtest-presence-00002",
+      "gtest-presence-00002": "gtest-presence-00027",
+      "gtest-presence-00027": "gtest-counting-00060",
+      "gtest-counting-00060": "gtest-presence-00010",
+      "gtest-presence-00010": "gtest-counting-00037",
+      "gtest-counting-00037": "gtest-presence-00013",
+      "gtest-presence-00013": "gtest-counting-00034",
+      "gtest-counting-00034": "gtest-counting-00053",
+      "gtest-counting-00053": "gtest-counting-00044",
+      "gtest-counting-00044": "gtest-presence-00023",
+      "gtest-presence-00023": "gtest-presence-00024",
+      "gtest-presence-00024": "gtest-presence-00003",
+      "gtest-presence-00003": "gtest-counting-00041",
+      "gtest-counting-00041": "gtest-counting-00043",
+      "gtest-counting-00043": "gtest-counting-00059",
+      "gtest-counting-00059": "gtest-presence-00025",
+      "gtest-presence-00025": "gtest-presence-00005",
+      "gtest-presence-00005": "gtest-counting-00054",
+      "gtest-counting-00054": "gtest-presence-00028",
+      "gtest-presence-00028": "gtest-counting-00052",
+      "gtest-counting-00052": "gtest-presence-00029",
+      "gtest-presence-00029": "gtest-counting-00063",
+      "gtest-counting-00063": "gtest-presence-00016",
+      "gtest-presence-00016": "gtest-counting-00036",
+      "gtest-counting-00036": "gtest-counting-00047",
+      "gtest-counting-00047": "gtest-counting-00042",
+      "gtest-counting-00042": "gtest-presence-00014",
+      "gtest-presence-00014": "gtest-presence-00030",
+      "gtest-presence-00030": "gtest-presence-00015",
+      "gtest-presence-00015": "gtest-counting-00033",
+      "gtest-counting-00033": "gtest-counting-00050",
+      "gtest-counting-00050": "gtest-counting-00049",
+      "gtest-counting-00049": "gtest-presence-00001",
+      "gtest-presence-00001": "gtest-presence-00006",
+      "gtest-presence-00006": "gtest-counting-00057",
+      "gtest-counting-00057": "gtest-counting-00038",
+      "gtest-counting-00038": "gtest-presence-00018",
+      "gtest-presence-00018": "gtest-counting-00058",
+      "gtest-counting-00058": "gtest-counting-00039",
+      "gtest-counting-00039": "gtest-counting-00045",
+      "gtest-counting-00045": "gtest-counting-00056",
+      "gtest-counting-00056": "gtest-presence-00011",
+      "gtest-presence-00011": "gtest-counting-00062",
+      "gtest-counting-00062": "gtest-presence-00008",
+      "gtest-presence-00008": "gtest-presence-00022",
+      "gtest-presence-00022": "gtest-presence-00007",
+      "gtest-presence-00007": "gtest-counting-00046",
+      "gtest-counting-00046": "gtest-presence-00004",
+      "gtest-presence-00004": "gtest-counting-00032"
+    }
+  },
+  "vqa": {
+    "correct": {
+      "accuracy": 0.6067708333333334,
+      "accuracy_ci95": [
+        0.5432291666666668,
+        0.6713541666666667
+      ],
+      "pair_accuracy": 0.3125,
+      "pair_accuracy_ci95": [
+        0.21875,
+        0.40625
+      ],
+      "identical_answer_rate": 0.46875,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 1.1706012126248122,
+      "reference_nll_ci95": [
+        0.9289207612989762,
+        1.4322226499084385
+      ],
+      "generation_seconds_per_answer": 0.0452423964937528,
+      "by_type": {
+        "number": {
+          "accuracy": 0.5583333333333333,
+          "pair_accuracy": 0.2916666666666667,
+          "identical_answer_rate": 0.3333333333333333,
+          "reference_nll": 1.4488232936176548,
+          "questions": 48
+        },
+        "other": {
+          "accuracy": 0.5777777777777778,
+          "pair_accuracy": 0.3333333333333333,
+          "identical_answer_rate": 0.3611111111111111,
+          "reference_nll": 1.4987192491664447,
+          "questions": 72
+        },
+        "yes/no": {
+          "accuracy": 0.6680555555555555,
+          "pair_accuracy": 0.3055555555555556,
+          "identical_answer_rate": 0.6666666666666666,
+          "reference_nll": 0.6570017887546177,
+          "questions": 72
+        }
+      }
+    },
+    "complementary": {
+      "accuracy": 0.27239583333333334,
+      "accuracy_ci95": [
+        0.22029947916666667,
+        0.3250130208333334
+      ],
+      "pair_accuracy": 0.010416666666666666,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.03125
+      ],
+      "identical_answer_rate": 0.46875,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 2.807480016189705,
+      "reference_nll_ci95": [
+        2.3847584170502762,
+        3.2567539300449426
+      ],
+      "generation_seconds_per_answer": 0.0420298824707667,
+      "by_type": {
+        "number": {
+          "accuracy": 0.17916666666666667,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 0.3333333333333333,
+          "reference_nll": 3.7706006594623127,
+          "questions": 48
+        },
+        "other": {
+          "accuracy": 0.17916666666666667,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 0.3611111111111111,
+          "reference_nll": 3.4578049029999725,
+          "questions": 72
+        },
+        "yes/no": {
+          "accuracy": 0.42777777777777776,
+          "pair_accuracy": 0.027777777777777776,
+          "identical_answer_rate": 0.6666666666666666,
+          "reference_nll": 1.5150747005310323,
+          "questions": 72
+        }
+      },
+      "follows_partner_answer_rate": 0.5833333333333334,
+      "changed_from_correct_image_rate": 0.53125
+    },
+    "mismatched": {
+      "accuracy": 0.29322916666666665,
+      "accuracy_ci95": [
+        0.23802083333333335,
+        0.35364583333333327
+      ],
+      "pair_accuracy": 0.020833333333333332,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.052083333333333336
+      ],
+      "identical_answer_rate": 0.6041666666666666,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 2.707135802946899,
+      "reference_nll_ci95": [
+        2.3269496855812046,
+        3.112934192435967
+      ],
+      "generation_seconds_per_answer": 0.0403561070561409,
+      "by_type": {
+        "number": {
+          "accuracy": 0.27499999999999997,
+          "pair_accuracy": 0.041666666666666664,
+          "identical_answer_rate": 0.625,
+          "reference_nll": 2.972072518663481,
+          "questions": 48
+        },
+        "other": {
+          "accuracy": 0.09166666666666666,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 0.3611111111111111,
+          "reference_nll": 3.8195623846582345,
+          "questions": 72
+        },
+        "yes/no": {
+          "accuracy": 0.5069444444444444,
+          "pair_accuracy": 0.027777777777777776,
+          "identical_answer_rate": 0.8333333333333334,
+          "reference_nll": 1.4180847440911748,
+          "questions": 72
+        }
+      }
+    },
+    "none": {
+      "accuracy": 0.3130208333333333,
+      "accuracy_ci95": [
+        0.2583203125,
+        0.36874999999999997
+      ],
+      "pair_accuracy": 0.0,
+      "pair_accuracy_ci95": [
+        0.0,
+        0.0
+      ],
+      "identical_answer_rate": 1.0,
+      "empty_answer_rate": 0.0,
+      "reference_nll": 2.280784042804347,
+      "reference_nll_ci95": [
+        1.974172261482939,
+        2.6294825619547435
+      ],
+      "generation_seconds_per_answer": 0.02028435965379079,
+      "by_type": {
+        "number": {
+          "accuracy": 0.28958333333333336,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 1.0,
+          "reference_nll": 2.296352724234263,
+          "questions": 48
+        },
+        "other": {
+          "accuracy": 0.11944444444444444,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 1.0,
+          "reference_nll": 3.499964736505515,
+          "questions": 72
+        },
+        "yes/no": {
+          "accuracy": 0.5222222222222221,
+          "pair_accuracy": 0.0,
+          "identical_answer_rate": 1.0,
+          "reference_nll": 1.051224228149901,
+          "questions": 72
+        }
+      }
+    },
+    "advantages": {
+      "correct_vs_complementary": {
+        "accuracy": 0.33437500000000003,
+        "accuracy_ci95": [
+          0.2411458333333333,
+          0.4276041666666666
+        ],
+        "pair_accuracy": 0.3020833333333333,
+        "pair_accuracy_ci95": [
+          0.20833333333333334,
+          0.3958333333333333
+        ],
+        "delta_nll": 1.636878803564893,
+        "delta_nll_ci95": [
+          1.2286529607066086,
+          2.081468403853334
+        ]
+      },
+      "correct_vs_mismatched": {
+        "accuracy": 0.31354166666666666,
+        "accuracy_ci95": [
+          0.23696614583333334,
+          0.39218749999999997
+        ],
+        "pair_accuracy": 0.2916666666666667,
+        "pair_accuracy_ci95": [
+          0.1875,
+          0.3958333333333333
+        ],
+        "delta_nll": 1.5365345903220866,
+        "delta_nll_ci95": [
+          1.2009884092331011,
+          1.8981207881128133
+        ]
+      },
+      "correct_vs_none": {
+        "accuracy": 0.29375,
+        "accuracy_ci95": [
+          0.2218619791666667,
+          0.36874999999999997
+        ],
+        "pair_accuracy": 0.3125,
+        "pair_accuracy_ci95": [
+          0.21875,
+          0.40625
+        ],
+        "delta_nll": 1.1101828301795347,
+        "delta_nll_ci95": [
+          0.8484947221363276,
+          1.4105854496879828
+        ]
+      }
+    },
+    "pairs": 96,
+    "mismatch_mapping": {
+      "vqa-228135009-334185005": "vqa-251857002-50746009",
+      "vqa-251857002-50746009": "vqa-378709001-320951004",
+      "vqa-378709001-320951004": "vqa-523033004-100081004",
+      "vqa-523033004-100081004": "vqa-3244001-19544001",
+      "vqa-3244001-19544001": "vqa-70626000-223289000",
+      "vqa-70626000-223289000": "vqa-359851002-171382003",
+      "vqa-359851002-171382003": "vqa-479378001-240340004",
+      "vqa-479378001-240340004": "vqa-337488001-413948009",
+      "vqa-337488001-413948009": "vqa-1577004-417015004",
+      "vqa-1577004-417015004": "vqa-374342002-402971004",
+      "vqa-374342002-402971004": "vqa-565693002-329456003",
+      "vqa-565693002-329456003": "vqa-33835000-507154005",
+      "vqa-33835000-507154005": "vqa-259830004-1722002",
+      "vqa-259830004-1722002": "vqa-381173001-109873003",
+      "vqa-381173001-109873003": "vqa-119061001-188752002",
+      "vqa-119061001-188752002": "vqa-547612001-82765002",
+      "vqa-547612001-82765002": "vqa-291588000-300323005",
+      "vqa-291588000-300323005": "vqa-439015001-291582000",
+      "vqa-439015001-291582000": "vqa-172319001-267933002",
+      "vqa-172319001-267933002": "vqa-50753003-45746016",
+      "vqa-50753003-45746016": "vqa-265872000-431570003",
+      "vqa-265872000-431570003": "vqa-98054005-50829084",
+      "vqa-98054005-50829084": "vqa-62657001-401244018",
+      "vqa-62657001-401244018": "vqa-382256002-276151004",
+      "vqa-382256002-276151004": "vqa-80737002-38829002",
+      "vqa-80737002-38829002": "vqa-226097003-214204004",
+      "vqa-226097003-214204004": "vqa-74446000-76351011",
+      "vqa-74446000-76351011": "vqa-137156002-362714010",
+      "vqa-137156002-362714010": "vqa-103548005-298697000",
+      "vqa-103548005-298697000": "vqa-225751008-34205007",
+      "vqa-225751008-34205007": "vqa-524954000-214519003",
+      "vqa-524954000-214519003": "vqa-482436005-358302016",
+      "vqa-482436005-358302016": "vqa-547338005-429369000",
+      "vqa-547338005-429369000": "vqa-339759002-217554012",
+      "vqa-339759002-217554012": "vqa-210976001-355956005",
+      "vqa-210976001-355956005": "vqa-269807002-261999001",
+      "vqa-269807002-261999001": "vqa-566596001-279259002",
+      "vqa-566596001-279259002": "vqa-83235004-539808003",
+      "vqa-83235004-539808003": "vqa-466416001-486778001",
+      "vqa-466416001-486778001": "vqa-134558000-126995008",
+      "vqa-134558000-126995008": "vqa-474762002-226571005",
+      "vqa-474762002-226571005": "vqa-90138004-260105017",
+      "vqa-90138004-260105017": "vqa-471004001-30067004",
+      "vqa-471004001-30067004": "vqa-397518003-431165007",
+      "vqa-397518003-431165007": "vqa-281827007-419074023",
+      "vqa-281827007-419074023": "vqa-184324007-170232013",
+      "vqa-184324007-170232013": "vqa-221307001-419224010",
+      "vqa-221307001-419224010": "vqa-469480007-183114011",
+      "vqa-469480007-183114011": "vqa-217329014-64342015",
+      "vqa-217329014-64342015": "vqa-541279000-242363053",
+      "vqa-541279000-242363053": "vqa-313585007-143247004",
+      "vqa-313585007-143247004": "vqa-506458000-350639000",
+      "vqa-506458000-350639000": "vqa-47181000-530998003",
+      "vqa-47181000-530998003": "vqa-170519001-285388005",
+      "vqa-170519001-285388005": "vqa-351667001-30012001",
+      "vqa-351667001-30012001": "vqa-365521000-213827004",
+      "vqa-365521000-213827004": "vqa-268745010-155401005",
+      "vqa-268745010-155401005": "vqa-245313001-116377008",
+      "vqa-245313001-116377008": "vqa-521509010-537513001",
+      "vqa-521509010-537513001": "vqa-208363002-217546011",
+      "vqa-208363002-217546011": "vqa-246454001-391620001",
+      "vqa-246454001-391620001": "vqa-289630004-43997006",
+      "vqa-289630004-43997006": "vqa-388413002-472029005",
+      "vqa-388413002-472029005": "vqa-269784001-322864000",
+      "vqa-269784001-322864000": "vqa-342682000-270244003",
+      "vqa-342682000-270244003": "vqa-310052001-43286001",
+      "vqa-310052001-43286001": "vqa-272273002-229111009",
+      "vqa-272273002-229111009": "vqa-170048000-364102007",
+      "vqa-170048000-364102007": "vqa-90554002-183715000",
+      "vqa-90554002-183715000": "vqa-573778000-245513006",
+      "vqa-573778000-245513006": "vqa-97922004-82468009",
+      "vqa-97922004-82468009": "vqa-170955002-15968006",
+      "vqa-170955002-15968006": "vqa-330432001-106048006",
+      "vqa-330432001-106048006": "vqa-28174001-504194002",
+      "vqa-28174001-504194002": "vqa-513219000-148614009",
+      "vqa-513219000-148614009": "vqa-373578008-445675002",
+      "vqa-373578008-445675002": "vqa-407298002-82157002",
+      "vqa-407298002-82157002": "vqa-326582002-173737001",
+      "vqa-326582002-173737001": "vqa-452591000-495980011",
+      "vqa-452591000-495980011": "vqa-175197002-87503002",
+      "vqa-175197002-87503002": "vqa-169356000-268239006",
+      "vqa-169356000-268239006": "vqa-131494000-357758001",
+      "vqa-131494000-357758001": "vqa-146276001-44950004",
+      "vqa-146276001-44950004": "vqa-323000000-415828015",
+      "vqa-323000000-415828015": "vqa-165675000-150244004",
+      "vqa-165675000-150244004": "vqa-103855002-335153003",
+      "vqa-103855002-335153003": "vqa-33377004-350167008",
+      "vqa-33377004-350167008": "vqa-243212002-99177003",
+      "vqa-243212002-99177003": "vqa-96960000-281455017",
+      "vqa-96960000-281455017": "vqa-306733003-246327002",
+      "vqa-306733003-246327002": "vqa-37671003-297970007",
+      "vqa-37671003-297970007": "vqa-406189004-393282009",
+      "vqa-406189004-393282009": "vqa-147223002-313182004",
+      "vqa-147223002-313182004": "vqa-442456002-528136044",
+      "vqa-442456002-528136044": "vqa-72024002-175633004",
+      "vqa-72024002-175633004": "vqa-228135009-334185005"
+    }
+  },
+  "evaluation_seconds": 77.61767673492432,
+  "peak_gpu_memory_gb": 1.4852828979492188
+}

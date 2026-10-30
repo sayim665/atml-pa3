@@ -1,0 +1,1698 @@
+[
+  {
+    "pair_id": "vqa-198612000-285212002",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-198612000",
+        "kind": "vqa",
+        "image": "val2014/198612",
+        "question": "Is the dog looking at the camera?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 198612000,
+        "pair_id": "vqa-198612000-285212002"
+      },
+      {
+        "uid": "vqa-285212002",
+        "kind": "vqa",
+        "image": "val2014/285212",
+        "question": "Is the dog looking at the camera?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 285212002,
+        "pair_id": "vqa-198612000-285212002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-555387002-358427009",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-555387002",
+        "kind": "vqa",
+        "image": "val2014/555387",
+        "question": "Do these vegetable grow on top of the ground?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 555387002,
+        "pair_id": "vqa-555387002-358427009"
+      },
+      {
+        "uid": "vqa-358427009",
+        "kind": "vqa",
+        "image": "val2014/358427",
+        "question": "Do these vegetable grow on top of the ground?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 358427009,
+        "pair_id": "vqa-555387002-358427009"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-124462000-354537006",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-124462000",
+        "kind": "vqa",
+        "image": "val2014/124462",
+        "question": "Are the car mirrors always like they are now?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "i don't know",
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 124462000,
+        "pair_id": "vqa-124462000-354537006"
+      },
+      {
+        "uid": "vqa-354537006",
+        "kind": "vqa",
+        "image": "val2014/354537",
+        "question": "Are the car mirrors always like they are now?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 354537006,
+        "pair_id": "vqa-124462000-354537006"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-513778003-443006004",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-513778003",
+        "kind": "vqa",
+        "image": "val2014/513778",
+        "question": "Are there mountains behind the giraffe?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 513778003,
+        "pair_id": "vqa-513778003-443006004"
+      },
+      {
+        "uid": "vqa-443006004",
+        "kind": "vqa",
+        "image": "val2014/443006",
+        "question": "Are there mountains behind the giraffe?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 443006004,
+        "pair_id": "vqa-513778003-443006004"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-561578001-74000006",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-561578001",
+        "kind": "vqa",
+        "image": "val2014/561578",
+        "question": "Does the tower have a flag on the top?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 561578001,
+        "pair_id": "vqa-561578001-74000006"
+      },
+      {
+        "uid": "vqa-74000006",
+        "kind": "vqa",
+        "image": "val2014/74000",
+        "question": "Does the tower have a flag on the top?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 74000006,
+        "pair_id": "vqa-561578001-74000006"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-458861001-390147017",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-458861001",
+        "kind": "vqa",
+        "image": "val2014/458861",
+        "question": "Is this a dangerous activity?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 458861001,
+        "pair_id": "vqa-458861001-390147017"
+      },
+      {
+        "uid": "vqa-390147017",
+        "kind": "vqa",
+        "image": "val2014/390147",
+        "question": "Is this a dangerous activity?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 390147017,
+        "pair_id": "vqa-458861001-390147017"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-461278000-211047002",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-461278000",
+        "kind": "vqa",
+        "image": "val2014/461278",
+        "question": "Are there flowers in the yard?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 461278000,
+        "pair_id": "vqa-461278000-211047002"
+      },
+      {
+        "uid": "vqa-211047002",
+        "kind": "vqa",
+        "image": "val2014/211047",
+        "question": "Are there flowers in the yard?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 211047002,
+        "pair_id": "vqa-461278000-211047002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-568690001-93116007",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-568690001",
+        "kind": "vqa",
+        "image": "val2014/568690",
+        "question": "Is there butterflies on the shower curtain?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 568690001,
+        "pair_id": "vqa-568690001-93116007"
+      },
+      {
+        "uid": "vqa-93116007",
+        "kind": "vqa",
+        "image": "val2014/93116",
+        "question": "Is there butterflies on the shower curtain?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 93116007,
+        "pair_id": "vqa-568690001-93116007"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-25316001-308849010",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-25316001",
+        "kind": "vqa",
+        "image": "val2014/25316",
+        "question": "What is the color of the label?",
+        "target": "blue",
+        "canonical": "blue",
+        "answers": [
+          "blue and white",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "answer_type": "other",
+        "question_id": 25316001,
+        "pair_id": "vqa-25316001-308849010"
+      },
+      {
+        "uid": "vqa-308849010",
+        "kind": "vqa",
+        "image": "val2014/308849",
+        "question": "What is the color of the label?",
+        "target": "white",
+        "canonical": "white",
+        "answers": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "green"
+        ],
+        "answer_type": "other",
+        "question_id": 308849010,
+        "pair_id": "vqa-25316001-308849010"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-166664003-300979001",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-166664003",
+        "kind": "vqa",
+        "image": "val2014/166664",
+        "question": "Is the elephant swishing its tail?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 166664003,
+        "pair_id": "vqa-166664003-300979001"
+      },
+      {
+        "uid": "vqa-300979001",
+        "kind": "vqa",
+        "image": "val2014/300979",
+        "question": "Is the elephant swishing its tail?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "yes",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 300979001,
+        "pair_id": "vqa-166664003-300979001"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-410097000-292384000",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-410097000",
+        "kind": "vqa",
+        "image": "val2014/410097",
+        "question": "Is there enough wool here to make a nice sweater?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 410097000,
+        "pair_id": "vqa-410097000-292384000"
+      },
+      {
+        "uid": "vqa-292384000",
+        "kind": "vqa",
+        "image": "val2014/292384",
+        "question": "Is there enough wool here to make a nice sweater?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 292384000,
+        "pair_id": "vqa-410097000-292384000"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-267434001-567253008",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-267434001",
+        "kind": "vqa",
+        "image": "val2014/267434",
+        "question": "Are the cows eating grass?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 267434001,
+        "pair_id": "vqa-267434001-567253008"
+      },
+      {
+        "uid": "vqa-567253008",
+        "kind": "vqa",
+        "image": "val2014/567253",
+        "question": "Are the cows eating grass?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 567253008,
+        "pair_id": "vqa-267434001-567253008"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-161820001-127535003",
+    "kind": "vqa",
+    "answer_type": "yes/no",
+    "examples": [
+      {
+        "uid": "vqa-161820001",
+        "kind": "vqa",
+        "image": "val2014/161820",
+        "question": "Are these ripe?",
+        "target": "no",
+        "canonical": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 161820001,
+        "pair_id": "vqa-161820001-127535003"
+      },
+      {
+        "uid": "vqa-127535003",
+        "kind": "vqa",
+        "image": "val2014/127535",
+        "question": "Are these ripe?",
+        "target": "yes",
+        "canonical": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ],
+        "answer_type": "yes/no",
+        "question_id": 127535003,
+        "pair_id": "vqa-161820001-127535003"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-237277002-221911002",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-237277002",
+        "kind": "vqa",
+        "image": "val2014/237277",
+        "question": "What fruit in on the table?",
+        "target": "apple",
+        "canonical": "apple",
+        "answers": [
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple",
+          "apple"
+        ],
+        "answer_type": "other",
+        "question_id": 237277002,
+        "pair_id": "vqa-237277002-221911002"
+      },
+      {
+        "uid": "vqa-221911002",
+        "kind": "vqa",
+        "image": "val2014/221911",
+        "question": "What fruit in on the table?",
+        "target": "orange",
+        "canonical": "orange",
+        "answers": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "answer_type": "other",
+        "question_id": 221911002,
+        "pair_id": "vqa-237277002-221911002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-381576002-522713012",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-381576002",
+        "kind": "vqa",
+        "image": "val2014/381576",
+        "question": "How many benches?",
+        "target": "2",
+        "canonical": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "0",
+          "2",
+          "2"
+        ],
+        "answer_type": "number",
+        "question_id": 381576002,
+        "pair_id": "vqa-381576002-522713012"
+      },
+      {
+        "uid": "vqa-522713012",
+        "kind": "vqa",
+        "image": "val2014/522713",
+        "question": "How many benches?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 522713012,
+        "pair_id": "vqa-381576002-522713012"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-246263004-507893012",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-246263004",
+        "kind": "vqa",
+        "image": "val2014/246263",
+        "question": "Is the lid open or closed?",
+        "target": "closed",
+        "canonical": "closed",
+        "answers": [
+          "closed",
+          "closed",
+          "closed",
+          "closed",
+          "closed",
+          "closed",
+          "opened",
+          "closed",
+          "closed",
+          "closed"
+        ],
+        "answer_type": "other",
+        "question_id": 246263004,
+        "pair_id": "vqa-246263004-507893012"
+      },
+      {
+        "uid": "vqa-507893012",
+        "kind": "vqa",
+        "image": "val2014/507893",
+        "question": "Is the lid open or closed?",
+        "target": "open",
+        "canonical": "open",
+        "answers": [
+          "open",
+          "open",
+          "open",
+          "open",
+          "open",
+          "open",
+          "open",
+          "open",
+          "open",
+          "open"
+        ],
+        "answer_type": "other",
+        "question_id": 507893012,
+        "pair_id": "vqa-246263004-507893012"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-134537001-260433002",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-134537001",
+        "kind": "vqa",
+        "image": "val2014/134537",
+        "question": "Is it night or day?",
+        "target": "night",
+        "canonical": "night",
+        "answers": [
+          "night",
+          "night",
+          "night",
+          "night",
+          "night",
+          "night",
+          "night",
+          "night",
+          "night",
+          "night"
+        ],
+        "answer_type": "other",
+        "question_id": 134537001,
+        "pair_id": "vqa-134537001-260433002"
+      },
+      {
+        "uid": "vqa-260433002",
+        "kind": "vqa",
+        "image": "val2014/260433",
+        "question": "Is it night or day?",
+        "target": "day",
+        "canonical": "day",
+        "answers": [
+          "day",
+          "day",
+          "day",
+          "day",
+          "day",
+          "day",
+          "day",
+          "day",
+          "day",
+          "day"
+        ],
+        "answer_type": "other",
+        "question_id": 260433002,
+        "pair_id": "vqa-134537001-260433002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-457400008-100215007",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-457400008",
+        "kind": "vqa",
+        "image": "val2014/457400",
+        "question": "How many of the books on the bed are open?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 457400008,
+        "pair_id": "vqa-457400008-100215007"
+      },
+      {
+        "uid": "vqa-100215007",
+        "kind": "vqa",
+        "image": "val2014/100215",
+        "question": "How many of the books on the bed are open?",
+        "target": "0",
+        "canonical": "0",
+        "answers": [
+          "0",
+          "0",
+          "no books",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "answer_type": "number",
+        "question_id": 100215007,
+        "pair_id": "vqa-457400008-100215007"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-437664000-68277003",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-437664000",
+        "kind": "vqa",
+        "image": "val2014/437664",
+        "question": "What color is the bedspread?",
+        "target": "red",
+        "canonical": "red",
+        "answers": [
+          "red",
+          "red",
+          "red",
+          "burgundy",
+          "red",
+          "red",
+          "red",
+          "red and yellow",
+          "red",
+          "red"
+        ],
+        "answer_type": "other",
+        "question_id": 437664000,
+        "pair_id": "vqa-437664000-68277003"
+      },
+      {
+        "uid": "vqa-68277003",
+        "kind": "vqa",
+        "image": "val2014/68277",
+        "question": "What color is the bedspread?",
+        "target": "green",
+        "canonical": "green",
+        "answers": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "beige"
+        ],
+        "answer_type": "other",
+        "question_id": 68277003,
+        "pair_id": "vqa-437664000-68277003"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-7977001-288174003",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-7977001",
+        "kind": "vqa",
+        "image": "val2014/7977",
+        "question": "What color is the skateboard?",
+        "target": "black",
+        "canonical": "black",
+        "answers": [
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "gray",
+          "black",
+          "gray",
+          "black"
+        ],
+        "answer_type": "other",
+        "question_id": 7977001,
+        "pair_id": "vqa-7977001-288174003"
+      },
+      {
+        "uid": "vqa-288174003",
+        "kind": "vqa",
+        "image": "val2014/288174",
+        "question": "What color is the skateboard?",
+        "target": "blue",
+        "canonical": "blue",
+        "answers": [
+          "blue",
+          "blue",
+          "blue",
+          "it is rip-stick, not skateboard",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "answer_type": "other",
+        "question_id": 288174003,
+        "pair_id": "vqa-7977001-288174003"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-275268000-276893013",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-275268000",
+        "kind": "vqa",
+        "image": "val2014/275268",
+        "question": "What color is the child's hair?",
+        "target": "blonde",
+        "canonical": "blonde",
+        "answers": [
+          "blonde",
+          "blonde",
+          "blonde",
+          "blonde",
+          "gold",
+          "black",
+          "blonde",
+          "blonde",
+          "blonde",
+          "blonde"
+        ],
+        "answer_type": "other",
+        "question_id": 275268000,
+        "pair_id": "vqa-275268000-276893013"
+      },
+      {
+        "uid": "vqa-276893013",
+        "kind": "vqa",
+        "image": "val2014/276893",
+        "question": "What color is the child's hair?",
+        "target": "brown",
+        "canonical": "brown",
+        "answers": [
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "brown",
+          "red"
+        ],
+        "answer_type": "other",
+        "question_id": 276893013,
+        "pair_id": "vqa-275268000-276893013"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-455299000-481370001",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-455299000",
+        "kind": "vqa",
+        "image": "val2014/455299",
+        "question": "What color is the keyboard?",
+        "target": "black",
+        "canonical": "black",
+        "answers": [
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "blue",
+          "black",
+          "black",
+          "black"
+        ],
+        "answer_type": "other",
+        "question_id": 455299000,
+        "pair_id": "vqa-455299000-481370001"
+      },
+      {
+        "uid": "vqa-481370001",
+        "kind": "vqa",
+        "image": "val2014/481370",
+        "question": "What color is the keyboard?",
+        "target": "white",
+        "canonical": "white",
+        "answers": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "answer_type": "other",
+        "question_id": 481370001,
+        "pair_id": "vqa-455299000-481370001"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-173080000-8762004",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-173080000",
+        "kind": "vqa",
+        "image": "val2014/173080",
+        "question": "What color is the stop light?",
+        "target": "red",
+        "canonical": "red",
+        "answers": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "answer_type": "other",
+        "question_id": 173080000,
+        "pair_id": "vqa-173080000-8762004"
+      },
+      {
+        "uid": "vqa-8762004",
+        "kind": "vqa",
+        "image": "val2014/8762",
+        "question": "What color is the stop light?",
+        "target": "green",
+        "canonical": "green",
+        "answers": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "answer_type": "other",
+        "question_id": 8762004,
+        "pair_id": "vqa-173080000-8762004"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-403774001-361282002",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-403774001",
+        "kind": "vqa",
+        "image": "val2014/403774",
+        "question": "How many clocks are pictured on the wall?",
+        "target": "5",
+        "canonical": "5",
+        "answers": [
+          "5",
+          "5",
+          "5",
+          "5",
+          "2",
+          "5",
+          "5",
+          "5",
+          "5",
+          "5"
+        ],
+        "answer_type": "number",
+        "question_id": 403774001,
+        "pair_id": "vqa-403774001-361282002"
+      },
+      {
+        "uid": "vqa-361282002",
+        "kind": "vqa",
+        "image": "val2014/361282",
+        "question": "How many clocks are pictured on the wall?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 361282002,
+        "pair_id": "vqa-403774001-361282002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-568367002-226069002",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-568367002",
+        "kind": "vqa",
+        "image": "val2014/568367",
+        "question": "How many cell phones are on the table?",
+        "target": "3",
+        "canonical": "3",
+        "answers": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ],
+        "answer_type": "number",
+        "question_id": 568367002,
+        "pair_id": "vqa-568367002-226069002"
+      },
+      {
+        "uid": "vqa-226069002",
+        "kind": "vqa",
+        "image": "val2014/226069",
+        "question": "How many cell phones are on the table?",
+        "target": "2",
+        "canonical": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "answer_type": "number",
+        "question_id": 226069002,
+        "pair_id": "vqa-568367002-226069002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-74951003-157271000",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-74951003",
+        "kind": "vqa",
+        "image": "val2014/74951",
+        "question": "What game are the kids playing?",
+        "target": "soccer",
+        "canonical": "soccer",
+        "answers": [
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer"
+        ],
+        "answer_type": "other",
+        "question_id": 74951003,
+        "pair_id": "vqa-74951003-157271000"
+      },
+      {
+        "uid": "vqa-157271000",
+        "kind": "vqa",
+        "image": "val2014/157271",
+        "question": "What game are the kids playing?",
+        "target": "frisbee",
+        "canonical": "frisbee",
+        "answers": [
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee",
+          "frisbee"
+        ],
+        "answer_type": "other",
+        "question_id": 157271000,
+        "pair_id": "vqa-74951003-157271000"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-555684000-51976003",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-555684000",
+        "kind": "vqa",
+        "image": "val2014/555684",
+        "question": "What color is the water?",
+        "target": "green",
+        "canonical": "green",
+        "answers": [
+          "green",
+          "green",
+          "green",
+          "blue and green",
+          "green",
+          "blue, green, white",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "answer_type": "other",
+        "question_id": 555684000,
+        "pair_id": "vqa-555684000-51976003"
+      },
+      {
+        "uid": "vqa-51976003",
+        "kind": "vqa",
+        "image": "val2014/51976",
+        "question": "What color is the water?",
+        "target": "blue",
+        "canonical": "blue",
+        "answers": [
+          "blue",
+          "blue",
+          "blue",
+          "blue, white",
+          "blue",
+          "dark blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "answer_type": "other",
+        "question_id": 51976003,
+        "pair_id": "vqa-555684000-51976003"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-36522000-344029006",
+    "kind": "vqa",
+    "answer_type": "other",
+    "examples": [
+      {
+        "uid": "vqa-36522000",
+        "kind": "vqa",
+        "image": "val2014/36522",
+        "question": "What color is the bus?",
+        "target": "white",
+        "canonical": "white",
+        "answers": [
+          "white",
+          "black white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white, red",
+          "white",
+          "white",
+          "white"
+        ],
+        "answer_type": "other",
+        "question_id": 36522000,
+        "pair_id": "vqa-36522000-344029006"
+      },
+      {
+        "uid": "vqa-344029006",
+        "kind": "vqa",
+        "image": "val2014/344029",
+        "question": "What color is the bus?",
+        "target": "black",
+        "canonical": "black",
+        "answers": [
+          "black",
+          "black",
+          "black",
+          "black, red and white",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black",
+          "black"
+        ],
+        "answer_type": "other",
+        "question_id": 344029006,
+        "pair_id": "vqa-36522000-344029006"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-436456001-447553002",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-436456001",
+        "kind": "vqa",
+        "image": "val2014/436456",
+        "question": "How many people have their back turned to the camera?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 436456001,
+        "pair_id": "vqa-436456001-447553002"
+      },
+      {
+        "uid": "vqa-447553002",
+        "kind": "vqa",
+        "image": "val2014/447553",
+        "question": "How many people have their back turned to the camera?",
+        "target": "2",
+        "canonical": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "answer_type": "number",
+        "question_id": 447553002,
+        "pair_id": "vqa-436456001-447553002"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-181524001-292394001",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-181524001",
+        "kind": "vqa",
+        "image": "val2014/181524",
+        "question": "How many traffic lights are there?",
+        "target": "2",
+        "canonical": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "3",
+          "2",
+          "2",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 181524001,
+        "pair_id": "vqa-181524001-292394001"
+      },
+      {
+        "uid": "vqa-292394001",
+        "kind": "vqa",
+        "image": "val2014/292394",
+        "question": "How many traffic lights are there?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 292394001,
+        "pair_id": "vqa-181524001-292394001"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-122281002-428454003",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-122281002",
+        "kind": "vqa",
+        "image": "val2014/122281",
+        "question": "How many snowboards are touching the snow?",
+        "target": "2",
+        "canonical": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "answer_type": "number",
+        "question_id": 122281002,
+        "pair_id": "vqa-122281002-428454003"
+      },
+      {
+        "uid": "vqa-428454003",
+        "kind": "vqa",
+        "image": "val2014/428454",
+        "question": "How many snowboards are touching the snow?",
+        "target": "1",
+        "canonical": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "answer_type": "number",
+        "question_id": 428454003,
+        "pair_id": "vqa-122281002-428454003"
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa-89614001-247914006",
+    "kind": "vqa",
+    "answer_type": "number",
+    "examples": [
+      {
+        "uid": "vqa-89614001",
+        "kind": "vqa",
+        "image": "val2014/89614",
+        "question": "What number can be seen?",
+        "target": "500",
+        "canonical": "500",
+        "answers": [
+          "500",
+          "500",
+          "500",
+          "500",
+          "500",
+          "500",
+          "500",
+          "500",
+          "500",
+          "500"
+        ],
+        "answer_type": "number",
+        "question_id": 89614001,
+        "pair_id": "vqa-89614001-247914006"
+      },
+      {
+        "uid": "vqa-247914006",
+        "kind": "vqa",
+        "image": "val2014/247914",
+        "question": "What number can be seen?",
+        "target": "100",
+        "canonical": "100",
+        "answers": [
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100",
+          "100"
+        ],
+        "answer_type": "number",
+        "question_id": 247914006,
+        "pair_id": "vqa-89614001-247914006"
+      }
+    ]
+  }
+]

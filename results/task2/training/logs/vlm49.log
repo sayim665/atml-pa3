@@ -1,0 +1,118 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<03:56,  1.31it/s]Loading weights:  61%|██████▏   | 191/311 [00:00<00:00, 297.42it/s]Loading weights:  95%|█████████▍| 295/311 [00:01<00:00, 328.97it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 266.94it/s]
+[vlm49] update 1/4500 stage=caption loss=4.5463 sec/update=0.74
+[vlm49] update 2/4500 stage=caption loss=4.9390 sec/update=0.50
+[vlm49] update 3/4500 stage=caption loss=4.6763 sec/update=0.48
+[vlm49] update 4/4500 stage=caption loss=5.5142 sec/update=0.54
+[vlm49] update 5/4500 stage=caption loss=4.6387 sec/update=0.49
+[vlm49] update 50/4500 stage=caption loss=3.9937 sec/update=0.48
+[vlm49] update 100/4500 stage=caption loss=3.5403 sec/update=0.49
+[vlm49] update 150/4500 stage=caption loss=3.1368 sec/update=0.48
+[vlm49] update 200/4500 stage=caption loss=3.1399 sec/update=0.48
+[vlm49] update 250/4500 stage=caption loss=3.0204 sec/update=0.48
+[vlm49] update 300/4500 stage=caption loss=3.0969 sec/update=0.47
+[vlm49] update 350/4500 stage=caption loss=2.4831 sec/update=0.48
+[vlm49] update 400/4500 stage=caption loss=2.8415 sec/update=0.48
+[vlm49] update 450/4500 stage=caption loss=2.6203 sec/update=0.48
+[vlm49] update 500/4500 stage=caption loss=2.3058 sec/update=0.50
+[vlm49] dev @ 500: cap=2.754 | grounding: nll=4.987 dNLL=-0.051 | vqa: nll=5.386 dNLL=-0.015
+[vlm49] update 550/4500 stage=caption loss=2.7017 sec/update=0.50
+[vlm49] update 600/4500 stage=caption loss=2.6939 sec/update=0.50
+[vlm49] update 650/4500 stage=caption loss=2.5413 sec/update=0.50
+[vlm49] update 700/4500 stage=caption loss=2.5854 sec/update=0.49
+[vlm49] update 750/4500 stage=caption loss=2.5448 sec/update=0.49
+[vlm49] update 800/4500 stage=caption loss=2.5716 sec/update=0.49
+[vlm49] update 850/4500 stage=caption loss=2.6211 sec/update=0.48
+[vlm49] update 900/4500 stage=caption loss=2.3974 sec/update=0.49
+[vlm49] update 950/4500 stage=caption loss=2.5492 sec/update=0.49
+[vlm49] update 1000/4500 stage=caption loss=2.6842 sec/update=0.49
+[vlm49] dev @ 1000: cap=2.587 | grounding: nll=4.631 dNLL=-0.071 | vqa: nll=3.933 dNLL=-0.027
+[vlm49] update 1050/4500 stage=caption loss=2.6572 sec/update=0.50
+[vlm49] update 1100/4500 stage=caption loss=2.5402 sec/update=0.49
+[vlm49] update 1150/4500 stage=caption loss=2.8519 sec/update=0.48
+[vlm49] update 1200/4500 stage=caption loss=2.4069 sec/update=0.49
+[vlm49] update 1250/4500 stage=caption loss=2.6948 sec/update=0.50
+[vlm49] update 1300/4500 stage=caption loss=2.4759 sec/update=0.49
+[vlm49] update 1350/4500 stage=caption loss=2.3454 sec/update=0.74
+[vlm49] update 1400/4500 stage=caption loss=2.1136 sec/update=0.49
+[vlm49] update 1450/4500 stage=caption loss=2.3271 sec/update=0.50
+[vlm49] update 1500/4500 stage=caption loss=2.3738 sec/update=0.49
+[vlm49] dev @ 1500: cap=2.510 | grounding: nll=4.579 dNLL=-0.073 | vqa: nll=3.991 dNLL=+0.020
+[vlm49] update 1550/4500 stage=caption loss=2.4153 sec/update=0.50
+[vlm49] update 1600/4500 stage=caption loss=2.4793 sec/update=0.49
+[vlm49] update 1650/4500 stage=caption loss=2.2794 sec/update=0.50
+[vlm49] update 1700/4500 stage=caption loss=2.4115 sec/update=0.50
+[vlm49] update 1750/4500 stage=caption loss=2.6162 sec/update=0.53
+[vlm49] update 1800/4500 stage=caption loss=2.3172 sec/update=0.50
+[vlm49] update 1850/4500 stage=caption loss=2.6970 sec/update=0.49
+[vlm49] update 1900/4500 stage=caption loss=2.6156 sec/update=0.50
+[vlm49] update 1950/4500 stage=caption loss=2.1207 sec/update=0.50
+[vlm49] update 2000/4500 stage=caption loss=2.2891 sec/update=0.50
+[vlm49] dev @ 2000: cap=2.470 | grounding: nll=4.599 dNLL=-0.090 | vqa: nll=3.981 dNLL=+0.042
+[vlm49] update 2050/4500 stage=caption loss=2.2958 sec/update=0.48
+[vlm49] update 2100/4500 stage=caption loss=1.9754 sec/update=0.49
+[vlm49] update 2150/4500 stage=caption loss=2.5123 sec/update=0.48
+[vlm49] update 2200/4500 stage=caption loss=2.1788 sec/update=0.49
+[vlm49] update 2250/4500 stage=caption loss=2.0074 sec/update=0.50
+[vlm49] dev @ 2250: cap=2.474 | grounding: nll=4.612 dNLL=-0.083 | vqa: nll=4.245 dNLL=+0.038
+[vlm49] update 2300/4500 stage=instruction loss=0.5771 sec/update=0.71
+[vlm49] update 2350/4500 stage=instruction loss=1.1580 sec/update=0.79
+[vlm49] update 2400/4500 stage=instruction loss=0.1701 sec/update=0.74
+[vlm49] update 2450/4500 stage=instruction loss=0.7294 sec/update=0.71
+[vlm49] update 2500/4500 stage=instruction loss=0.2545 sec/update=0.73
+[vlm49] dev @ 2500: cap=2.482 | grounding: nll=0.763 dNLL=+2.166 | vqa: nll=1.559 dNLL=+0.336
+[vlm49] update 2550/4500 stage=instruction loss=1.1216 sec/update=0.76
+[vlm49] update 2600/4500 stage=instruction loss=0.8270 sec/update=0.73
+[vlm49] update 2650/4500 stage=instruction loss=1.0617 sec/update=0.73
+[vlm49] update 2700/4500 stage=instruction loss=0.2882 sec/update=0.75
+[vlm49] update 2750/4500 stage=instruction loss=0.9495 sec/update=0.73
+[vlm49] update 2800/4500 stage=instruction loss=0.9488 sec/update=0.71
+[vlm49] update 2850/4500 stage=instruction loss=0.1261 sec/update=0.73
+[vlm49] update 2900/4500 stage=instruction loss=0.5191 sec/update=0.76
+[vlm49] update 2950/4500 stage=instruction loss=0.7171 sec/update=0.68
+[vlm49] update 3000/4500 stage=instruction loss=0.8265 sec/update=0.72
+[vlm49] dev @ 3000: cap=2.446 | grounding: nll=0.680 dNLL=+2.898 | vqa: nll=1.634 dNLL=+0.485
+[vlm49] update 3050/4500 stage=instruction loss=0.7492 sec/update=0.71
+[vlm49] update 3100/4500 stage=instruction loss=0.5092 sec/update=0.69
+[vlm49] update 3150/4500 stage=instruction loss=0.6822 sec/update=0.71
+[vlm49] update 3200/4500 stage=instruction loss=0.1422 sec/update=1.04
+[vlm49] update 3250/4500 stage=instruction loss=0.6475 sec/update=0.70
+[vlm49] update 3300/4500 stage=instruction loss=0.2157 sec/update=0.82
+[vlm49] update 3350/4500 stage=instruction loss=0.9349 sec/update=0.73
+[vlm49] update 3400/4500 stage=instruction loss=0.0950 sec/update=0.74
+[vlm49] update 3450/4500 stage=instruction loss=1.2576 sec/update=0.72
+[vlm49] update 3500/4500 stage=instruction loss=0.0495 sec/update=0.74
+[vlm49] dev @ 3500: cap=2.446 | grounding: nll=0.623 dNLL=+3.464 | vqa: nll=1.745 dNLL=+0.583
+[vlm49] update 3550/4500 stage=instruction loss=1.0249 sec/update=0.71
+[vlm49] update 3600/4500 stage=instruction loss=0.8288 sec/update=0.74
+[vlm49] update 3650/4500 stage=instruction loss=0.3314 sec/update=0.74
+[vlm49] update 3700/4500 stage=instruction loss=0.1665 sec/update=0.74
+[vlm49] update 3750/4500 stage=instruction loss=1.2111 sec/update=0.72
+[vlm49] dev @ 3750: cap=2.447 | grounding: nll=0.623 dNLL=+3.693 | vqa: nll=1.788 dNLL=+0.642
+[vlm49] update 3800/4500 stage=vqa loss=1.1032 sec/update=0.70
+[vlm49] update 3850/4500 stage=vqa loss=1.1605 sec/update=0.72
+[vlm49] update 3900/4500 stage=vqa loss=0.6796 sec/update=0.72
+[vlm49] update 3950/4500 stage=vqa loss=0.9619 sec/update=1.00
+[vlm49] update 4000/4500 stage=vqa loss=0.6352 sec/update=0.74
+[vlm49] dev @ 4000: cap=2.453 | grounding: nll=0.585 dNLL=+2.070 | vqa: nll=1.199 dNLL=+0.420
+[vlm49] update 4050/4500 stage=vqa loss=0.7505 sec/update=0.73
+[vlm49] update 4100/4500 stage=vqa loss=0.6538 sec/update=0.73
+[vlm49] update 4150/4500 stage=vqa loss=0.5354 sec/update=0.73
+[vlm49] update 4200/4500 stage=vqa loss=0.8471 sec/update=0.99
+[vlm49] update 4250/4500 stage=vqa loss=1.0412 sec/update=0.75
+[vlm49] update 4300/4500 stage=vqa loss=1.1646 sec/update=0.73
+[vlm49] update 4350/4500 stage=vqa loss=0.3720 sec/update=0.72
+[vlm49] update 4400/4500 stage=vqa loss=0.3977 sec/update=0.70
+[vlm49] update 4450/4500 stage=vqa loss=0.3029 sec/update=0.97
+[vlm49] update 4500/4500 stage=vqa loss=0.6444 sec/update=0.71
+[vlm49] dev @ 4500: cap=2.454 | grounding: nll=0.640 dNLL=+2.625 | vqa: nll=1.222 dNLL=+0.472
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<02:16,  2.27it/s]Loading weights:  58%|█████▊    | 180/311 [00:00<00:00, 433.05it/s]Loading weights:  90%|████████▉ | 279/311 [00:00<00:00, 511.87it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 421.09it/s]
+[vlm49] grounding/correct: acc=0.688
+[vlm49] grounding/complementary: acc=0.141
+[vlm49] grounding/mismatched: acc=0.312
+[vlm49] grounding/none: acc=0.383
+[vlm49] vqa/correct: acc=0.561
+[vlm49] vqa/complementary: acc=0.294
+[vlm49] vqa/mismatched: acc=0.306
+[vlm49] vqa/none: acc=0.323

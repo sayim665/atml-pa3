@@ -1,0 +1,626 @@
+[
+  {
+    "pair_id": "gdev-presence-00000",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00000:a",
+        "kind": "presence",
+        "image": "val2014/436162",
+        "question": "Does this image contain a book?",
+        "target": "no",
+        "canonical": "no",
+        "category": "book",
+        "pair_id": "gdev-presence-00000"
+      },
+      {
+        "uid": "gdev-presence-00000:b",
+        "kind": "presence",
+        "image": "val2014/228335",
+        "question": "Does this image contain a book?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "book",
+        "pair_id": "gdev-presence-00000"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00001",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00001:a",
+        "kind": "presence",
+        "image": "val2014/66959",
+        "question": "Does this image contain a truck?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "truck",
+        "pair_id": "gdev-presence-00001"
+      },
+      {
+        "uid": "gdev-presence-00001:b",
+        "kind": "presence",
+        "image": "val2014/187054",
+        "question": "Does this image contain a truck?",
+        "target": "no",
+        "canonical": "no",
+        "category": "truck",
+        "pair_id": "gdev-presence-00001"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00002",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00002:a",
+        "kind": "presence",
+        "image": "val2014/376371",
+        "question": "Does this image contain a remote?",
+        "target": "no",
+        "canonical": "no",
+        "category": "remote",
+        "pair_id": "gdev-presence-00002"
+      },
+      {
+        "uid": "gdev-presence-00002:b",
+        "kind": "presence",
+        "image": "val2014/140231",
+        "question": "Does this image contain a remote?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "remote",
+        "pair_id": "gdev-presence-00002"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00003",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00003:a",
+        "kind": "presence",
+        "image": "val2014/32901",
+        "question": "Does this image contain a kite?",
+        "target": "no",
+        "canonical": "no",
+        "category": "kite",
+        "pair_id": "gdev-presence-00003"
+      },
+      {
+        "uid": "gdev-presence-00003:b",
+        "kind": "presence",
+        "image": "val2014/557517",
+        "question": "Does this image contain a kite?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "kite",
+        "pair_id": "gdev-presence-00003"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00004",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00004:a",
+        "kind": "presence",
+        "image": "val2014/36557",
+        "question": "Does this image contain a stop sign?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "stop sign",
+        "pair_id": "gdev-presence-00004"
+      },
+      {
+        "uid": "gdev-presence-00004:b",
+        "kind": "presence",
+        "image": "val2014/245453",
+        "question": "Does this image contain a stop sign?",
+        "target": "no",
+        "canonical": "no",
+        "category": "stop sign",
+        "pair_id": "gdev-presence-00004"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00005",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00005:a",
+        "kind": "presence",
+        "image": "val2014/79011",
+        "question": "Does this image contain a giraffe?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "giraffe",
+        "pair_id": "gdev-presence-00005"
+      },
+      {
+        "uid": "gdev-presence-00005:b",
+        "kind": "presence",
+        "image": "val2014/42956",
+        "question": "Does this image contain a giraffe?",
+        "target": "no",
+        "canonical": "no",
+        "category": "giraffe",
+        "pair_id": "gdev-presence-00005"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00006",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00006:a",
+        "kind": "presence",
+        "image": "val2014/321516",
+        "question": "Does this image contain a bus?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "bus",
+        "pair_id": "gdev-presence-00006"
+      },
+      {
+        "uid": "gdev-presence-00006:b",
+        "kind": "presence",
+        "image": "val2014/203754",
+        "question": "Does this image contain a bus?",
+        "target": "no",
+        "canonical": "no",
+        "category": "bus",
+        "pair_id": "gdev-presence-00006"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00007",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00007:a",
+        "kind": "presence",
+        "image": "val2014/8844",
+        "question": "Does this image contain a banana?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "banana",
+        "pair_id": "gdev-presence-00007"
+      },
+      {
+        "uid": "gdev-presence-00007:b",
+        "kind": "presence",
+        "image": "val2014/487612",
+        "question": "Does this image contain a banana?",
+        "target": "no",
+        "canonical": "no",
+        "category": "banana",
+        "pair_id": "gdev-presence-00007"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00008",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00008:a",
+        "kind": "presence",
+        "image": "val2014/571384",
+        "question": "Does this image contain a motorcycle?",
+        "target": "no",
+        "canonical": "no",
+        "category": "motorcycle",
+        "pair_id": "gdev-presence-00008"
+      },
+      {
+        "uid": "gdev-presence-00008:b",
+        "kind": "presence",
+        "image": "val2014/142261",
+        "question": "Does this image contain a motorcycle?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "motorcycle",
+        "pair_id": "gdev-presence-00008"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00009",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00009:a",
+        "kind": "presence",
+        "image": "val2014/280918",
+        "question": "Does this image contain a pizza?",
+        "target": "no",
+        "canonical": "no",
+        "category": "pizza",
+        "pair_id": "gdev-presence-00009"
+      },
+      {
+        "uid": "gdev-presence-00009:b",
+        "kind": "presence",
+        "image": "val2014/358075",
+        "question": "Does this image contain a pizza?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "pizza",
+        "pair_id": "gdev-presence-00009"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00010",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00010:a",
+        "kind": "presence",
+        "image": "val2014/191444",
+        "question": "Does this image contain a mouse?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "mouse",
+        "pair_id": "gdev-presence-00010"
+      },
+      {
+        "uid": "gdev-presence-00010:b",
+        "kind": "presence",
+        "image": "val2014/248019",
+        "question": "Does this image contain a mouse?",
+        "target": "no",
+        "canonical": "no",
+        "category": "mouse",
+        "pair_id": "gdev-presence-00010"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-presence-00011",
+    "kind": "presence",
+    "examples": [
+      {
+        "uid": "gdev-presence-00011:a",
+        "kind": "presence",
+        "image": "val2014/367489",
+        "question": "Does this image contain an orange?",
+        "target": "no",
+        "canonical": "no",
+        "category": "orange",
+        "pair_id": "gdev-presence-00011"
+      },
+      {
+        "uid": "gdev-presence-00011:b",
+        "kind": "presence",
+        "image": "val2014/95427",
+        "question": "Does this image contain an orange?",
+        "target": "yes",
+        "canonical": "yes",
+        "category": "orange",
+        "pair_id": "gdev-presence-00011"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00012",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00012:a",
+        "kind": "counting",
+        "image": "val2014/565597",
+        "question": "How many pizzas can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "pizza",
+        "pair_id": "gdev-counting-00012"
+      },
+      {
+        "uid": "gdev-counting-00012:b",
+        "kind": "counting",
+        "image": "val2014/75456",
+        "question": "How many pizzas can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "pizza",
+        "pair_id": "gdev-counting-00012"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00013",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00013:a",
+        "kind": "counting",
+        "image": "val2014/124911",
+        "question": "How many keyboards can you see?",
+        "target": "2",
+        "canonical": "2",
+        "category": "keyboard",
+        "pair_id": "gdev-counting-00013"
+      },
+      {
+        "uid": "gdev-counting-00013:b",
+        "kind": "counting",
+        "image": "val2014/510609",
+        "question": "How many keyboards can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "keyboard",
+        "pair_id": "gdev-counting-00013"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00014",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00014:a",
+        "kind": "counting",
+        "image": "val2014/388619",
+        "question": "How many bicycles can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "bicycle",
+        "pair_id": "gdev-counting-00014"
+      },
+      {
+        "uid": "gdev-counting-00014:b",
+        "kind": "counting",
+        "image": "val2014/366111",
+        "question": "How many bicycles can you see?",
+        "target": "4",
+        "canonical": "4",
+        "category": "bicycle",
+        "pair_id": "gdev-counting-00014"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00015",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00015:a",
+        "kind": "counting",
+        "image": "val2014/89898",
+        "question": "How many skateboards can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "skateboard",
+        "pair_id": "gdev-counting-00015"
+      },
+      {
+        "uid": "gdev-counting-00015:b",
+        "kind": "counting",
+        "image": "val2014/164464",
+        "question": "How many skateboards can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "skateboard",
+        "pair_id": "gdev-counting-00015"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00016",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00016:a",
+        "kind": "counting",
+        "image": "val2014/288762",
+        "question": "How many forks can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "fork",
+        "pair_id": "gdev-counting-00016"
+      },
+      {
+        "uid": "gdev-counting-00016:b",
+        "kind": "counting",
+        "image": "val2014/3091",
+        "question": "How many forks can you see?",
+        "target": "2",
+        "canonical": "2",
+        "category": "fork",
+        "pair_id": "gdev-counting-00016"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00017",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00017:a",
+        "kind": "counting",
+        "image": "val2014/507719",
+        "question": "How many horses can you see?",
+        "target": "4",
+        "canonical": "4",
+        "category": "horse",
+        "pair_id": "gdev-counting-00017"
+      },
+      {
+        "uid": "gdev-counting-00017:b",
+        "kind": "counting",
+        "image": "val2014/532007",
+        "question": "How many horses can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "horse",
+        "pair_id": "gdev-counting-00017"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00018",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00018:a",
+        "kind": "counting",
+        "image": "val2014/347453",
+        "question": "How many buses can you see?",
+        "target": "4",
+        "canonical": "4",
+        "category": "bus",
+        "pair_id": "gdev-counting-00018"
+      },
+      {
+        "uid": "gdev-counting-00018:b",
+        "kind": "counting",
+        "image": "val2014/87435",
+        "question": "How many buses can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "bus",
+        "pair_id": "gdev-counting-00018"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00019",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00019:a",
+        "kind": "counting",
+        "image": "val2014/189504",
+        "question": "How many ties can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "tie",
+        "pair_id": "gdev-counting-00019"
+      },
+      {
+        "uid": "gdev-counting-00019:b",
+        "kind": "counting",
+        "image": "val2014/528030",
+        "question": "How many ties can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "tie",
+        "pair_id": "gdev-counting-00019"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00020",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00020:a",
+        "kind": "counting",
+        "image": "val2014/520043",
+        "question": "How many trucks can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "truck",
+        "pair_id": "gdev-counting-00020"
+      },
+      {
+        "uid": "gdev-counting-00020:b",
+        "kind": "counting",
+        "image": "val2014/192620",
+        "question": "How many trucks can you see?",
+        "target": "4",
+        "canonical": "4",
+        "category": "truck",
+        "pair_id": "gdev-counting-00020"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00021",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00021:a",
+        "kind": "counting",
+        "image": "val2014/395849",
+        "question": "How many airplanes can you see?",
+        "target": "3",
+        "canonical": "3",
+        "category": "airplane",
+        "pair_id": "gdev-counting-00021"
+      },
+      {
+        "uid": "gdev-counting-00021:b",
+        "kind": "counting",
+        "image": "val2014/478120",
+        "question": "How many airplanes can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "airplane",
+        "pair_id": "gdev-counting-00021"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00022",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00022:a",
+        "kind": "counting",
+        "image": "val2014/181265",
+        "question": "How many people can you see?",
+        "target": "2",
+        "canonical": "2",
+        "category": "person",
+        "pair_id": "gdev-counting-00022"
+      },
+      {
+        "uid": "gdev-counting-00022:b",
+        "kind": "counting",
+        "image": "val2014/457907",
+        "question": "How many people can you see?",
+        "target": "4",
+        "canonical": "4",
+        "category": "person",
+        "pair_id": "gdev-counting-00022"
+      }
+    ]
+  },
+  {
+    "pair_id": "gdev-counting-00023",
+    "kind": "counting",
+    "examples": [
+      {
+        "uid": "gdev-counting-00023:a",
+        "kind": "counting",
+        "image": "val2014/353130",
+        "question": "How many apples can you see?",
+        "target": "2",
+        "canonical": "2",
+        "category": "apple",
+        "pair_id": "gdev-counting-00023"
+      },
+      {
+        "uid": "gdev-counting-00023:b",
+        "kind": "counting",
+        "image": "val2014/564820",
+        "question": "How many apples can you see?",
+        "target": "1",
+        "canonical": "1",
+        "category": "apple",
+        "pair_id": "gdev-counting-00023"
+      }
+    ]
+  }
+]

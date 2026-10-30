@@ -1,0 +1,89 @@
+{
+  "train": {
+    "caption_examples": 18000,
+    "caption_images": 6000,
+    "presence_pool_pairs": 20000,
+    "counting_pool_pairs": 20000,
+    "vqa_pairs": {
+      "other": 640,
+      "number": 256,
+      "yes/no": 640
+    }
+  },
+  "dev": {
+    "caption_images": 96,
+    "grounding_pairs": {
+      "presence": 12,
+      "counting": 12
+    },
+    "vqa_pairs": {
+      "yes/no": 12,
+      "other": 12,
+      "number": 8
+    }
+  },
+  "test": {
+    "grounding_pairs": {
+      "presence": 32,
+      "counting": 32
+    },
+    "vqa_pairs": {
+      "yes/no": 36,
+      "number": 24,
+      "other": 36
+    }
+  },
+  "answer_distribution": {
+    "train/presence": {
+      "yes": 20000,
+      "no": 20000
+    },
+    "train/counting": {
+      "1": 12663,
+      "2": 12201,
+      "3": 9437,
+      "4": 5699
+    },
+    "dev/grounding": {
+      "no": 12,
+      "yes": 12,
+      "3": 8,
+      "1": 7,
+      "4": 5,
+      "2": 4
+    },
+    "test/grounding": {
+      "no": 32,
+      "yes": 32,
+      "2": 21,
+      "1": 17,
+      "3": 15,
+      "4": 11
+    },
+    "test/vqa": {
+      "yes": 36,
+      "no": 36,
+      "2": 18,
+      "1": 13,
+      "3": 6,
+      "0": 5,
+      "red": 5,
+      "blue": 5,
+      "white": 5,
+      "green": 5,
+      "black": 4,
+      "yellow": 3
+    }
+  },
+  "unique_images": 9373,
+  "info": {
+    "seed": 6304,
+    "selection_seconds": 227.91909313201904,
+    "grounding_train_pool_images": 8845,
+    "presence_categories_train": 80,
+    "counting_categories_train": 76,
+    "val_vqa_candidates": 33925,
+    "train_vqa_candidates": 71969,
+    "min_instance_area_fraction": 0.01
+  }
+}

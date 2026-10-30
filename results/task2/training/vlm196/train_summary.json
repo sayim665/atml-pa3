@@ -1,0 +1,34 @@
+{
+  "run": "vlm196",
+  "updates": 4500,
+  "example_presentations": 72000,
+  "mixture_counts": {
+    "caption": 43110,
+    "presence": 13342,
+    "counting": 7228,
+    "vqa": 8320
+  },
+  "caption_passes": 2,
+  "trainable_parameters_by_stage": {
+    "caption": {
+      "connector": 1837056
+    },
+    "instruction": {
+      "connector": 1837056,
+      "lora": 4587520
+    },
+    "vqa": {
+      "connector": 1837056,
+      "lora": 4587520
+    }
+  },
+  "training_seconds": 6678.184273004532,
+  "peak_gpu_memory_gb_this_session": 1.5617308616638184,
+  "resumed_from_update": 0,
+  "calibration": {
+    "rule": "scale = mean ||text embedding|| / mean ||initial connector output||, 256 training captions",
+    "text_embedding_norm": 0.7990854382514954,
+    "initial_visual_norm": 15.890711784362793,
+    "scale": 0.05028632128598751
+  }
+}

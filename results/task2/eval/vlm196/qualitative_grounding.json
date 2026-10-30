@@ -1,0 +1,176 @@
+[
+  {
+    "pair_id": "gtest-counting-00037",
+    "question_type": "counting",
+    "question": "How many birds can you see?",
+    "sides": [
+      {
+        "image": "val2014/324818",
+        "reference": "2",
+        "all_references": null,
+        "predictions": {
+          "correct": "4",
+          "complementary": "1",
+          "mismatched": "1",
+          "none": "1"
+        }
+      },
+      {
+        "image": "val2014/328018",
+        "reference": "1",
+        "all_references": null,
+        "predictions": {
+          "correct": "1",
+          "complementary": "4",
+          "mismatched": "0",
+          "none": "1"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "gtest-counting-00060",
+    "question_type": "counting",
+    "question": "How many birds can you see?",
+    "sides": [
+      {
+        "image": "val2014/137677",
+        "reference": "1",
+        "all_references": null,
+        "predictions": {
+          "correct": "1",
+          "complementary": "4",
+          "mismatched": "0",
+          "none": "1"
+        }
+      },
+      {
+        "image": "val2014/505733",
+        "reference": "2",
+        "all_references": null,
+        "predictions": {
+          "correct": "4",
+          "complementary": "1",
+          "mismatched": "1",
+          "none": "1"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "gtest-counting-00063",
+    "question_type": "counting",
+    "question": "How many ties can you see?",
+    "sides": [
+      {
+        "image": "val2014/93670",
+        "reference": "1",
+        "all_references": null,
+        "predictions": {
+          "correct": "1",
+          "complementary": "2",
+          "mismatched": "1",
+          "none": "1"
+        }
+      },
+      {
+        "image": "val2014/26624",
+        "reference": "2",
+        "all_references": null,
+        "predictions": {
+          "correct": "2",
+          "complementary": "1",
+          "mismatched": "1",
+          "none": "1"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "gtest-presence-00013",
+    "question_type": "presence",
+    "question": "Does this image contain a bus?",
+    "sides": [
+      {
+        "image": "val2014/452674",
+        "reference": "no",
+        "all_references": null,
+        "predictions": {
+          "correct": "no",
+          "complementary": "yes",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      },
+      {
+        "image": "val2014/189773",
+        "reference": "yes",
+        "all_references": null,
+        "predictions": {
+          "correct": "yes",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "gtest-presence-00018",
+    "question_type": "presence",
+    "question": "Does this image contain an umbrella?",
+    "sides": [
+      {
+        "image": "val2014/110601",
+        "reference": "no",
+        "all_references": null,
+        "predictions": {
+          "correct": "no",
+          "complementary": "yes",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      },
+      {
+        "image": "val2014/230993",
+        "reference": "yes",
+        "all_references": null,
+        "predictions": {
+          "correct": "yes",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      }
+    ]
+  },
+  {
+    "pair_id": "gtest-presence-00025",
+    "question_type": "presence",
+    "question": "Does this image contain a bench?",
+    "sides": [
+      {
+        "image": "val2014/483867",
+        "reference": "yes",
+        "all_references": null,
+        "predictions": {
+          "correct": "no",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      },
+      {
+        "image": "val2014/422622",
+        "reference": "no",
+        "all_references": null,
+        "predictions": {
+          "correct": "no",
+          "complementary": "no",
+          "mismatched": "no",
+          "none": "yes"
+        }
+      }
+    ]
+  }
+]
