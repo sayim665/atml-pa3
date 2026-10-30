@@ -66,7 +66,7 @@ def cache_probe_inputs(model, tokenizer):
         def hook(_, inputs, layer_index=layer_index):
             captured[layer_index] = inputs[0][0, -1].float().clone()
 
-        hooks.append(module.register_forward_hook(hook))
+        hooks.append(module.register_forward_pre_hook(hook))
 
     cache = {"gsm8k": {layer: [] for layer in DIAGNOSTIC_LAYERS},
              "hellaswag": {layer: [] for layer in DIAGNOSTIC_LAYERS}}
