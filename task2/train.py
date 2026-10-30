@@ -292,9 +292,13 @@ def train(run_name):
             grad_norms = {name: float(torch.norm(torch.stack([parameter.grad.norm() for parameter in group
                                                               if parameter.grad is not None])))
                           for name, group in model.trainable_parameters().items()}
-            save_json(directory / "connector_grad_check.json", {"update": update, "grad_norms": grad_norms})
-            assert grad_norms["connector"] > 0, "no gradient reached the connector"
-            connector_grad_checked = True
+            missing = [name for name, parameter in model.connector.named_parameters() if parameter.grad is None]
+            assert not missing, f"no gradient reached the connector: {missing}"
+            # FP16 loss scaling overflows on the first updates (the scaler skips them); check a finite one.
+            if math.isfinite(grad_norms["connector"]):
+                save_json(directory / "connector_grad_check.json", {"update": update, "grad_norms": grad_norms})
+                assert grad_norms["connector"] > 0, "connector gradient is zero"
+                connector_grad_checked = True
         grad_norm = torch.nn.utils.clip_grad_norm_(parameters, MAX_GRAD_NORM).item()
         scale_before = scaler.get_scale()
         scaler.step(optimizer)
