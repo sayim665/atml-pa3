@@ -1,0 +1,16 @@
+{
+  "dataset": "meta-math/MetaMathQA",
+  "num_examples": 40000,
+  "last_source_index": 40001,
+  "source_rows_scanned": 40002,
+  "exclusions_before_last_kept": {
+    "empty": 0,
+    "gsm8k_test_overlap": 0,
+    "too_long": 2
+  },
+  "total_tokens": 9908423,
+  "response_tokens": 7100056,
+  "mean_length": 247.710575,
+  "max_length": 1941,
+  "normalization": "NFKC, lowercase, non-alphanumerics to spaces, collapse whitespace"
+}

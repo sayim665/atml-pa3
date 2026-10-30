@@ -1,0 +1,38 @@
+{
+  "source": {
+    "kind": "adapter",
+    "path": "/kaggle/working/task1_outputs/runs/lora16/final/adapter_factors.safetensors"
+  },
+  "merge_check": {
+    "prompts": [
+      "What is 17 times 23?",
+      "hey I feel bored",
+      "Name three primary colors.",
+      "A train travels 60 miles in 1.5 hours. What is its average speed?"
+    ],
+    "max_abs_logit_diff": 0.11181640625,
+    "mean_abs_logit_diff": 0.008245146833360195,
+    "logit_scale_mean_abs": 2.4117307662963867,
+    "argmax_agreement": 0.9885057210922241
+  },
+  "load_seconds": 6.993451118469238,
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 02:02:55",
+    "transformers": "5.16.1",
+    "lm_eval": "0.4.13",
+    "gpu": "Tesla T4"
+  },
+  "gsm8k_batch_size": 32,
+  "gsm8k_prompt_example": "<|im_start|>user\nQ: Janet\u2019s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nA:<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "gsm8k_non_thinking_prompt": true,
+  "likelihood_batch_size": 8,
+  "timings": {
+    "gsm8k_seconds": 1321.7440757751465,
+    "likelihood_seconds": 721.8785927295685,
+    "qualitative_seconds": 45.64165234565735
+  },
+  "peak_memory_allocated_bytes": 7375481856
+}

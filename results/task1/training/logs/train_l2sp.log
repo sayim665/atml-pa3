@@ -1,0 +1,173 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:00<04:42,  1.10it/s]Loading weights:   1%|          | 2/311 [00:01<02:27,  2.10it/s]Loading weights:  67%|██████▋   | 208/311 [00:01<00:00, 309.65it/s]Loading weights:  96%|█████████▋| 300/311 [00:01<00:00, 317.17it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 209.02it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[l2sp] update 1/1250 loss 1.0285 lr 0.00e+00 gnorm 33.290 8.5s
+[l2sp] update 10/1250 loss 0.3484 lr 4.74e-06 gnorm 4.962 6.3s
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/kaggle/working/atml-pa3/task1/train.py", line 360, in <module>
+    main()
+    ~~~~^^
+  File "/kaggle/working/atml-pa3/task1/train.py", line 356, in main
+    train(args.run, args.max_updates, args.device, args.keep_recovery)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/kaggle/working/atml-pa3/task1/train.py", line 273, in train
+    scaler.scale(loss_sum / supervised_tokens).backward()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/torch/_tensor.py", line 631, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/torch/autograd/__init__.py", line 381, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/dist-packages/torch/autograd/graph.py", line 869, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 564.81 MiB is free. Including non-PyTorch memory, this process has 14.01 GiB memory in use. Of the allocated memory 13.08 GiB is allocated by PyTorch, and 813.48 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:01<05:50,  1.13s/it]Loading weights:  62%|██████▏   | 193/311 [00:01<00:00, 213.20it/s]Loading weights:  95%|█████████▍| 294/311 [00:01<00:00, 269.64it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 206.13it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[l2sp] update 1/1250 loss 1.0285 lr 0.00e+00 gnorm 33.290 8.5s
+[l2sp] update 10/1250 loss 0.3485 lr 4.74e-06 gnorm 4.953 7.1s
+[l2sp] update 20/1250 loss 0.3079 lr 1.00e-05 gnorm 3.059 8.1s
+[l2sp] update 30/1250 loss 0.2647 lr 1.53e-05 gnorm 2.401 8.8s
+[l2sp] update 40/1250 loss 0.2815 lr 2.00e-05 gnorm 2.351 9.2s
+[l2sp] update 50/1250 loss 0.2439 lr 2.00e-05 gnorm 2.041 9.0s
+[l2sp] update 60/1250 loss 0.2603 lr 2.00e-05 gnorm 2.152 8.1s
+[l2sp] update 70/1250 loss 0.2758 lr 2.00e-05 gnorm 2.407 9.4s
+[l2sp] update 80/1250 loss 0.2579 lr 1.99e-05 gnorm 2.167 8.0s
+[l2sp] update 90/1250 loss 0.2488 lr 1.99e-05 gnorm 1.956 7.9s
+[l2sp] update 100/1250 loss 0.2630 lr 1.99e-05 gnorm 2.025 9.0s
+[l2sp] update 110/1250 loss 0.2610 lr 1.98e-05 gnorm 2.173 7.8s
+[l2sp] update 120/1250 loss 0.2394 lr 1.98e-05 gnorm 2.000 8.1s
+[l2sp] update 130/1250 loss 0.2392 lr 1.97e-05 gnorm 1.988 8.0s
+[l2sp] update 140/1250 loss 0.2443 lr 1.97e-05 gnorm 2.150 7.0s
+[l2sp] update 150/1250 loss 0.2407 lr 1.96e-05 gnorm 1.835 7.8s
+[l2sp] update 160/1250 loss 0.2344 lr 1.95e-05 gnorm 1.949 7.6s
+[l2sp] update 170/1250 loss 0.2712 lr 1.94e-05 gnorm 2.159 8.8s
+[l2sp] update 180/1250 loss 0.2618 lr 1.93e-05 gnorm 2.253 7.3s
+[l2sp] update 190/1250 loss 0.2344 lr 1.92e-05 gnorm 2.108 7.3s
+[l2sp] update 200/1250 loss 0.2177 lr 1.91e-05 gnorm 1.900 7.6s
+[l2sp] update 210/1250 loss 0.2588 lr 1.90e-05 gnorm 2.471 7.3s
+[l2sp] update 220/1250 loss 0.2523 lr 1.89e-05 gnorm 2.033 7.7s
+[l2sp] update 230/1250 loss 0.1992 lr 1.88e-05 gnorm 1.689 7.1s
+[l2sp] update 240/1250 loss 0.2726 lr 1.87e-05 gnorm 2.074 8.6s
+[l2sp] update 250/1250 loss 0.2590 lr 1.85e-05 gnorm 2.079 7.1s
+[l2sp] update 260/1250 loss 0.2024 lr 1.84e-05 gnorm 1.687 7.2s
+[l2sp] update 270/1250 loss 0.2378 lr 1.83e-05 gnorm 1.977 7.6s
+[l2sp] update 280/1250 loss 0.2041 lr 1.81e-05 gnorm 1.582 9.7s
+[l2sp] update 290/1250 loss 0.2882 lr 1.80e-05 gnorm 2.155 7.4s
+[l2sp] update 300/1250 loss 0.2242 lr 1.78e-05 gnorm 2.063 7.4s
+[l2sp] update 310/1250 loss 0.2520 lr 1.76e-05 gnorm 1.812 9.8s
+[l2sp] update 320/1250 loss 0.1846 lr 1.75e-05 gnorm 1.503 8.5s
+[l2sp] update 330/1250 loss 0.2194 lr 1.73e-05 gnorm 1.927 6.9s
+[l2sp] update 340/1250 loss 0.2158 lr 1.71e-05 gnorm 1.775 8.3s
+[l2sp] update 350/1250 loss 0.2380 lr 1.69e-05 gnorm 2.079 9.1s
+[l2sp] update 360/1250 loss 0.2444 lr 1.67e-05 gnorm 1.815 7.8s
+[l2sp] update 370/1250 loss 0.2539 lr 1.65e-05 gnorm 2.022 8.1s
+[l2sp] update 380/1250 loss 0.2159 lr 1.63e-05 gnorm 1.803 7.2s
+[l2sp] update 390/1250 loss 0.2037 lr 1.61e-05 gnorm 1.819 7.6s
+[l2sp] update 400/1250 loss 0.2120 lr 1.59e-05 gnorm 1.761 8.0s
+[l2sp] update 410/1250 loss 0.2166 lr 1.57e-05 gnorm 1.785 7.9s
+[l2sp] update 420/1250 loss 0.2567 lr 1.55e-05 gnorm 2.027 7.5s
+[l2sp] update 430/1250 loss 0.2122 lr 1.53e-05 gnorm 1.823 7.5s
+[l2sp] update 440/1250 loss 0.2028 lr 1.51e-05 gnorm 1.713 7.2s
+[l2sp] update 450/1250 loss 0.2295 lr 1.48e-05 gnorm 1.821 6.8s
+[l2sp] update 460/1250 loss 0.2306 lr 1.46e-05 gnorm 1.630 8.4s
+[l2sp] update 470/1250 loss 0.2137 lr 1.44e-05 gnorm 1.803 7.7s
+[l2sp] update 480/1250 loss 0.2226 lr 1.41e-05 gnorm 1.733 8.2s
+[l2sp] update 490/1250 loss 0.1652 lr 1.39e-05 gnorm 1.481 7.7s
+[l2sp] update 500/1250 loss 0.2103 lr 1.37e-05 gnorm 1.644 9.0s
+[l2sp] update 510/1250 loss 0.2264 lr 1.34e-05 gnorm 1.775 7.9s
+[l2sp] update 520/1250 loss 0.1927 lr 1.32e-05 gnorm 1.585 8.2s
+[l2sp] update 530/1250 loss 0.2021 lr 1.29e-05 gnorm 1.689 7.5s
+[l2sp] update 540/1250 loss 0.2269 lr 1.27e-05 gnorm 1.805 7.7s
+[l2sp] update 550/1250 loss 0.2102 lr 1.24e-05 gnorm 1.886 7.8s
+[l2sp] update 560/1250 loss 0.2222 lr 1.22e-05 gnorm 1.699 7.4s
+[l2sp] update 570/1250 loss 0.2019 lr 1.19e-05 gnorm 1.646 6.9s
+[l2sp] update 580/1250 loss 0.1952 lr 1.17e-05 gnorm 1.562 8.1s
+[l2sp] update 590/1250 loss 0.2171 lr 1.14e-05 gnorm 1.703 8.1s
+[l2sp] update 600/1250 loss 0.1959 lr 1.12e-05 gnorm 1.643 7.7s
+[l2sp] update 610/1250 loss 0.1765 lr 1.09e-05 gnorm 1.775 7.5s
+[l2sp] update 620/1250 loss 0.2511 lr 1.06e-05 gnorm 1.916 7.7s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.95it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.95it/s]
+[l2sp] update 630/1250 loss 0.1855 lr 1.04e-05 gnorm 1.865 7.5s
+[l2sp] update 640/1250 loss 0.1982 lr 1.01e-05 gnorm 1.939 8.2s
+[l2sp] update 650/1250 loss 0.1760 lr 9.87e-06 gnorm 1.743 7.4s
+[l2sp] update 660/1250 loss 0.2179 lr 9.61e-06 gnorm 1.662 8.1s
+[l2sp] update 670/1250 loss 0.1936 lr 9.35e-06 gnorm 1.577 8.5s
+[l2sp] update 680/1250 loss 0.2014 lr 9.09e-06 gnorm 1.870 7.6s
+[l2sp] update 690/1250 loss 0.2220 lr 8.84e-06 gnorm 1.885 7.4s
+[l2sp] update 700/1250 loss 0.2059 lr 8.58e-06 gnorm 1.642 7.8s
+[l2sp] update 710/1250 loss 0.1875 lr 8.32e-06 gnorm 1.925 6.9s
+[l2sp] update 720/1250 loss 0.2119 lr 8.07e-06 gnorm 1.823 6.6s
+[l2sp] update 730/1250 loss 0.1985 lr 7.81e-06 gnorm 1.720 8.0s
+[l2sp] update 740/1250 loss 0.1997 lr 7.56e-06 gnorm 1.553 10.0s
+[l2sp] update 750/1250 loss 0.1527 lr 7.31e-06 gnorm 1.498 7.8s
+[l2sp] update 760/1250 loss 0.2295 lr 7.06e-06 gnorm 1.802 7.6s
+[l2sp] update 770/1250 loss 0.1833 lr 6.82e-06 gnorm 1.631 7.1s
+[l2sp] update 780/1250 loss 0.1941 lr 6.57e-06 gnorm 1.633 7.5s
+[l2sp] update 790/1250 loss 0.1735 lr 6.33e-06 gnorm 1.751 7.7s
+[l2sp] update 800/1250 loss 0.1730 lr 6.09e-06 gnorm 1.565 7.2s
+[l2sp] update 810/1250 loss 0.2294 lr 5.85e-06 gnorm 1.950 6.9s
+[l2sp] update 820/1250 loss 0.1756 lr 5.62e-06 gnorm 1.747 7.1s
+[l2sp] update 830/1250 loss 0.1634 lr 5.39e-06 gnorm 1.559 8.6s
+[l2sp] update 840/1250 loss 0.2055 lr 5.16e-06 gnorm 1.794 7.7s
+[l2sp] update 850/1250 loss 0.1963 lr 4.93e-06 gnorm 1.614 8.5s
+[l2sp] update 860/1250 loss 0.1560 lr 4.71e-06 gnorm 1.487 7.6s
+[l2sp] update 870/1250 loss 0.1582 lr 4.49e-06 gnorm 1.560 7.5s
+[l2sp] update 880/1250 loss 0.1662 lr 4.28e-06 gnorm 1.487 8.7s
+[l2sp] update 890/1250 loss 0.1839 lr 4.07e-06 gnorm 1.594 6.8s
+[l2sp] update 900/1250 loss 0.1675 lr 3.86e-06 gnorm 1.512 7.1s
+[l2sp] update 910/1250 loss 0.1524 lr 3.66e-06 gnorm 1.487 7.0s
+[l2sp] update 920/1250 loss 0.2055 lr 3.46e-06 gnorm 1.743 7.3s
+[l2sp] update 930/1250 loss 0.1581 lr 3.27e-06 gnorm 1.392 7.7s
+[l2sp] update 940/1250 loss 0.1764 lr 3.08e-06 gnorm 1.405 8.1s
+[l2sp] update 950/1250 loss 0.1899 lr 2.89e-06 gnorm 1.840 7.0s
+[l2sp] update 960/1250 loss 0.1580 lr 2.71e-06 gnorm 1.522 7.8s
+[l2sp] update 970/1250 loss 0.2100 lr 2.54e-06 gnorm 1.746 8.2s
+[l2sp] update 980/1250 loss 0.1860 lr 2.37e-06 gnorm 1.649 7.1s
+[l2sp] update 990/1250 loss 0.1749 lr 2.20e-06 gnorm 1.632 7.3s
+[l2sp] update 1000/1250 loss 0.2108 lr 2.04e-06 gnorm 1.705 7.6s
+[l2sp] update 1010/1250 loss 0.1906 lr 1.89e-06 gnorm 1.651 7.8s
+[l2sp] update 1020/1250 loss 0.1509 lr 1.74e-06 gnorm 1.477 7.5s
+[l2sp] update 1030/1250 loss 0.2019 lr 1.60e-06 gnorm 1.746 8.2s
+[l2sp] update 1040/1250 loss 0.1894 lr 1.46e-06 gnorm 1.661 8.0s
+[l2sp] update 1050/1250 loss 0.2151 lr 1.33e-06 gnorm 1.878 7.5s
+[l2sp] update 1060/1250 loss 0.1563 lr 1.20e-06 gnorm 1.380 8.8s
+[l2sp] update 1070/1250 loss 0.2250 lr 1.08e-06 gnorm 1.930 7.5s
+[l2sp] update 1080/1250 loss 0.1656 lr 9.66e-07 gnorm 1.549 8.1s
+[l2sp] update 1090/1250 loss 0.1848 lr 8.58e-07 gnorm 1.702 8.5s
+[l2sp] update 1100/1250 loss 0.1930 lr 7.56e-07 gnorm 1.758 7.5s
+[l2sp] update 1110/1250 loss 0.1628 lr 6.60e-07 gnorm 1.598 7.4s
+[l2sp] update 1120/1250 loss 0.1614 lr 5.71e-07 gnorm 1.541 8.4s
+[l2sp] update 1130/1250 loss 0.1642 lr 4.88e-07 gnorm 1.523 8.3s
+[l2sp] update 1140/1250 loss 0.1837 lr 4.11e-07 gnorm 1.462 9.6s
+[l2sp] update 1150/1250 loss 0.1639 lr 3.41e-07 gnorm 1.593 7.8s
+[l2sp] update 1160/1250 loss 0.2092 lr 2.77e-07 gnorm 1.609 8.1s
+[l2sp] update 1170/1250 loss 0.1474 lr 2.20e-07 gnorm 1.489 7.7s
+[l2sp] update 1180/1250 loss 0.1720 lr 1.69e-07 gnorm 1.641 7.8s
+[l2sp] update 1190/1250 loss 0.2196 lr 1.25e-07 gnorm 1.622 9.5s
+[l2sp] update 1200/1250 loss 0.1671 lr 8.73e-08 gnorm 1.630 7.6s
+[l2sp] update 1210/1250 loss 0.1525 lr 5.64e-08 gnorm 1.566 7.8s
+[l2sp] update 1220/1250 loss 0.1677 lr 3.23e-08 gnorm 1.615 7.3s
+[l2sp] update 1230/1250 loss 0.1779 lr 1.48e-08 gnorm 1.491 8.5s
+[l2sp] update 1240/1250 loss 0.2057 lr 4.06e-09 gnorm 1.675 7.4s
+[l2sp] update 1250/1250 loss 0.1650 lr 3.36e-11 gnorm 1.635 7.0s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  2.00it/s]

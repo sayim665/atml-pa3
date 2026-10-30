@@ -1,0 +1,14 @@
+{
+  "train:full_ft": "done",
+  "train:l2sp": "done",
+  "train:lora16": "done",
+  "train:oplora16": "done",
+  "train:lora4": "done",
+  "eval:baseline": "done",
+  "eval:full_ft_mid": "done",
+  "eval:full_ft": "done",
+  "eval:l2sp": "done",
+  "eval:lora16": "done",
+  "eval:oplora16": "done",
+  "eval:lora4": "done"
+}

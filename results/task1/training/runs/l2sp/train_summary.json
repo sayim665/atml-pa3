@@ -1,0 +1,70 @@
+{
+  "run": {
+    "name": "l2sp",
+    "method": "l2sp",
+    "peak_lr": 2e-05,
+    "l2sp_lambda": 0.001,
+    "lora_rank": 0,
+    "lora_alpha": 0,
+    "protection_rank": 0,
+    "extra": {}
+  },
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 00:00:56",
+    "transformers": "5.16.1",
+    "lm_eval": "0.4.13",
+    "gpu": "Tesla T4"
+  },
+  "trainable_parameters": 596049920,
+  "total_parameters": 596049920,
+  "adapter_overhead": {},
+  "reference": {
+    "reference_dtype": "torch.float32",
+    "reference_device": "cpu",
+    "reference_bytes": 2384199680,
+    "reference_max_abs_error": 0.0
+  },
+  "model_load_seconds": 49.71968698501587,
+  "segments": [
+    {
+      "start_update": 0,
+      "end_update": 1250,
+      "seconds": 9928.186618804932,
+      "peak_memory_allocated_bytes": 11645489664,
+      "peak_memory_reserved_bytes": 12339642368,
+      "gpu": "Tesla T4"
+    }
+  ],
+  "checkpoints": {
+    "312": {
+      "recovery_state_bytes": 7152960121
+    },
+    "625": {
+      "recovery_state_bytes": 7152960121
+    },
+    "937": {
+      "recovery_state_bytes": 7152960121
+    },
+    "1250": {
+      "recovery_state_bytes": 7152960121
+    }
+  },
+  "exports": {
+    "midpoint": {
+      "export_seconds": 2.370746612548828,
+      "export_bytes": 1552480330,
+      "displacement_l2": 6.4372551840617875
+    },
+    "final": {
+      "export_seconds": 2.3773205280303955,
+      "export_bytes": 1552480330,
+      "displacement_l2": 6.272037008070202
+    }
+  },
+  "skipped_updates": [],
+  "completed_updates": 1250,
+  "training_seconds": 9928.186618804932
+}

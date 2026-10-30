@@ -1,0 +1,131 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights:   0%|          | 1/311 [00:01<06:17,  1.22s/it]Loading weights:  68%|██████▊   | 210/311 [00:01<00:00, 219.54it/s]Loading weights: 100%|██████████| 311/311 [00:01<00:00, 194.47it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[full_ft] update 1/1250 loss 1.0285 lr 0.00e+00 gnorm 33.290 6.7s
+[full_ft] update 10/1250 loss 0.3484 lr 4.74e-06 gnorm 4.949 6.1s
+[full_ft] update 20/1250 loss 0.3078 lr 1.00e-05 gnorm 3.065 6.5s
+[full_ft] update 30/1250 loss 0.2641 lr 1.53e-05 gnorm 2.312 6.9s
+[full_ft] update 40/1250 loss 0.2817 lr 2.00e-05 gnorm 2.339 7.6s
+[full_ft] update 50/1250 loss 0.2438 lr 2.00e-05 gnorm 2.037 7.5s
+[full_ft] update 60/1250 loss 0.2602 lr 2.00e-05 gnorm 2.163 6.8s
+[full_ft] update 70/1250 loss 0.2762 lr 2.00e-05 gnorm 2.774 7.8s
+[full_ft] update 80/1250 loss 0.2576 lr 1.99e-05 gnorm 2.091 6.6s
+[full_ft] update 90/1250 loss 0.2477 lr 1.99e-05 gnorm 1.979 6.7s
+[full_ft] update 100/1250 loss 0.2609 lr 1.99e-05 gnorm 1.998 7.5s
+[full_ft] update 110/1250 loss 0.2615 lr 1.98e-05 gnorm 2.164 6.3s
+[full_ft] update 120/1250 loss 0.2359 lr 1.98e-05 gnorm 2.022 6.8s
+[full_ft] update 130/1250 loss 0.2412 lr 1.97e-05 gnorm 1.981 6.7s
+[full_ft] update 140/1250 loss 0.2456 lr 1.97e-05 gnorm 2.212 5.8s
+[full_ft] update 150/1250 loss 0.2408 lr 1.96e-05 gnorm 1.877 6.6s
+[full_ft] update 160/1250 loss 0.2338 lr 1.95e-05 gnorm 1.958 6.4s
+[full_ft] update 170/1250 loss 0.2765 lr 1.94e-05 gnorm 2.098 7.3s
+[full_ft] update 180/1250 loss 0.2612 lr 1.93e-05 gnorm 2.261 6.2s
+[full_ft] update 190/1250 loss 0.2320 lr 1.92e-05 gnorm 2.087 6.1s
+[full_ft] update 200/1250 loss 0.2192 lr 1.91e-05 gnorm 1.854 6.5s
+[full_ft] update 210/1250 loss 0.2587 lr 1.90e-05 gnorm 1.999 6.2s
+[full_ft] update 220/1250 loss 0.2533 lr 1.89e-05 gnorm 2.076 6.5s
+[full_ft] update 230/1250 loss 0.2007 lr 1.88e-05 gnorm 1.664 6.0s
+[full_ft] update 240/1250 loss 0.2756 lr 1.87e-05 gnorm 2.461 7.2s
+[full_ft] update 250/1250 loss 0.2584 lr 1.85e-05 gnorm 2.046 5.9s
+[full_ft] update 260/1250 loss 0.2032 lr 1.84e-05 gnorm 1.689 6.1s
+[full_ft] update 270/1250 loss 0.2374 lr 1.83e-05 gnorm 1.856 6.2s
+[full_ft] update 280/1250 loss 0.2055 lr 1.81e-05 gnorm 2.036 7.5s
+[full_ft] update 290/1250 loss 0.2859 lr 1.80e-05 gnorm 2.065 6.1s
+[full_ft] update 300/1250 loss 0.2283 lr 1.78e-05 gnorm 1.970 6.4s
+[full_ft] update 310/1250 loss 0.2550 lr 1.76e-05 gnorm 1.879 8.0s
+[full_ft] update 320/1250 loss 0.1884 lr 1.75e-05 gnorm 1.546 7.2s
+[full_ft] update 330/1250 loss 0.2204 lr 1.73e-05 gnorm 1.783 5.9s
+[full_ft] update 340/1250 loss 0.2174 lr 1.71e-05 gnorm 1.758 6.8s
+[full_ft] update 350/1250 loss 0.2377 lr 1.69e-05 gnorm 1.861 7.1s
+[full_ft] update 360/1250 loss 0.2440 lr 1.67e-05 gnorm 1.754 6.4s
+[full_ft] update 370/1250 loss 0.2571 lr 1.65e-05 gnorm 2.051 6.6s
+[full_ft] update 380/1250 loss 0.2173 lr 1.63e-05 gnorm 1.842 5.9s
+[full_ft] update 390/1250 loss 0.2009 lr 1.61e-05 gnorm 1.783 6.2s
+[full_ft] update 400/1250 loss 0.2116 lr 1.59e-05 gnorm 1.726 6.5s
+[full_ft] update 410/1250 loss 0.2186 lr 1.57e-05 gnorm 1.741 6.7s
+[full_ft] update 420/1250 loss 0.2571 lr 1.55e-05 gnorm 2.058 6.3s
+[full_ft] update 430/1250 loss 0.2145 lr 1.53e-05 gnorm 1.805 6.3s
+[full_ft] update 440/1250 loss 0.2028 lr 1.51e-05 gnorm 1.664 6.3s
+[full_ft] update 450/1250 loss 0.2305 lr 1.48e-05 gnorm 1.783 5.7s
+[full_ft] update 460/1250 loss 0.2316 lr 1.46e-05 gnorm 1.672 7.1s
+[full_ft] update 470/1250 loss 0.2144 lr 1.44e-05 gnorm 1.744 6.5s
+[full_ft] update 480/1250 loss 0.2234 lr 1.41e-05 gnorm 1.726 6.8s
+[full_ft] update 490/1250 loss 0.1648 lr 1.39e-05 gnorm 1.412 6.6s
+[full_ft] update 500/1250 loss 0.2130 lr 1.37e-05 gnorm 1.612 7.4s
+[full_ft] update 510/1250 loss 0.2287 lr 1.34e-05 gnorm 1.800 6.6s
+[full_ft] update 520/1250 loss 0.1977 lr 1.32e-05 gnorm 1.596 7.1s
+[full_ft] update 530/1250 loss 0.2040 lr 1.29e-05 gnorm 1.630 6.2s
+[full_ft] update 540/1250 loss 0.2294 lr 1.27e-05 gnorm 1.832 6.6s
+[full_ft] update 550/1250 loss 0.2105 lr 1.24e-05 gnorm 1.791 6.5s
+[full_ft] update 560/1250 loss 0.2229 lr 1.22e-05 gnorm 1.751 6.4s
+[full_ft] update 570/1250 loss 0.2032 lr 1.19e-05 gnorm 1.656 5.8s
+[full_ft] update 580/1250 loss 0.1969 lr 1.17e-05 gnorm 1.597 6.6s
+[full_ft] update 590/1250 loss 0.2185 lr 1.14e-05 gnorm 1.636 6.7s
+[full_ft] update 600/1250 loss 0.1956 lr 1.12e-05 gnorm 1.624 6.2s
+[full_ft] update 610/1250 loss 0.1761 lr 1.09e-05 gnorm 1.560 6.5s
+[full_ft] update 620/1250 loss 0.2539 lr 1.06e-05 gnorm 1.890 6.5s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.86it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.85it/s]
+[full_ft] update 630/1250 loss 0.1822 lr 1.04e-05 gnorm 1.635 6.9s
+[full_ft] update 640/1250 loss 0.1982 lr 1.01e-05 gnorm 1.811 7.2s
+[full_ft] update 650/1250 loss 0.1760 lr 9.87e-06 gnorm 1.584 6.2s
+[full_ft] update 660/1250 loss 0.2178 lr 9.61e-06 gnorm 1.620 6.9s
+[full_ft] update 670/1250 loss 0.1911 lr 9.35e-06 gnorm 1.521 6.8s
+[full_ft] update 680/1250 loss 0.1975 lr 9.09e-06 gnorm 1.809 6.1s
+[full_ft] update 690/1250 loss 0.2226 lr 8.84e-06 gnorm 1.846 6.1s
+[full_ft] update 700/1250 loss 0.2029 lr 8.58e-06 gnorm 1.572 6.6s
+[full_ft] update 710/1250 loss 0.1875 lr 8.32e-06 gnorm 1.840 5.9s
+[full_ft] update 720/1250 loss 0.2098 lr 8.07e-06 gnorm 1.741 5.6s
+[full_ft] update 730/1250 loss 0.1985 lr 7.81e-06 gnorm 1.704 6.6s
+[full_ft] update 740/1250 loss 0.2008 lr 7.56e-06 gnorm 1.593 8.5s
+[full_ft] update 750/1250 loss 0.1525 lr 7.31e-06 gnorm 1.422 6.5s
+[full_ft] update 760/1250 loss 0.2279 lr 7.06e-06 gnorm 1.738 6.5s
+[full_ft] update 770/1250 loss 0.1835 lr 6.82e-06 gnorm 1.620 6.0s
+[full_ft] update 780/1250 loss 0.1954 lr 6.57e-06 gnorm 1.579 6.4s
+[full_ft] update 790/1250 loss 0.1700 lr 6.33e-06 gnorm 1.530 6.6s
+[full_ft] update 800/1250 loss 0.1724 lr 6.09e-06 gnorm 1.486 6.2s
+[full_ft] update 810/1250 loss 0.2284 lr 5.85e-06 gnorm 1.875 6.0s
+[full_ft] update 820/1250 loss 0.1748 lr 5.62e-06 gnorm 1.688 5.8s
+[full_ft] update 830/1250 loss 0.1641 lr 5.39e-06 gnorm 1.395 6.9s
+[full_ft] update 840/1250 loss 0.2049 lr 5.16e-06 gnorm 1.706 6.2s
+[full_ft] update 850/1250 loss 0.1957 lr 4.93e-06 gnorm 1.531 6.7s
+[full_ft] update 860/1250 loss 0.1582 lr 4.71e-06 gnorm 1.457 6.5s
+[full_ft] update 870/1250 loss 0.1577 lr 4.49e-06 gnorm 1.503 6.4s
+[full_ft] update 880/1250 loss 0.1660 lr 4.28e-06 gnorm 1.431 7.3s
+[full_ft] update 890/1250 loss 0.1846 lr 4.07e-06 gnorm 1.565 5.9s
+[full_ft] update 900/1250 loss 0.1689 lr 3.86e-06 gnorm 1.482 6.0s
+[full_ft] update 910/1250 loss 0.1528 lr 3.66e-06 gnorm 1.436 6.0s
+[full_ft] update 920/1250 loss 0.2064 lr 3.46e-06 gnorm 1.656 6.0s
+[full_ft] update 930/1250 loss 0.1576 lr 3.27e-06 gnorm 1.377 6.3s
+[full_ft] update 940/1250 loss 0.1772 lr 3.08e-06 gnorm 1.381 6.7s
+[full_ft] update 950/1250 loss 0.1892 lr 2.89e-06 gnorm 1.733 5.9s
+[full_ft] update 960/1250 loss 0.1575 lr 2.71e-06 gnorm 1.445 6.5s
+[full_ft] update 970/1250 loss 0.2118 lr 2.54e-06 gnorm 1.664 6.9s
+[full_ft] update 980/1250 loss 0.1860 lr 2.37e-06 gnorm 1.609 6.2s
+[full_ft] update 990/1250 loss 0.1758 lr 2.20e-06 gnorm 1.574 6.2s
+[full_ft] update 1000/1250 loss 0.2113 lr 2.04e-06 gnorm 1.639 6.5s
+[full_ft] update 1010/1250 loss 0.1905 lr 1.89e-06 gnorm 1.622 6.7s
+[full_ft] update 1020/1250 loss 0.1522 lr 1.74e-06 gnorm 1.451 6.4s
+[full_ft] update 1030/1250 loss 0.2024 lr 1.60e-06 gnorm 1.663 6.9s
+[full_ft] update 1040/1250 loss 0.1887 lr 1.46e-06 gnorm 1.616 7.0s
+[full_ft] update 1050/1250 loss 0.2159 lr 1.33e-06 gnorm 1.726 6.4s
+[full_ft] update 1060/1250 loss 0.1557 lr 1.20e-06 gnorm 1.304 7.5s
+[full_ft] update 1070/1250 loss 0.2255 lr 1.08e-06 gnorm 1.874 6.4s
+[full_ft] update 1080/1250 loss 0.1638 lr 9.66e-07 gnorm 1.464 6.9s
+[full_ft] update 1090/1250 loss 0.1858 lr 8.58e-07 gnorm 1.646 7.3s
+[full_ft] update 1100/1250 loss 0.1934 lr 7.56e-07 gnorm 1.703 6.3s
+[full_ft] update 1110/1250 loss 0.1612 lr 6.60e-07 gnorm 1.495 6.1s
+[full_ft] update 1120/1250 loss 0.1615 lr 5.71e-07 gnorm 1.423 6.9s
+[full_ft] update 1130/1250 loss 0.1631 lr 4.88e-07 gnorm 1.453 6.8s
+[full_ft] update 1140/1250 loss 0.1855 lr 4.11e-07 gnorm 1.447 8.3s
+[full_ft] update 1150/1250 loss 0.1640 lr 3.41e-07 gnorm 1.533 6.8s
+[full_ft] update 1160/1250 loss 0.2084 lr 2.77e-07 gnorm 1.573 6.7s
+[full_ft] update 1170/1250 loss 0.1486 lr 2.20e-07 gnorm 1.460 6.8s
+[full_ft] update 1180/1250 loss 0.1742 lr 1.69e-07 gnorm 1.615 6.5s
+[full_ft] update 1190/1250 loss 0.2183 lr 1.25e-07 gnorm 1.551 7.4s
+[full_ft] update 1200/1250 loss 0.1678 lr 8.73e-08 gnorm 1.604 6.2s
+[full_ft] update 1210/1250 loss 0.1517 lr 5.64e-08 gnorm 1.480 6.4s
+[full_ft] update 1220/1250 loss 0.1676 lr 3.23e-08 gnorm 1.598 6.0s
+[full_ft] update 1230/1250 loss 0.1796 lr 1.48e-08 gnorm 1.437 7.1s
+[full_ft] update 1240/1250 loss 0.2061 lr 4.06e-09 gnorm 1.624 6.2s
+[full_ft] update 1250/1250 loss 0.1655 lr 3.36e-11 gnorm 1.576 6.0s
+Writing model shards:   0%|          | 0/1 [00:00<?, ?it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.97it/s]Writing model shards: 100%|██████████| 1/1 [00:00<00:00,  1.97it/s]

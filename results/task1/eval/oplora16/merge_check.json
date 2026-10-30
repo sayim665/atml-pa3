@@ -1,0 +1,12 @@
+{
+  "prompts": [
+    "What is 17 times 23?",
+    "hey I feel bored",
+    "Name three primary colors.",
+    "A train travels 60 miles in 1.5 hours. What is its average speed?"
+  ],
+  "max_abs_logit_diff": 0.11328125,
+  "mean_abs_logit_diff": 0.007529263850301504,
+  "logit_scale_mean_abs": 2.4660074710845947,
+  "argmax_agreement": 1.0
+}

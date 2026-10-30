@@ -1,0 +1,26 @@
+{
+  "source": {
+    "kind": "full",
+    "path": "/kaggle/working/task1_outputs/runs/full_ft/final"
+  },
+  "load_seconds": 8.42418122291565,
+  "environment": {
+    "python": "3.13.15",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "timestamp": "2026-10-30 01:28:52",
+    "transformers": "5.16.1",
+    "lm_eval": "0.4.13",
+    "gpu": "Tesla T4"
+  },
+  "gsm8k_batch_size": 32,
+  "gsm8k_prompt_example": "<|im_start|>user\nQ: Janet\u2019s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nA:<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+  "gsm8k_non_thinking_prompt": true,
+  "likelihood_batch_size": 8,
+  "timings": {
+    "gsm8k_seconds": 1252.3714625835419,
+    "likelihood_seconds": 714.9478776454926,
+    "qualitative_seconds": 52.702847480773926
+  },
+  "peak_memory_allocated_bytes": 7375481856
+}
