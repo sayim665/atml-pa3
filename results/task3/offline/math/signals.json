@@ -1,0 +1,26 @@
+{
+  "top_minus_bottom_quartile_correctness": {
+    "logp": 0.07828125,
+    "selfcert": 0.1196875,
+    "length": -0.0459375
+  },
+  "within_question_spearman_with_correctness": {
+    "logp": {
+      "mean": 0.13413509566887044,
+      "questions": 469
+    },
+    "selfcert": {
+      "mean": 0.19787325252618204,
+      "questions": 469
+    },
+    "length": {
+      "mean": -0.076333788935889,
+      "questions": 469
+    }
+  },
+  "within_question_spearman_with_length": {
+    "logp": 0.22451633629471224,
+    "selfcert": -0.16109595817293734
+  },
+  "note": "length gap uses longest-minus-shortest quartiles; shortest-rollout selection is the method 'shortest'"
+}

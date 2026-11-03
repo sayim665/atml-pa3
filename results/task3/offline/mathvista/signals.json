@@ -1,0 +1,53 @@
+{
+  "top_minus_bottom_quartile_correctness": {
+    "logp": 0.01625,
+    "selfcert": 0.03515625,
+    "length": -0.03953125,
+    "vision": 0.03796875,
+    "visconf": 0.074375,
+    "tokenfusion": 0.0728125
+  },
+  "within_question_spearman_with_correctness": {
+    "logp": {
+      "mean": 0.02932462174562483,
+      "questions": 634
+    },
+    "selfcert": {
+      "mean": 0.04805782129642657,
+      "questions": 634
+    },
+    "length": {
+      "mean": -0.05044298552442478,
+      "questions": 634
+    },
+    "vision": {
+      "mean": 0.04110625686413337,
+      "questions": 634
+    },
+    "visconf": {
+      "mean": 0.08915933764729869,
+      "questions": 634
+    },
+    "tokenfusion": {
+      "mean": 0.08063803399917933,
+      "questions": 634
+    }
+  },
+  "within_question_spearman_with_length": {
+    "logp": 0.32902699530889207,
+    "selfcert": 0.3493333584506632,
+    "vision": -0.6857520445845515,
+    "visconf": -0.2750367811900654,
+    "tokenfusion": -0.32180257067151957
+  },
+  "note": "length gap uses longest-minus-shortest quartiles; shortest-rollout selection is the method 'shortest'",
+  "confidence_vision_correlation_per_question": {
+    "mean": -0.21099388014225517,
+    "median": -0.21154463296936793,
+    "q25": -0.3055210884064517,
+    "q75": -0.0938675881878043,
+    "fraction_positive": 0.10625,
+    "questions": 800
+  },
+  "mean_abs_tokenfusion_minus_visconf": 0.002640402059496543
+}

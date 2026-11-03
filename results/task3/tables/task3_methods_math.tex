@@ -1,0 +1,14 @@
+\begin{tabular}{lrrrr}
+\toprule
+Method & $N{=}8$ & $N{=}32$ & $\Delta$ vs SC, $N{=}32$ (95\% CI) & Tokens, $N{=}32$ \\
+\midrule
+FirstAns & 64.9 & 64.9 & -8.9 [-10.7, -7.3] & 667 \\
+Self-consistency & 71.7 & 73.8 & -- & 21347 \\
+Max log-prob & 67.2 & 64.0 & -9.8 [-12.4, -7.2] & 21347 \\
+Max self-certainty & 70.1 & 70.6 & -3.2 [-5.6, -0.8] & 21347 \\
+Self-certainty + RWC & 73.1 & 75.6 & +1.8 [+0.7, +2.8] & 21347 \\
+Shortest & 64.7 & 62.4 & -11.4 [-14.1, -9.0] & 21347 \\
+\midrule
+Oracle coverage & 83.9 & 91.4 & -- & -- \\
+\bottomrule
+\end{tabular}

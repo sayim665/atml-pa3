@@ -1,0 +1,13 @@
+\begin{tabular}{llrrrrl}
+\toprule
+Dataset & Policy & $\tau$ / $\gamma$ & Acc. & Tokens & Rollouts & Stops at 4/8/16/32 (\%) \\
+\midrule
+MATH (Qwen2.5-3B) & Fixed-32 SC & -- & 73.8 & 21347 & 32 & -- \\
+ & Agreement & 0.5 & 72.6 & 6697 & 7.9 & 82/4/1/13 \\
+ & Quality-aware & 0.5 / 0.0 & 73.3 & 7489 & 8.8 & 77/6/1/16 \\
+\midrule
+MathVista (Qwen2.5-VL-3B) & Fixed-32 SC & -- & 61.8 & 8898 & 32 & -- \\
+ & Agreement & 0.625 & 61.9 & 4689 & 14.0 & 57/8/2/34 \\
+ & Quality-aware & 0.625 / 0.0 & 62.0 & 4755 & 14.2 & 55/8/2/34 \\
+\bottomrule
+\end{tabular}

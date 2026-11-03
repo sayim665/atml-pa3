@@ -1,0 +1,15 @@
+{
+  "seconds": 16.139944791793823,
+  "scorer": {
+    "math-verify": "0.9.0",
+    "latex2sympy2_extended": "1.11.0",
+    "sympy": "1.14.0",
+    "mathvista_rules": "calculate_score.py normalize_extracted_answer (answer_type, choices, precision)"
+  },
+  "alignment": {
+    "rows": 32000,
+    "token_id_vs_scalar_mismatches": 0,
+    "logp_length_mismatches": 0,
+    "kl_length_mismatches": 0
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "questions": 1000,
+  "rollouts": 32000,
+  "rollout_accuracy": 0.53671875,
+  "no_answer_rate": 0.1534375,
+  "alignment": {
+    "rows": 32000,
+    "token_id_vs_scalar_mismatches": 0,
+    "logp_length_mismatches": 0,
+    "kl_length_mismatches": 0,
+    "attention_length_mismatches": 0
+  },
+  "scorer": {
+    "math-verify": "0.9.0",
+    "latex2sympy2_extended": "1.11.0",
+    "sympy": "1.14.0",
+    "mathvista_rules": "calculate_score.py normalize_extracted_answer (answer_type, choices, precision)"
+  },
+  "mean_tokens": 280.05321875,
+  "capped_rate": 0.01521875,
+  "seconds": 3.2759692668914795
+}
