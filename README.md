@@ -6,7 +6,7 @@ Code, configurations, split IDs and machine-readable results for Programming Ass
 |---|---|---|
 | 1. LLM fine-tuning (Full FT, L2-SP, LoRA-4/16, OPLoRA-16) | `task1/` | done |
 | 2. Vision-language model and visual grounding | `task2/` | done |
-| 3. Test-time compute | `task3/` | not started |
+| 3. Test-time compute | `task3/` | done |
 
 ## Task 1: Large Language Model Fine-Tuning
 
@@ -98,10 +98,72 @@ python -m task2.train --run vlm196      # vlm196 | vlm49
 python -m task2.evaluate --run vlm196
 ```
 
+## Task 3: Test-Time Compute
+
+Offline experiments use the supplied ATML-PA3-Data rollouts (32 per question; Qwen2.5-3B-Instruct on a 1,000-question MATH subset, Qwen2.5-VL-3B-Instruct on MathVista testmini). Questions are split 200 development / 800 held-out with `default_rng(6304)`; ten seeded rollout orders are shared by all methods and stopping policies. Answers are grouped without gold labels (math-verify 0.9.0 for MATH; MathVista's answer-type, choice and precision rules, with options as letters) and graded with the same rules. A small live experiment compares a long response, parallel sampling and sequential refinement on 50 held-out MATH questions.
+
+### Results
+
+Held-out accuracy (%) at N = 32 candidates; brackets are 95% paired question bootstrap intervals (1,000 resamples) of the difference to self-consistency.
+
+| Method | MATH | MathVista |
+|---|---|---|
+| FirstAns | 64.9 | 53.2 |
+| Self-consistency (SC) | 73.8 | 61.8 |
+| Max self-certainty | 70.6 (-3.2 [-5.6, -0.8]) | 54.8 (-7.0 [-10.1, -3.7]) |
+| Self-certainty + RWC | 75.6 (+1.8 [0.7, 2.8]) | 62.5 (+0.7 [-0.6, 2.1]) |
+| VisConf + RWC | - | 63.2 (+1.5 [0.1, 3.0]) |
+| Oracle coverage | 91.4 | 89.5 |
+
+Adaptive stopping (thresholds chosen on the development split) on held-out questions:
+
+| Dataset | Policy | Accuracy | Tokens / question | Mean rollouts |
+|---|---|---|---|---|
+| MATH | Fixed-32 SC | 73.8 | 21,347 | 32 |
+| MATH | Agreement (tau 0.5) | 72.6 | 6,697 | 7.9 |
+| MATH | Quality-aware (tau 0.5, gamma 0) | 73.3 | 7,489 | 8.8 |
+| MathVista | Fixed-32 SC | 61.8 | 8,898 | 32 |
+| MathVista | Agreement (tau 0.625) | 61.9 | 4,689 | 14.0 |
+| MathVista | Quality-aware (tau 0.625, gamma 0) | 62.0 | 4,755 | 14.2 |
+
+Live comparison (50 MATH questions, 3,072-token output allowance, FP16 on one T4 per shard):
+
+| Strategy | Accuracy | Output tokens | Time (s) | Truncated |
+|---|---|---|---|---|
+| Single 3,072-token response | 62 | 760 | 38.3 | 4% |
+| Parallel 3 x 1,024 + SC | 54 | 1,857 | 92.3 | 17% per response |
+| Initial 1,024 + revision 2,048 | 58 | 1,238 | 62.3 | 20% initial / 2% revision |
+
+Refinement changed 1 wrong answer to correct and no correct answer to wrong. Full results, per-question rows, selected answers and split/order IDs are in `results/task3/`; figures and LaTeX tables in `results/task3/figures/` and `results/task3/tables/`.
+
+### Layout
+
+| File | Purpose |
+|---|---|
+| `task3/config.py` | Fixed settings (seed 6304, splits, budgets, calibration percentiles, stopping grids, live-generation settings) |
+| `task3/answers.py` | Balanced-brace `\boxed{}` extraction, math-verify grouping and grading, MathVista normalization |
+| `task3/data.py` | Joins the three tables on (dataset, sample_id, rollout_id), checks token-list alignment, builds groups, splits and orders |
+| `task3/selection.py` | Self-consistency, highest-score selection, rank-weighted consensus, candidate-relative VisConf calibration, stopping evidence |
+| `task3/analysis.py` | Steps 1, 2, 3 and 5: fixed budgets, failure decomposition, signal analysis, adaptive stopping, bootstrap intervals |
+| `task3/live.py` | Step 4 live generation (two shards) and grading |
+| `task3/plots.py` | Report figures and tables |
+| `kaggle/task3_offline.ipynb`, `kaggle/task3_live.ipynb` | Kaggle notebooks (CPU offline analysis; GPU T4 x2 live generation) |
+
+### Reproduce
+
+```bash
+python -m task3.data            # with ATML3_DATA pointing at the downloaded ATML-PA3-Data folder
+python -m task3.analysis
+python -m task3.live --shard 0 --num-shards 2 && python -m task3.live --shard 1 --num-shards 2
+python -m task3.live --summarize
+python -m task3.plots
+```
+
 ## External resources
 
 - [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) task definitions (`gsm8k_cot`, `hellaswag`, `boolq`, `arc_easy`), used unmodified.
 - `task1/data/first_plot_questions.yaml` is copied from the [emergent-misalignment](https://github.com/emergent-misalignment/emergent-misalignment) repository (Betley et al.).
 - `task2/vqa_eval.py` follows the answer normalization of the official [VQA evaluation code](https://github.com/GT-Vision-Lab/VQA) (punctuation, number words, articles, contractions).
 - COCO 2014 captions/instances and VQAv2 questions, annotations and complementary pairs are downloaded from their official hosts.
+- Task 3 uses [math-verify](https://github.com/huggingface/Math-Verify) for MATH equivalence; the MathVista normalization follows `calculate_score.py` in the [MathVista repository](https://github.com/lupantech/MathVista), and its `testmini.json` metadata is downloaded at run time.
 - LoRA (Hu et al.) and OPLoRA (Xiong and Xie) are implemented from the papers' equations; no adapter library is used.

@@ -1,0 +1,13 @@
+{
+  "environment": {
+    "python": "3.13.16",
+    "torch": "2.11.0+cu130",
+    "cuda_available": true,
+    "timestamp": "2026-11-03 23:42:49",
+    "transformers": "5.20.2",
+    "gpu": "Tesla T4"
+  },
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "gpu": "Tesla T4"
+}
