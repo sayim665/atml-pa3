@@ -85,6 +85,7 @@ Training took 1.86 h (196 tokens) and 0.78 h (49 tokens) on one T4 each; feature
 | `task2/train.py` | Curriculum sampler, per-stage warmup + cosine schedule, FP16 autocast with FP32 trainable weights, connector calibration, resumable checkpoints every 250 updates, dev evaluation every 500 updates and at stage ends |
 | `task2/evaluate.py` | Final-test generation and reference NLL under four image conditions, VQA soft accuracy, pair metrics, pair-bootstrap intervals, qualitative examples |
 | `task2/vqa_eval.py` | VQA answer normalization and soft-consensus score |
+| `task2/plots.py` | Report figures (`results/task2/figures/`: learning curves, qualitative complementary pairs) and LaTeX tables (`results/task2/tables/`) |
 | `task2/smoke.py` | Synthetic manifest for a CPU smoke test (`ATML_SMOKE_TEST=1`) |
 | `kaggle/task2_data.ipynb` | CPU notebook: data selection and image download |
 | `kaggle/task2_runner.ipynb` | GPU notebook: feature cache, then the 196-token run (GPU 0) and the optional 49-token run (GPU 1) |

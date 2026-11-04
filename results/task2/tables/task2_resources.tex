@@ -1,0 +1,11 @@
+\begin{tabular}{lrrrrr}
+\toprule
+Run & Train (h) & s/update (stage 1/2/3) & Peak GPU (GB) & Eval (s) & Gen. ms/answer \\
+\midrule
+196 tokens & 1.86 & 1.38/1.50/1.51 & 1.56 & 78 & 43 \\
+49 tokens & 0.78 & 0.49/0.72/0.72 & 1.47 & 41 & 23 \\
+\midrule
+Feature cache (9,373 images) & 0.08 & -- & 1.18 & -- & -- \\
+\bottomrule
+\end{tabular}
+% trainable parameters: stage 1 connector 1,837,056; stages 2-3 connector 1,837,056 + LoRA 4,587,520
