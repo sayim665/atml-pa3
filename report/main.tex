@@ -15,6 +15,10 @@
 \usepackage{xcolor}
 \usepackage{float}
 
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+
 \newcommand{\pp}{\,pp}
 
 \title{Adapting, Grounding and Spending Compute:\\Fine-Tuning Trade-offs, Visual Evidence and Test-Time Selection in Small Models}
@@ -53,7 +57,7 @@ We evaluate seven conditions (the baseline, Full FT at update 625, and the five 
 \caption{Task 1 benchmark accuracy (\%) and changes from the baseline in percentage points. Bold indicates the best fine-tuned result in each column. GSM8K uses flexible extraction, while truncation reports the percentage of GSM8K responses that reach the 1,024-token limit.}
 \label{tab:t1scores}
 \centering
-\small
+\footnotesize
 \begin{tabular}{lrrrrrr}
 \toprule
 Condition & GSM8K & HellaSwag & BoolQ & ARC-E & Trunc. (\%) & Resp. tok. \\
@@ -72,7 +76,7 @@ OPLoRA $r{=}16$ & 62.9 {\scriptsize(+19.5)} & \textbf{47.3} {\scriptsize(+0.0)} 
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.95\linewidth]{figures/task1_training_loss.pdf}
+\includegraphics[width=0.85\linewidth]{figures/task1_training_loss.pdf}
 \caption{Task 1 training results. Left: SFT loss on response tokens (EMA 0.95) across all five runs. Middle: a closer look at the same curves after update 150. Full FT and L2-SP (dashed) overlap and finish with the lowest loss, while LoRA-16 and OPLoRA-16 (dashed) also overlap, and LoRA-4 finishes with the highest loss. Right: learning-rate schedules on a log scale, showing that the adapter runs use a peak learning rate 10$\times$ higher than the others.}
 \label{fig:t1loss}
 \end{figure}
@@ -87,7 +91,7 @@ OPLoRA $r{=}16$ & 62.9 {\scriptsize(+19.5)} & \textbf{47.3} {\scriptsize(+0.0)} 
 \caption{Left: Comparison of Full FT and L2-SP. SFT and total loss are averaged over the final 50 updates, while $\Omega$ is calculated from the final weight displacement (Full FT uses $\lambda=0$ during training). Right: Resource usage. Checkpoint size refers to the state needed to resume training, including weights, optimizer, and scheduler. OPLoRA also requires 323\,MB of FP32 bases and an additional 33\,s to compute them.}
 \label{tab:t1reg}
 \centering
-\small
+\footnotesize
 \begin{tabular}{lrrrc}
 \toprule
 Run & SFT loss & $\Omega$ & $\lambda\Omega$ & $\|\theta-\theta_0\|_2$ (mid/final) \\
@@ -112,16 +116,6 @@ OPLoRA-16 & 10.1M & 3.46 & 3.6 & 116 \\
 
 \textbf{What changes when we restrict the updates?} \emph{Explicit regularization} (Full FT vs.\ L2-SP) gives the clearest result. Despite reaching almost identical final SFT losses (0.185 vs.\ 0.184), L2-SP stays 41\% closer to its starting point (6.27 vs.\ 10.67), recovers the entire BoolQ loss, and improves GSM8K by another 0.8 points. A relatively small penalty of $\lambda\Omega=0.020$ is enough to prevent unnecessary weight drift, and its displacement actually decreases during the second half of training (6.44$\to$6.27). \emph{Rank}: Increasing LoRA's rank fourfold brings 1.4 additional GSM8K points and a slight improvement on BoolQ, without hurting retention. \emph{Orthogonal protection}: Comparing LoRA-16 with OPLoRA-16, orthogonal protection adds 1.2 GSM8K points while leaving retention unchanged. Despite achieving similar gains on mathematics, Full FT and LoRA-16 differ by 12.1 points on BoolQ, the largest retention gap in the study \citep{biderman2024lora}. One thing to keep in mind is that the GSM8K differences between the adapters (1.2--1.4 points) are only around one standard error ($\pm1.3$).
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.9\linewidth]{figures/task1_diagnostics.pdf}
-\caption{Task 1 diagnostics on \texttt{down\_proj}. Left: $\rho_k$, the share of $\|\Delta W\|_F^2$ inside the
-leading $k{=}128$ output directions of $W_0$ (log scale). OPLoRA's bars are at $\sim3\times10^{-8}$, i.e.\ numerical
-zero. Right: mean $R(z)=\|\Delta W z\|/\|W_0 z\|$ on math prompts divided by the same on non-math prompts; values
-above 1 mean the correction responds more to mathematics.}
-\label{fig:t1diag}
-\end{figure}
-
 \textbf{What the update geometry tells us, and where it falls short.} Figure~\ref{fig:t1diag} (with the corresponding values in Appendix Table~\ref{tab:t1diag}) confirms that OPLoRA behaves as intended. Only $3\times10^{-8}$ of its update energy falls within the protected subspace (the input side is $1$--$2\times10^{-8}$), compared with 0.10--0.15 for every method without protection. The relative update size is small across all methods ($\eta=0.008$--$0.019$), meaning that the main difference lies in \emph{where} the updates are applied rather than how large they are. The activation ratios also reveal a difference between the two groups. In layers 0 and 13, adapter corrections are 3.0--5.1$\times$ larger on math prompts than on non-math prompts, compared with 1.7--2.0$\times$ for Full FT and L2-SP. In layer 27, Full FT actually produces a larger correction on non-math inputs (ratio 0.71). This follows the same pattern as the retention results: methods whose local corrections respond less to unrelated inputs tend to forget less. However, this does not establish a causal explanation. The measurements reuse activations from the starting model and therefore do not capture how changes accumulate across layers. Also, despite its exact protection, OPLoRA does not retain BoolQ better than LoRA-16 (70.8 vs.\ 71.6), suggesting that protecting the top singular directions is not what accounts for the difference between adapters and full fine-tuning in this case.
 
 \textbf{Computational cost.} Adapters train 60--240$\times$ fewer parameters, use 3--4$\times$ less peak memory, and produce checkpoints that are 59$\times$ smaller (Table~\ref{tab:t1reg}), but this does not make them faster to train. The backward pass through the frozen backbone still takes most of the time (LoRA-16 takes 2.59\,h compared with 2.31\,h for Full FT), while OPLoRA's projections at every step make it the slowest method (3.46\,h). L2-SP takes 19\% longer to train and requires an additional 2.2\,GB reference copy. Overall, L2-SP achieves the best mathematics performance but comes at the computational cost of full fine-tuning, whereas LoRA-16 offers the best retention while using only a fraction of the memory.
@@ -142,7 +136,7 @@ Development and test sets are kept image-disjoint from each other and from the t
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.9\linewidth]{figures/task2_learning_curves.pdf}
+\includegraphics[width=0.8\linewidth]{figures/task2_learning_curves.pdf}
 \caption{Task 2 learning curves (dotted lines mark stage boundaries at updates 2,250 and 3,750). Top: training loss,
 dev caption loss, and the image-swap penalty $\Delta$NLL for both suites and both token budgets. Bottom: dev
 reference-answer NLL under correct, complementary and no-image inputs (196 tokens), and final-test accuracy with 95\%
@@ -161,7 +155,7 @@ pair to match their own canonical answer. Last rows: correct-image advantage ove
 pair-bootstrap intervals; $\Delta$NLL is the matching increase in reference NLL.}
 \label{tab:t2main}
 \centering
-\small
+\footnotesize
 \begin{tabular}{llrrrrrr}
 \toprule
  & & \multicolumn{2}{c}{Accuracy (\%)} & \multicolumn{2}{c}{Pair acc. (\%)} & \multicolumn{2}{c}{Ref.\ NLL} \\
@@ -187,15 +181,6 @@ Suite & Condition & 196 & 49 & 196 & 49 & 196 & 49 \\
 
 \textbf{Where the model grounds well and where it struggles.} Breaking the results down by question type (Appendix Table~\ref{tab:t2types}) gives a clearer picture of its strengths and weaknesses. Presence questions are almost solved: accuracy reaches 93.8\% with the correct image, compared with 50.0\% without one (the chance level for yes/no questions) and just 6.2\% after the swap. In other words, the answer flips almost every time the object disappears. Counting is the weakest area (50.0\%), which is understandable given that 224\,px patch features can lose small or overlapping objects. On VQAv2, yes/no questions still benefit strongly from language priors (52.2\% accuracy without an image) and gain the least from visual input (66.8\%). By contrast, ``other'' questions depend much more on vision, with accuracy falling from 57.8\% with the correct image to 11.9\% without one. The mismatched image performs similarly to having no image at all (31.2 vs.\ 39.1 on grounding). This suggests that an unrelated image is no more misleading than providing no image, while the large drop after a complementary swap occurs because the two images provide different answers to the same question.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\linewidth]{figures/task2_qualitative.pdf}
-\caption{Complementary pairs from the final test set (196 tokens). Selection rule: the first pair of each question type
-in a seeded random sample drawn before looking at predictions. Each image shows the reference, the prediction with
-the correct image, with the partner image, and with no image.}
-\label{fig:t2qual}
-\end{figure}
-
 \textbf{Where the evaluation measures agree and where they differ.} Likelihood, generated accuracy, pair-level metrics, and qualitative examples all point in the same direction, although they do not always show the same magnitude of improvement. The biggest difference appears in the no-image condition. Its grounding NLL (1.30) is relatively close to the correct-image NLL (0.83), even though its accuracy is 32.8 points lower. This happens because teacher forcing can reward a hesitant prediction between ``yes'' and ``no'', whereas greedy decoding must commit to the same answer for both images in a pair. Figure~\ref{fig:t2qual} shows typical behaviour: in the presence questions, the answers switch between the bird and bus images. In the counting example, the model mistakes two macaws for four but correctly counts the single bird in the partner image. The cake example shows another limitation: the model answers ``chocolate'' for both images, even though this VQA ``other'' question requires looking at the image. Instead, it falls back on the most likely flavour.
 
 \textbf{Model capacity and computational cost.} The model uses 1.84M trainable parameters in stage 1 and 6.42M after adding LoRA. Training takes 1.86\,h with 1.56\,GB of peak memory, and inference takes 43\,ms per answer. Caching visual features for 9,373 images takes 5 minutes and uses 1.2\,GB of peak GPU memory. In the optional experiment, reducing the visual input to 49 tokens through 2$\times$2 averaging makes training 2.4$\times$ faster (0.78\,h) and cuts generation time in half (23\,ms). However, grounding accuracy drops by 3.1 points and VQAv2 accuracy by 4.6 points, while almost the entire grounding swap effect is preserved (+54.7). This suggests that using coarser visual inputs mainly affects questions that require finer details.
@@ -212,7 +197,7 @@ The methods include FirstAns, self-consistency (SC) \citep{selfconsistency}, hig
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.85\linewidth]{figures/task3_scaling.pdf}
+\includegraphics[width=0.72\linewidth]{figures/task3_scaling.pdf}
 \caption{Held-out accuracy and oracle coverage against the number of candidates. The dashed line is the share of
 questions with at least one correct candidate; the gap between it and every selection rule is the selection
 failure.}
@@ -229,7 +214,7 @@ failure.}
 question for every multi-candidate rule.}
 \label{tab:t3methods}
 \centering
-\small
+\footnotesize
 \begin{tabular}{lrrlrrl}
 \toprule
  & \multicolumn{3}{c}{MATH} & \multicolumn{3}{c}{MathVista} \\
@@ -264,7 +249,7 @@ setting within 1 point of fixed-32 SC). Right: live comparison on 50 MATH questi
 tokens and time are per question, and truncation is per response.}
 \label{tab:t3adaptive}
 \centering
-\small
+\footnotesize
 \begin{tabular}{llrrr}
 \toprule
  & Policy ($\tau$/$\gamma$) & Acc. & Tokens & $n$ \\
@@ -364,6 +349,16 @@ Across all tasks, the most informative measurement turned out to be a matched co
 \label{fig:t1tradeoff}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{figures/task1_diagnostics.pdf}
+\caption{Task 1 diagnostics on \texttt{down\_proj}. Left: $\rho_k$, the share of $\|\Delta W\|_F^2$ inside the
+leading $k{=}128$ output directions of $W_0$ (log scale). OPLoRA's bars are at $\sim3\times10^{-8}$, i.e.\ numerical
+zero. Right: mean $R(z)=\|\Delta W z\|/\|W_0 z\|$ on math prompts divided by the same on non-math prompts; values
+above 1 mean the correction responds more to mathematics.}
+\label{fig:t1diag}
+\end{figure}
+
 \begin{table}[H]
 \caption{Weight-space and activation diagnostics on \texttt{down\_proj}. $\eta=\|\Delta W\|_F/\|W_0\|_F$; activation
 ratio is mean $R(z)$ on math prompts over non-math prompts.}
@@ -428,6 +423,15 @@ Swap follows partner answer & \multicolumn{2}{c}{71.9} & \multicolumn{3}{c}{58.3
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/task2_qualitative.pdf}
+\caption{Complementary pairs from the final test set (196 tokens). Selection rule: the first pair of each question type
+in a seeded random sample drawn before looking at predictions. Each image shows the reference, the prediction with
+the correct image, with the partner image, and with no image.}
+\label{fig:t2qual}
+\end{figure}
 
 \section{Additional Task 3 results}
 \label{app:t3examples}
