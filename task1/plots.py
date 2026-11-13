@@ -75,7 +75,8 @@ def ema(values, weight=0.95):
 
 
 def training_curves():
-    figure, (full, zoom) = plt.subplots(1, 2, figsize=(7.0, 2.6), gridspec_kw={"width_ratios": (1, 1.4)})
+    figure, (full, zoom, schedule) = plt.subplots(1, 3, figsize=(7.2, 2.6),
+                                                  gridspec_kw={"width_ratios": (1, 1.4, 0.9)})
     for run in RUNS:
         rows = [json.loads(line) for line in open(RESULTS / "training" / "runs" / run / "train_log.jsonl",
                                                   encoding="utf-8")]
@@ -84,14 +85,19 @@ def training_curves():
         dash = (0, (4, 2)) if run in ("l2sp", "oplora16") else "solid"
         full.plot(updates, smoothed, color=COLORS[run], linestyle=dash, label=LABELS[run])
         zoom.plot(updates[150:], smoothed[150:], color=COLORS[run], linestyle=dash, label=LABELS[run])
+        schedule.plot(updates, [max(row["lr"], 1e-12) for row in rows], color=COLORS[run], linestyle=dash)
     full.set_title("All updates", color=INK)
     zoom.set_title("Updates 150-1250 (zoomed)", color=INK)
     zoom.axvline(625, color=INK_SECONDARY, linewidth=0.8, linestyle=":")
     zoom.text(632, zoom.get_ylim()[1], "midpoint (625)", color=INK_SECONDARY, fontsize=7, va="top")
+    schedule.set_yscale("log")
+    schedule.set_ylim(1e-7, 5e-4)
+    schedule.set_title("Learning rate", color=INK)
+    schedule.set_xlim(0, 1250)
     full.set_xlim(0, 1250)
     zoom.set_xlim(150, 1250)
-    for axis in (full, zoom):
-        axis.set_xlabel("Optimizer update (32 examples each)")
+    for axis in (full, zoom, schedule):
+        axis.set_xlabel("Optimizer update")
     full.set_ylabel("SFT loss, EMA 0.95")
     handles, labels = full.get_legend_handles_labels()
     figure.legend(handles, labels, ncol=5, loc="upper center", bbox_to_anchor=(0.5, 1.07), fontsize=7)
@@ -171,7 +177,10 @@ def latex_scores(table):
         for name, _, _ in BENCHMARKS:
             value = score(table, condition, name)
             text = f"{value:.1f}"
-            cells.append(rf"\textbf{{{text}}}" if condition != "baseline" and value == best[name] else text)
+            text = rf"\textbf{{{text}}}" if condition != "baseline" and value == best[name] else text
+            if condition != "baseline":
+                text += rf" {{\scriptsize({value - score(table, 'baseline', name):+.1f})}}"
+            cells.append(text)
         gsm8k = table[condition]["gsm8k"]
         cells.append(f"{100 * gsm8k['truncation_rate']:.1f}")
         cells.append(f"{gsm8k['mean_response_tokens']:.0f}")
@@ -194,6 +203,29 @@ def latex_resources():
         lines.append(f"{LABELS[run]} & {trainable_text} & {summary['training_seconds'] / 3600:.2f} & "
                      f"{peak:.1f} & {checkpoint:.0f}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
+    return "\n".join(lines) + "\n"
+
+
+def latex_regularization():
+    """Full FT vs L2-SP: final SFT loss, penalty strength and displacement, with Omega = 0.5 ||theta - theta_0||^2."""
+    lines = [r"\begin{tabular}{lrrrrrr}", r"\toprule",
+             r"Run & SFT loss & $\Omega$ & $\lambda\Omega$ & Total loss & $\|\theta-\theta_0\|_2$ (mid / final) & "
+             r"Ref. (GB) \\", r"\midrule"]
+    for run in ("full_ft", "l2sp"):
+        rows = [json.loads(line) for line in open(RESULTS / "training" / "runs" / run / "train_log.jsonl",
+                                                  encoding="utf-8")]
+        summary = load(RESULTS / "training" / "runs" / run / "train_summary.json")
+        sft = np.mean([row["sft_loss"] for row in rows[-50:]])
+        total = np.mean([row.get("total_loss", row["sft_loss"]) for row in rows[-50:]])
+        middle = summary["exports"]["midpoint"]["displacement_l2"]
+        final = summary["exports"]["final"]["displacement_l2"]
+        strength = rows[-1].get("lambda_omega", 0.0)
+        reference = summary["reference"].get("reference_bytes", 0) / 2 ** 30
+        lines.append(f"{LABELS[run]} & {sft:.3f} & {0.5 * final ** 2:.1f} & {strength:.4f} & {total:.3f} & "
+                     f"{middle:.2f} / {final:.2f} & {reference:.2f}" + r" \\")
+    lines += [r"\bottomrule", r"\end{tabular}",
+              "% SFT and total loss: mean of the last 50 updates. Omega from the final displacement; "
+              "Full FT trains with lambda = 0, so its Omega is shown for comparison only."]
     return "\n".join(lines) + "\n"
 
 
@@ -225,6 +257,7 @@ def main():
     (TABLES / "task1_scores.tex").write_text(latex_scores(table), encoding="utf-8")
     (TABLES / "task1_resources.tex").write_text(latex_resources(), encoding="utf-8")
     (TABLES / "task1_diagnostics.tex").write_text(latex_diagnostics(), encoding="utf-8")
+    (TABLES / "task1_regularization.tex").write_text(latex_regularization(), encoding="utf-8")
     print(f"figures in {FIGURES}, tables in {TABLES}")
 
 

@@ -38,6 +38,7 @@ Per-condition files are in `results/task1/eval/<condition>/` (`scores.json`, per
 | `task1/train.py` | FP16 AMP training loop with FP32 master weights or FP32 adapters, L2-SP penalty, resumable checkpoints at updates 312/625/937/1250 |
 | `task1/evaluate.py` | lm-eval benchmarks (zero-shot; GSM8K with the non-thinking chat template, greedy, 1,024 tokens), per-example outputs, truncation flags, qualitative generations, merged-vs-unmerged adapter check |
 | `task1/run_queue.py` | Runs train/eval jobs across GPUs with a wall-clock budget (Kaggle 12 h sessions) |
+| `task1/annotate.py` | Manual annotation of the fixed 42-response qualitative subset (`results/task1/qualitative_annotation.json`) |
 | `task1/plots.py` | Report figures (`results/task1/figures/`) and LaTeX tables (`results/task1/tables/`) from the committed results |
 | `task1/diagnostics.py` | Weight-space (`rho_k`, input-side fraction, `eta`) and activation-ratio diagnostics on `down_proj` in layers 0, 13, 27 (CPU) |
 | `kaggle/task1_runner.ipynb` | Thin Kaggle notebook: clone repo, restore previous outputs, run the queue |
@@ -147,6 +148,7 @@ Refinement changed 1 wrong answer to correct and no correct answer to wrong. Ful
 | `task3/selection.py` | Self-consistency, highest-score selection, rank-weighted consensus, candidate-relative VisConf calibration, stopping evidence |
 | `task3/analysis.py` | Steps 1, 2, 3 and 5: fixed budgets, failure decomposition, signal analysis, adaptive stopping, bootstrap intervals |
 | `task3/live.py` | Step 4 live generation (two shards) and grading |
+| `task3/examples.py` | Fixed-rule example cases: selection disagreement, premature stopping, revision (`results/task3/examples/`) |
 | `task3/plots.py` | Report figures and tables |
 | `kaggle/task3_offline.ipynb`, `kaggle/task3_live.ipynb` | Kaggle notebooks (CPU offline analysis; GPU T4 x2 live generation) |
 

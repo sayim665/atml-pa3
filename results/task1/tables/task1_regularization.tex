@@ -1,0 +1,9 @@
+\begin{tabular}{lrrrrrr}
+\toprule
+Run & SFT loss & $\Omega$ & $\lambda\Omega$ & Total loss & $\|\theta-\theta_0\|_2$ (mid / final) & Ref. (GB) \\
+\midrule
+Full FT & 0.185 & 56.9 & 0.0000 & 0.185 & 10.03 / 10.67 & 2.22 \\
+L2-SP & 0.184 & 19.7 & 0.0197 & 0.204 & 6.44 / 6.27 & 2.22 \\
+\bottomrule
+\end{tabular}
+% SFT and total loss: mean of the last 50 updates. Omega from the final displacement; Full FT trains with lambda = 0, so its Omega is shown for comparison only.
