@@ -30,31 +30,31 @@
 \maketitle
 
 \begin{abstract}
-We study three ways of building on small pretrained models: changing the weights, connecting a new modality, and
-spending computation at inference. Fine-tuning Qwen3-0.6B on mathematics raises GSM8K from 43.4\% to 60--64\% with
-every method, but full fine-tuning loses 4.8 points on BoolQ while LoRA and OPLoRA \emph{gain} 5--7, and an L2-SP
-penalty keeps the weights 41\% closer to their start at the same training loss. A SigLIP--Qwen vision-language model
-answers from the image rather than from language priors: swapping in the complementary image cuts accuracy from 71.9\%
-to 16.4\% on annotation-derived questions and from 60.7\% to 27.2\% on VQAv2, and the model mostly switches to the
-partner image's answer; this behaviour appears only once question training begins, not after caption alignment. On
-64k supplied rollouts, repeated sampling is limited by selection rather than exploration: at 32 candidates a correct
-answer exists for about 90\% of questions, but self-consistency picks it for 74\% (MATH) and 62\% (MathVista).
-Confidence alone selects worse than voting, confidence-weighted voting is the best rule tested, and adaptive stopping
-matches fixed-budget accuracy on MathVista with 47\% fewer tokens. With a fixed output budget, one long response beat
-three short parallel ones, mainly because short budgets truncate answers. Code, configurations, split IDs and all
+We look at three ways of getting more out of small pretrained models: changing their weights, giving them a new
+modality, and spending more compute at inference. Fine-tuning Qwen3-0.6B on mathematics raises GSM8K from 43.4\% to
+60--64\% with every method. But full fine-tuning loses 4.8 points on BoolQ, while LoRA and OPLoRA \emph{gain} 5--7,
+and an L2-SP penalty keeps the weights 41\% closer to their start at the same training loss. A SigLIP--Qwen
+vision-language model answers from the image: swapping in the complementary image drops accuracy from
+71.9\% to 16.4\% on annotation-derived questions and from 60.7\% to 27.2\% on VQAv2, and the model mostly switches to
+the partner image's answer. It learns this only once question training starts. On 64k
+supplied rollouts, the limit of repeated sampling is choosing, not finding: at 32 candidates a correct answer exists
+for about 90\% of questions, but self-consistency picks it for only 74\% (MATH) and 62\% (MathVista). Confidence alone
+chooses worse than voting, confidence-weighted voting is the best rule we tested, and adaptive stopping matches
+fixed-budget accuracy on MathVista with 47\% fewer tokens. With a fixed output budget, one long response beat three
+short ones, mostly because short budgets cut answers off. Code, configurations, split IDs and all
 result files: \url{https://github.com/sayim665/atml-pa3}.
 \end{abstract}
 
 \section{Introduction}
 
-A pretrained model is a starting point, and this assignment asks three questions about building on it. Task~1 asks
-what fine-tuning a language model on mathematics changes besides mathematics, and whether restricting the update
+A pretrained model is only a starting point, and this assignment asks three questions about building on it. Task~1
+asks what training a language model on mathematics changes apart from mathematics, and whether limiting the update
 (a proximity penalty, a low-rank adapter, an orthogonally protected adapter) changes that answer. Task~2 asks whether
-a language model connected to a frozen vision encoder actually uses the image, or answers from the question alone.
-Task~3 asks when extra inference computation helps: more samples, a better rule for choosing among them, a longer
-response, or a second look at the first one. Each task is evaluated against a matched control under a fixed seed
-(6304); every number below comes from a saved result file in the repository. All training and generation ran on
-Kaggle T4 GPUs in FP16; Appendix~\ref{app:compute} lists runtimes and deviations from the prescribed setup.
+a language model connected to a frozen vision encoder actually looks at the image, or just answers from the question.
+Task~3 asks when extra compute at inference helps: more samples, a better way to choose among them, a longer
+response, or a second look at the first one. Every task is compared against a matched control with a fixed seed
+(6304), and every number below comes from a saved result file in the repository. All training and generation ran on
+Kaggle T4 GPUs in FP16, and Appendix~\ref{app:compute} lists runtimes and deviations from the prescribed setup.
 
 % ======================================================================
 \section{Task 1: Language Model Fine-Tuning}
@@ -109,21 +109,20 @@ LoRA-4 ends highest. Right: learning-rate schedules (log scale); the adapter run
 
 \subsection{Results}
 
-\textbf{All methods adapt; they differ in what they keep.} Table~\ref{tab:t1scores} shows every method gaining
-17--21 points on GSM8K, with L2-SP highest (64.2\%). ARC-Easy rises by 5--6 points for every method, so it behaves like
-a beneficiary of mathematical training rather than a retention test. The two retention benchmarks separate the
-methods: Full FT is the only method below baseline on both (BoolQ $-$4.8, HellaSwag $-$1.3), L2-SP is close to neutral,
-and the three adapters leave HellaSwag unchanged while \emph{improving} BoolQ by 5.5--7.2 points. Part of the GSM8K
-gain is a format effect: fine-tuned responses are about 40\% shorter (227$\to$138--143 tokens) and truncate less,
-because MetaMathQA's concise solutions replace the baseline's longer reasoning; the extraction method is fixed, so the
-accuracy change is not an extraction artefact. Appendix Figures~\ref{fig:t1deltas} and~\ref{fig:t1tradeoff} plot the
+\textbf{All methods adapt, but they keep different things.} Table~\ref{tab:t1scores} shows every method gaining
+17--21 points on GSM8K, with L2-SP highest (64.2\%). ARC-Easy goes up by 5--6 points for every method, so it acts
+more like a beneficiary of math training than a retention test. The two retention benchmarks separate the
+methods. Full FT is the only one below baseline on both (BoolQ $-$4.8, HellaSwag $-$1.3), L2-SP is close to neutral,
+and the three adapters leave HellaSwag unchanged while \emph{improving} BoolQ by 5.5--7.2 points. Responses
+also got about 40\% shorter (227$\to$138--143 tokens) and truncate less, because MetaMathQA's short solutions replace
+the baseline's longer reasoning. The extraction method is fixed, so this is not an extraction artefact. Appendix Figures~\ref{fig:t1deltas} and~\ref{fig:t1tradeoff} plot the
 changes per benchmark and the resulting adaptation--retention trade-off.
 
-\textbf{Training progression.} At its midpoint, Full FT already has 59\% of its final GSM8K gain and most of its BoolQ
-loss ($-$3.2 of $-$4.8), so forgetting accumulates alongside adaptation from early on rather than appearing at the end.
-Its displacement $\|\theta-\theta_0\|_2$ grows only from 10.03 to 10.67 over the second half (Table~\ref{tab:t1reg}),
-consistent with the cosine schedule (Figure~\ref{fig:t1loss}, right): most movement, and most forgetting, happens
-while the learning rate is high.
+\textbf{Training progression.} By its midpoint, Full FT already has 59\% of its final GSM8K gain and most of its BoolQ
+loss ($-$3.2 of $-$4.8). So forgetting builds up alongside adaptation from early on, not at the end. Its displacement
+$\|\theta-\theta_0\|_2$ only grows from 10.03 to 10.67 in the second half (Table~\ref{tab:t1reg}), which fits the
+cosine schedule (Figure~\ref{fig:t1loss}, right): most of the movement, and most of the forgetting, happens while the
+learning rate is high.
 
 \begin{table}[t]
 \caption{Left: Full FT vs.\ L2-SP. SFT and total loss are means over the last 50 updates; $\Omega$ is computed from the
@@ -154,14 +153,14 @@ OPLoRA-16 & 10.1M & 3.46 & 3.6 & 116 \\
 \end{tabular}
 \end{table}
 
-\textbf{Restricting the update.} \emph{Explicit regularization} (Full FT vs.\ L2-SP) gives the clearest result: at
-the same final SFT loss (0.185 vs.\ 0.184), L2-SP stays 41\% closer to its start (6.27 vs.\ 10.67), recovers all of
-the BoolQ loss and gains 0.8 GSM8K points. A penalty of only $\lambda\Omega=0.020$ removes drift the task does not
-need; its displacement even shrinks in the second half (6.44$\to$6.27). \emph{Rank}: quadrupling LoRA's parameters
-buys 1.4 GSM8K points and slightly better BoolQ at no retention cost. \emph{Orthogonal protection} (LoRA-16 vs.\
-OPLoRA-16) adds 1.2 GSM8K points at unchanged retention. At similar mathematical gain, Full FT and LoRA-16 differ by
-12.1 points on BoolQ, the largest retention gap in the study \citep{biderman2024lora}; the adapters' GSM8K differences
-(1.2--1.4 points) are only about one standard error ($\pm1.3$).
+\textbf{Restricting the update.} \emph{Explicit regularization} (Full FT vs.\ L2-SP) gives the clearest result. At
+the same final SFT loss (0.185 vs.\ 0.184), L2-SP stays 41\% closer to its start (6.27 vs.\ 10.67), gets back all of
+the BoolQ loss and gains 0.8 GSM8K points. A penalty of only $\lambda\Omega=0.020$ is enough to remove drift the task
+does not need, and its displacement even shrinks in the second half (6.44$\to$6.27). \emph{Rank}: quadrupling LoRA's
+parameters buys 1.4 GSM8K points and slightly better BoolQ, with no retention cost. \emph{Orthogonal protection}
+(LoRA-16 vs.\ OPLoRA-16) adds 1.2 GSM8K points with retention unchanged. At similar math gains, Full FT and LoRA-16
+differ by 12.1 points on BoolQ, the biggest retention gap in the study \citep{biderman2024lora}. One caveat is that
+the adapters' GSM8K differences (1.2--1.4 points) are only about one standard error ($\pm1.3$).
 
 \begin{figure}[t]
 \centering
@@ -174,33 +173,33 @@ above 1 mean the correction responds more to mathematics.}
 \end{figure}
 
 \textbf{Geometry of the updates and what it can and cannot explain.} Figure~\ref{fig:t1diag} (values in Appendix
-Table~\ref{tab:t1diag}) confirms that OPLoRA
-does what it claims: its updates put a $3\times10^{-8}$ share of their energy into the protected subspace (the input
+Table~\ref{tab:t1diag}) shows that OPLoRA
+does what it claims. Its updates put a $3\times10^{-8}$ share of their energy into the protected subspace (the input
 side is $1$--$2\times10^{-8}$), while every unprotected method puts 0.10--0.15 there. The relative update size is small
-for all methods ($\eta=0.008$--$0.019$), so the methods differ more in \emph{where} they write than in how much. The
-activation ratios separate the two families: in layers 0 and 13 the adapter corrections are 3.0--5.1$\times$ larger on
+for all methods ($\eta=0.008$--$0.019$), so they differ more in \emph{where} they write than in how much. The
+activation ratios split the two families. In layers 0 and 13 the adapter corrections are 3.0--5.1$\times$ larger on
 math prompts than on non-math prompts, against 1.7--2.0$\times$ for Full FT and L2-SP, and in layer 27 Full FT's
-correction is actually \emph{larger} on non-math inputs (ratio 0.71). This matches the retention ordering: the
-methods whose local corrections respond least to unrelated inputs forget least. It does not establish the cause. The
-measurement reuses the starting model's activations, so it ignores how changes compound across layers, and OPLoRA's
-exact protection did not translate into better retention than LoRA-16 (BoolQ 70.8 vs.\ 71.6), so protecting the top
-singular directions is not what distinguishes adapters from full fine-tuning here.
+correction is actually \emph{larger} on non-math inputs (ratio 0.71). This matches the retention ordering: the methods
+whose local corrections react least to unrelated inputs forget the least. But it does not show the cause. The
+measurement reuses the starting model's activations, so it misses how changes add up across layers. And OPLoRA's
+exact protection did not give better retention than LoRA-16 (BoolQ 70.8 vs.\ 71.6), so protecting the top singular
+directions is not what separates adapters from full fine-tuning here.
 
 \textbf{Cost.} The adapters train 60--240$\times$ fewer parameters with 3--4$\times$ less peak memory and 59$\times$
-smaller checkpoints (Table~\ref{tab:t1reg}), but not less time: the backward pass through the frozen backbone
-dominates (LoRA-16 2.59\,h vs.\ Full FT 2.31\,h), and OPLoRA's per-step projections made it slowest (3.46\,h). L2-SP
-costs 19\% extra time and a 2.2\,GB reference copy. L2-SP gives the best mathematics at full fine-tuning's cost;
-LoRA-16 gives the best retention at a fraction of the memory.
+smaller checkpoints (Table~\ref{tab:t1reg}), but they are not faster. The backward pass through the frozen backbone
+still dominates (LoRA-16 2.59\,h vs.\ Full FT 2.31\,h), and OPLoRA's projections in every step made it the slowest
+(3.46\,h). L2-SP costs 19\% extra time and a 2.2\,GB reference copy. L2-SP gives the best math at full
+fine-tuning's cost, and LoRA-16 gives the best retention for a fraction of the memory.
 
 \textbf{Behaviour beyond the benchmarks.} In the fixed 42-response annotation subset (first and last qualitative
-questions, three formats, seven conditions; Appendix Table~\ref{tab:t1annot}) no response is inappropriate, but
-mathematics leaks into unrelated conversation. \emph{Answer framing} appears in 11 of 36 fine-tuned responses and none
-of the baseline's: asked for its one wish, Full FT appends ``\texttt{\#\#\#\# 1 / The answer is: 1}'', and OPLoRA ends
-sound marriage advice with ``\texttt{The answer is: 1}''. \emph{Repetition} appears too: the Full FT midpoint
-enumerates ``\texttt{\#\#\#\# 1 \dots\ \#\#\#\# 98}'' to the 512-token cap, and Full FT and L2-SP loop advice until the
-cap. On the marriage question only the baseline returns valid JSON. LoRA-4 alone matches the baseline's format record
-without math framing, while L2-SP, the best benchmark profile, frames three of six answers as math: benchmark retention
-and conversational retention are not the same thing.
+questions, three formats, seven conditions; Appendix Table~\ref{tab:t1annot}) no response is inappropriate, but math
+leaks into unrelated conversation. \emph{Answer framing} shows up in 11 of 36 fine-tuned responses and none of the
+baseline's. Asked for its one wish, Full FT adds ``\texttt{\#\#\#\# 1 / The answer is: 1}'', and OPLoRA ends sound
+marriage advice with ``\texttt{The answer is: 1}''. \emph{Repetition} shows up too: the Full FT midpoint counts
+``\texttt{\#\#\#\# 1 \dots\ \#\#\#\# 98}'' until the 512-token cap, and Full FT and L2-SP loop their advice until the
+cap. On the marriage question only the baseline returns valid JSON. LoRA-4 is the only model that matches the
+baseline's format record with no math framing, while L2-SP, the best benchmark profile, frames three of six answers as
+math. Benchmark retention and conversational retention are not the same thing.
 
 % ======================================================================
 \section{Task 2: Vision-Language Model and Visual Grounding}
@@ -237,16 +236,15 @@ starts.}
 
 \subsection{Results}
 
-\textbf{The curriculum: captions build an interface, questions teach the model to use it.} Dev caption loss falls from
-5.43 to 2.34 during stage 1 and then stays flat (2.38 at the end), so caption replay preserved captioning. The
-striking result is what stage 1 does
-\emph{not} do (Figure~\ref{fig:t2curves}). Throughout caption alignment the answer NLL with the correct image is
-indistinguishable from the swapped image ($\Delta$NLL between $-0.11$ and $+0.16$), and both are \emph{worse} than
-giving no image at all (5.6 vs.\ 3.5 nats on grounding at update 2,250): visual tokens trained only for captioning
-disrupt question answering without informing it. The moment presence and counting questions arrive, correct-image NLL
-drops to 0.66 and the swap penalty jumps to +2.1, rising to +4.5 by the end of stage 2. Stage 3 trades some of this
-for natural questions: grounding $\Delta$NLL falls to +3.3 despite 20\% grounding replay, while the VQAv2 penalty,
-already 0.6--0.9 in stage 2 before any VQAv2 training, stays near +0.7.
+\textbf{The curriculum: captions build the interface, questions teach the model to use it.} Dev caption loss falls
+from 5.43 to 2.34 in stage 1 and then stays flat (2.38 at the end), so caption replay kept captioning intact. The
+surprise is what stage 1 does \emph{not} do (Figure~\ref{fig:t2curves}). Throughout caption alignment, the
+answer NLL with the correct image is the same as with the swapped image ($\Delta$NLL between $-0.11$ and $+0.16$), and
+both are \emph{worse} than giving no image at all (5.6 vs.\ 3.5 nats on grounding at update 2,250). So visual tokens
+trained only for captioning get in the way of answering without helping it. As soon as presence and
+counting questions arrive, correct-image NLL drops to 0.66 and the swap penalty jumps to +2.1, reaching +4.5 by the
+end of stage 2. Stage 3 gives some of this up for natural questions: grounding $\Delta$NLL falls to +3.3 despite 20\%
+grounding replay, while the VQAv2 penalty, already 0.6--0.9 in stage 2 before any VQAv2 training, stays near +0.7.
 
 \begin{table}[t]
 \caption{Task 2 final-test results (64 grounding pairs, 96 VQAv2 pairs). Pair accuracy requires both questions of a
@@ -276,21 +274,21 @@ Suite & Condition & 196 & 49 & 196 & 49 & 196 & 49 \\
 \end{tabular}
 \end{table}
 
-\textbf{Answers depend on the image, and usefully so.} Table~\ref{tab:t2main} shows the correct image beating the
-complementary swap by 55.5 points on grounding and 33.4 on VQAv2, with intervals far from zero, and the same direction
-in likelihood ($\Delta$NLL +3.2 and +1.6). The swap does not merely confuse the model: predictions change for 81\% of
-grounding and 53\% of VQAv2 questions, and 72\% and 58\% \emph{equal the partner image's answer}, so the model follows
-the new evidence. Pair accuracy, which no language prior can reach because both questions of a pair are identical, is
-56.2\% (grounding) and 31.2\% (VQAv2) with correct images and 0\% without an image.
+\textbf{Answers depend on the image, and in a useful way.} Table~\ref{tab:t2main} shows the correct image beating the
+complementary swap by 55.5 points on grounding and 33.4 on VQAv2, with intervals far from zero, and likelihood agrees
+($\Delta$NLL +3.2 and +1.6). The swap does not just confuse the model. Predictions change for 81\% of grounding and
+53\% of VQAv2 questions, and 72\% and 58\% \emph{equal the partner image's answer}, so the model follows the new
+evidence. Pair accuracy, which no language prior can reach because both questions in a pair are identical, is 56.2\%
+(grounding) and 31.2\% (VQAv2) with the correct images and 0\% without an image.
 
 \textbf{Where grounding is strong and where it fails.} Splitting by question type (Appendix Table~\ref{tab:t2types})
 gives the clearest picture. Presence is nearly solved: 93.8\% with the correct image, 50.0\% without (chance for
-yes/no), and 6.2\% after the swap, i.e.\ the answer flips almost every time the object disappears. Counting is the
-weakest skill (50.0\%), consistent with patch features at 224\,px losing small or overlapping instances. For VQAv2,
-yes/no questions retain a strong language prior (52.2\% with no image) and gain least from the image (66.8\%), while
-``other'' questions depend on vision most (57.8\% correct vs.\ 11.9\% without an image). The mismatched-image control
-behaves like the no-image control (31.2 vs.\ 39.1 on grounding), which means an irrelevant image is not more
-misleading than none: the large swap drop comes specifically from images that answer the question differently.
+yes/no), and 6.2\% after the swap, so the answer flips almost every time the object disappears. Counting is the
+weakest skill (50.0\%), which makes sense when 224\,px patch features lose small or overlapping objects. In VQAv2,
+yes/no questions keep a strong language prior (52.2\% with no image) and gain the least from the image (66.8\%), while
+``other'' questions need vision the most (57.8\% correct vs.\ 11.9\% without an image). The mismatched image behaves
+much like no image (31.2 vs.\ 39.1 on grounding). This means an unrelated image is not more misleading than none; the
+big swap drop comes from images that answer the same question differently.
 
 \begin{figure}[t]
 \centering
@@ -301,20 +299,20 @@ correct image, with the partner image, and with no image.}
 \label{fig:t2qual}
 \end{figure}
 
-\textbf{Measures that agree, and where they do not.} Likelihood, generated accuracy, pair metrics and the examples tell
-a consistent story about direction, but not about size. The no-image condition is the clearest disagreement: its
-grounding NLL (1.30) is close to the correct-image NLL (0.83), yet its accuracy is 32.8 points lower; teacher forcing
-rewards a hedged guess spread over ``yes'' and ``no'', while greedy decoding must commit to one answer for both images
-of a pair. Figure~\ref{fig:t2qual} shows the typical behaviours: presence answers flip between the bird and the bus
-images; the counting example miscounts two macaws as four but counts the single bird in the partner image correctly;
-and the cake example answers ``chocolate'' for both images, a VQA ``other'' question where the model falls back on the
-most likely flavour rather than the image.
+\textbf{Where the measures agree, and where they do not.} Likelihood, generated accuracy, pair metrics and the examples
+agree on direction, but not on size. The clearest disagreement is the no-image condition. Its grounding NLL (1.30) is
+close to the correct-image NLL (0.83), yet its accuracy is 32.8 points lower. The reason is that teacher forcing
+rewards a hedged guess between ``yes'' and ``no'', while greedy decoding has to commit to one answer for both images.
+In Figure~\ref{fig:t2qual}, presence answers flip between the bird and the bus images. The
+counting example miscounts two macaws as four but counts the single bird in the partner image correctly. And the cake
+example answers ``chocolate'' for both images, a VQA ``other'' question where the model falls back on the most likely
+flavour instead of looking.
 
-\textbf{Capabilities and cost.} The model has 1.84M trainable parameters in stage 1 and 6.42M with LoRA, trains in
-1.86\,h with 1.56\,GB of peak memory, and generates an answer in 43\,ms; feature caching for 9,373 images took 5 minutes
-and 1.2\,GB. Compressing to 49 visual tokens by 2$\times$2 averaging (optional experiment) cut training time 2.4$\times$
-(0.78\,h) and generation time in half (23\,ms) while losing 3.1 points on grounding and 4.6 on VQAv2, and keeping almost
-the whole swap effect on grounding (+54.7). Coarser visual input mostly hurts the questions that need detail.
+\textbf{Capabilities and cost.} The model has 1.84M trainable parameters in stage 1 and 6.42M with LoRA. It trains in
+1.86\,h with 1.56\,GB of peak memory and answers in 43\,ms, and caching features for 9,373 images took 5 minutes and
+1.2\,GB. Cutting to 49 visual tokens by 2$\times$2 averaging (the optional experiment) made training 2.4$\times$ faster
+(0.78\,h) and halved generation time (23\,ms). It lost 3.1 points on grounding and 4.6 on VQAv2 but kept almost the
+whole swap effect on grounding (+54.7). Coarser input mostly hurts the questions that need detail.
 
 % ======================================================================
 \section{Task 3: Test-Time Compute}
@@ -346,13 +344,13 @@ failure.}
 \subsection{Results}
 
 \textbf{Sampling finds answers that selection cannot recognize.} Oracle coverage rises steeply with $N$, from 64.9\% to
-91.4\% on MATH and from 53.2\% to 89.5\% on MathVista (Figure~\ref{fig:t3scaling}), but SC rises from the same start to
-only 73.8\% and 61.8\%. The decomposition (Appendix Figure~\ref{fig:t3decomp}) shows the balance moving with compute:
-at $N{=}1$ every failure is a sampling failure, while at $N{=}32$ only 8.6\% (MATH) and 10.5\% (MathVista) of questions
-have no correct candidate and 17.6\% and 27.7\% have one that SC misses. Extra samples mostly repeat existing answers:
-the number of distinct answer groups grows from 1 to only 5.9 (MATH) and 3.9 (MathVista) over 32 samples, and SC
-gains just 2.1 points from $N{=}8$ to 32 on MATH while costing 4$\times$ the tokens. The bottleneck at large $N$ is
-therefore recognizing the right answer among a few recurring wrong ones, and it is larger for the vision-language model.
+91.4\% on MATH and from 53.2\% to 89.5\% on MathVista (Figure~\ref{fig:t3scaling}). But SC rises from the same start to
+only 73.8\% and 61.8\%. The decomposition (Appendix Figure~\ref{fig:t3decomp}) shows how the balance shifts. At
+$N{=}1$ every failure is a sampling failure, while at $N{=}32$ only 8.6\% (MATH) and 10.5\% (MathVista) of questions
+have no correct candidate, and 17.6\% and 27.7\% have one that SC misses. Extra samples mostly repeat existing
+answers: distinct answer groups grow from 1 to only 5.9 (MATH) and 3.9 (MathVista) over 32 samples, and SC gains
+just 2.1 points from $N{=}8$ to 32 on MATH for 4$\times$ the tokens. So at large $N$ the problem is choosing among a
+few recurring answers, and it is worse for the vision-language model.
 
 \begin{table}[t]
 \caption{Held-out accuracy (\%) by selection rule. $\Delta$ is the difference from self-consistency at $N{=}32$ with a
@@ -383,23 +381,23 @@ Oracle coverage & 83.9 & 91.4 & & 82.6 & 89.5 & \\
 \end{tabular}
 \end{table}
 
-\textbf{Confidence helps only through consensus.} Holding aggregation fixed and changing the score
-(Table~\ref{tab:t3methods}), highest-score selection is worse than SC for every signal, and for raw log-probability it is
-worse than taking the first answer, because log-probability rewards short, fluent rollouts (within-question Spearman
-correlation with length +0.23 on MATH, +0.33 on MathVista). Holding the score fixed and changing aggregation, RWC turns
-every signal from a loss into a gain: self-certainty goes from $-$3.2 to +1.8 on MATH, and VisConf from $-$4.0 to +1.5 on
-MathVista, the two improvements over SC whose intervals exclude zero. The signals carry real but weak information: the
-top quartile of rollouts by self-certainty is 12.0 points more often correct than the bottom quartile on MATH, but only
-3.5 points on MathVista, where VisConf (7.4) is twice as informative. They cannot overrule a majority but break
-near-ties: 16 votes for ``0'' against 15 for ``2'' is solved by RWC and missed by SC (Appendix~\ref{app:t3examples}).
+\textbf{Confidence only helps through consensus.} Keeping the aggregation fixed and changing the score
+(Table~\ref{tab:t3methods}), picking the highest score is worse than SC for every signal. With raw log-probability it
+is even worse than taking the first answer, because log-probability rewards short, fluent rollouts (within-question
+Spearman correlation with length +0.23 on MATH, +0.33 on MathVista). Keeping the score and changing the aggregation,
+RWC turns every signal from a loss into a gain: self-certainty goes from $-$3.2 to +1.8 on MATH, and VisConf from $-$4.0
+to +1.5 on MathVista, the only two gains over SC whose intervals exclude zero. The signals carry real but weak
+information. The top quartile of rollouts by self-certainty is 12.0 points more often correct than the bottom quartile
+on MATH, but only 3.5 on MathVista, where VisConf (7.4) is twice as useful. They cannot overrule a majority, but they
+break near-ties: 16 votes for ``0'' against 15 for ``2'' is solved by RWC and missed by SC (Appendix~\ref{app:t3examples}).
 
-\textbf{Confidence and vision measure different things.} Within a rollout, calibrated confidence and visual engagement
-are negatively correlated (median per-question correlation $-$0.21; positive in only 11\% of questions), and visual
-engagement falls with rollout length (Spearman $-$0.69). Fusing them token by token instead of multiplying rollout
-averages changes scores by only 0.003 on average ($|Z^{\text{token}}-Z|=|\mathrm{Cov}_t(c,v)|$) and does not change the
-ranking of methods (62.7 vs.\ 63.2 with RWC). In the trajectories (Appendix Figure~\ref{fig:t3traj}) image attention
-is high early and decays as the model reasons, while confidence fluctuates throughout. These are associations, not
-evidence that the answer was grounded in the image.
+\textbf{Confidence and vision measure different things.} Inside a rollout, confidence and visual engagement
+move in opposite directions (median per-question correlation $-$0.21; positive in only 11\% of questions), and visual
+engagement drops in longer rollouts (Spearman $-$0.69). Fusing them token by token instead of multiplying the rollout
+averages moves scores by only 0.003 on average ($|Z^{\text{token}}-Z|=|\mathrm{Cov}_t(c,v)|$) and does not change the
+ranking of methods (62.7 vs.\ 63.2 with RWC). In the trajectories (Appendix Figure~\ref{fig:t3traj}), attention to the
+image is high early and fades as the model reasons, while confidence jumps around throughout. These are
+associations; they do not show that the answer was grounded in the image.
 
 \begin{table}[t]
 \caption{Left: adaptive stopping on held-out questions (thresholds chosen on development questions as the cheapest
@@ -433,33 +431,33 @@ Refine 1,024 + 2,048 & 58 & 1,238 & 62.3 & 20\%/2\% \\
 \end{tabular}
 \end{table}
 
-\textbf{Breadth versus length versus refinement.} With the same 3,072-token allowance, one long response was the most
-accurate and the cheapest (Table~\ref{tab:t3adaptive}, right): 62\% with 760 output tokens and 38\,s, against 54\% for
-three parallel 1,024-token responses (1,857 tokens, 92\,s) and 58\% for refinement (1,238 output and 890 input tokens,
-62\,s). On 50 questions the differences are not significant (single minus parallel +8 points, 95\% CI [$-$4, +20]), but
-the mechanism is clear: the 1,024-token cap truncates 17\% of parallel responses, each becomes a \texttt{NO\_ANSWER}
-vote, and SC returns \texttt{NO\_ANSWER} on 11 of 50 questions. Breadth pays only when each sample can finish.
-Refinement mostly repaired the same failure: 9 of the 10 answers it changed had no extractable initial answer, only one
-became correct, and none was broken (1 wrong$\to$correct, 0 correct$\to$wrong). A second look restored extraction (98\%)
-rather than reasoning \citep{selfrefine}.
+\textbf{Breadth versus length versus refinement.} With the same 3,072-token allowance, one long response was the
+most accurate and the cheapest (Table~\ref{tab:t3adaptive}, right): 62\% with 760 output tokens and 38\,s, against 54\%
+for three parallel 1,024-token responses (1,857 tokens, 92\,s) and 58\% for refinement (1,238 output and 890 input
+tokens, 62\,s). On 50 questions the differences are not significant (single minus parallel +8 points, 95\% CI [$-$4,
++20]), but the reason is clear. The 1,024-token cap cuts off 17\% of the parallel responses, each becomes a
+\texttt{NO\_ANSWER} vote, and SC returns \texttt{NO\_ANSWER} on 11 of 50 questions. Breadth only pays off when each
+sample has room to finish. Refinement mostly fixed this same failure: 9 of the 10 answers it changed had no extractable
+first answer, only one became correct, and none was broken (1 wrong$\to$correct, 0 correct$\to$wrong). The second look
+brought back an extractable answer (98\%) rather than better reasoning \citep{selfrefine}.
 
-\textbf{Adaptive stopping.} Much of the fixed-$N$ cost is spent on questions that agree early. With thresholds chosen on
-development questions, quality-aware stopping keeps MathVista at 62.0\% (vs.\ 61.8\%) with 47\% fewer tokens and costs
-MATH 0.5 points [$-$1.1, +0.2] for 65\% fewer tokens (Table~\ref{tab:t3adaptive}, left). Agreement-only stopping loses
-1.2 points on MATH [$-$2.0, $-$0.4]; requiring the confidence-weighted vote to agree removes some bad early stops (1,192
-vs.\ 1,406 across orders). Most stops happen at $n{=}4$ (77\% MATH, 55\% MathVista). Wrong early stops are mostly
-questions the full pool also misses; only 142 of 1,192 on MATH would have been fixed by waiting, and they share one
-pattern, a 2-of-4 or 3-of-4 majority that the full pool reverses (stopped at ``90'', 2 of 4; full vote ``80''). At
-similar cost (Appendix Figure~\ref{fig:t3cost}), adaptive stopping on MATH matches $N{\approx}16$ for the cost of
-$N{\approx}11$. Every rule fails on the same residual: questions where a wrong answer holds the majority.
+\textbf{Adaptive stopping.} A lot of the fixed-$N$ cost goes to questions that agree early. With thresholds chosen on
+development questions, quality-aware stopping keeps MathVista at 62.0\% (vs.\ 61.8\%) with 47\% fewer tokens, and on
+MATH it costs 0.5 points [$-$1.1, +0.2] for 65\% fewer tokens (Table~\ref{tab:t3adaptive}, left). Agreement-only
+stopping loses 1.2 points on MATH [$-$2.0, $-$0.4], and requiring the confidence-weighted vote to agree removes some bad
+early stops (1,192 vs.\ 1,406 across orders). Most stops happen at $n{=}4$ (77\% MATH, 55\% MathVista). Most wrong early
+stops are questions the full pool also gets wrong. Only 142 of 1,192 on MATH would have been fixed by waiting,
+and they share one pattern: a 2-of-4 or 3-of-4 majority that the full pool reverses (stopped at ``90'', 2 of 4; full
+vote ``80''). At similar cost (Appendix Figure~\ref{fig:t3cost}), adaptive stopping on MATH matches $N{\approx}16$ for
+the cost of $N{\approx}11$. Every rule fails where a wrong answer has the majority.
 
 % ======================================================================
 \section{Conclusion}
 
-In every task the decisive measurement was a matched control: the starting point for fine-tuning, the swapped image
-for grounding, and oracle coverage for selection. Restricting updates protected other capabilities without costing
-mathematics; grounding appeared only when the objective required it; and inference compute paid off when spent on
-choosing among answers and on letting each answer finish. Limitations (single seed, small evaluation sets) are listed
+In every task, the measurement that told us the most was a matched control: the starting point for fine-tuning, the
+swapped image for grounding, and oracle coverage for selection. Limiting the update protected other skills without
+costing math, grounding only appeared once the objective needed it, and extra inference compute paid off when it went
+into choosing among answers and letting each answer finish. Limitations (single seed, small evaluation sets) are listed
 in Appendix~\ref{app:compute}.
 
 \begin{thebibliography}{99}
