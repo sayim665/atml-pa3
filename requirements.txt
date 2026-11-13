@@ -1,4 +1,5 @@
-# Task 1 (tested on Kaggle T4 x2; Kaggle's preinstalled torch/transformers are used as-is)
+# Tested on Kaggle (GPU T4 x2 / CPU, Python 3.13); Kaggle's preinstalled torch/transformers are used as-is.
+# Task 1
 torch>=2.3
 transformers>=4.51
 datasets>=2.19
@@ -7,3 +8,13 @@ accelerate
 pyyaml
 numpy
 lm-eval>=0.4.8
+# Task 2
+pillow
+# Task 3
+scipy
+pyarrow
+pandas
+math-verify==0.9.0
+gdown
+# Report figures
+matplotlib
