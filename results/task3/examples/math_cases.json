@@ -1,0 +1,680 @@
+{
+  "rules": "- disagreement: the first 3 held-out questions in split order where, with all 32 rollouts, self-consistency and the\n  quality-weighted RWC winner (self-certainty for MATH, VisConf for MathVista) differ.\n- premature stop: the first 3 held-out questions in split order where the selected quality-aware policy stops early in\n  order 0 with a wrong answer while fixed-32 self-consistency is correct.\n- revision: every wrong-to-correct transition, then the first 2 questions whose revised answer differs from the initial\n  answer without becoming correct, then the first question whose initial response was truncated.",
+  "quality_signal": "self-certainty",
+  "selection_disagreement": [
+    {
+      "question": "test:2948",
+      "text": "Find all solutions to the equation $$(z^2 - 3z + 1)^2 - 3(z^2 - 3z + 1) + 1 = z.$$",
+      "gold": "1+\\sqrt 2,\\ 1-\\sqrt 2,\\ 2+\\sqrt 3,\\ 2-\\sqrt 3",
+      "self_consistency": "1",
+      "self_consistency_correct": false,
+      "quality_rwc": "2 + \\sqrt{3}, 2 - \\sqrt{3}, \\frac{3 + \\sqrt{13 + 4\\sqrt{3}}}{2}, \\frac{3 - \\sqrt{13 + 4\\sqrt{3}}}{2}, \\frac{3 + \\sqrt{13 - 4\\sqrt{3}}}{2}, \\frac{3 - \\sqrt{13 - 4\\sqrt{3}}}{2}",
+      "quality_rwc_correct": false,
+      "groups": [
+        {
+          "answer": "1",
+          "count": 5,
+          "correct": false,
+          "mean_quality": 29.21883935724376,
+          "rwc_vote": 1.3871
+        },
+        {
+          "answer": "1 \\text{ and } 2",
+          "count": 4,
+          "correct": false,
+          "mean_quality": 29.315081540914523,
+          "rwc_vote": 1.1935
+        },
+        {
+          "answer": "2 + \\sqrt{3}, 2 - \\sqrt{3}, \\frac{3 + \\sqrt{13 + 4\\sqrt{3}}}{2}, \\frac{3 - \\sqrt{13 + 4\\sqrt{3}}}{2}, \\frac{3 + \\sqrt{13 - 4\\sqrt{3}}}{2}, \\frac{3 - \\sqrt{13 - 4\\sqrt{3}}}{2}",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 31.2101547659783,
+          "rwc_vote": 2.0
+        },
+        {
+          "answer": "2 + \\sqrt{3}, 2 - \\sqrt{3}",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 30.69149735551918,
+          "rwc_vote": 1.7097
+        },
+        {
+          "answer": "0",
+          "count": 2,
+          "correct": false,
+          "mean_quality": 30.540829280184276,
+          "rwc_vote": 1.0968
+        },
+        {
+          "answer": "NO_ANSWER",
+          "count": 2,
+          "correct": false,
+          "mean_quality": 27.379850593628362,
+          "rwc_vote": 0.129
+        },
+        {
+          "answer": "0, 3, \\frac{3 + \\sqrt{17}}{2}, \\frac{3 - \\sqrt{17}}{2}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 33.8732181125217,
+          "rwc_vote": 1.0
+        },
+        {
+          "answer": "4, -1, 0, 3",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 33.115013454524615,
+          "rwc_vote": 0.9677
+        },
+        {
+          "answer": "1, -1, 1 + \\sqrt{2}, 1 - \\sqrt{2}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 32.60376116373006,
+          "rwc_vote": 0.9355
+        },
+        {
+          "answer": "\\frac{3 + \\sqrt{13 + 4\\sqrt{2}}}{2}, \\frac{3 - \\sqrt{13 + 4\\sqrt{2}}}{2}, \\frac{3 + \\sqrt{13 - 4\\sqrt{2}}}{2}, \\frac{3 - \\sqrt{13 - 4\\sqrt{2}}}{2}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 31.521826938326257,
+          "rwc_vote": 0.8065
+        },
+        {
+          "answer": "-1",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 31.384145311868558,
+          "rwc_vote": 0.7742
+        },
+        {
+          "answer": "-\\sqrt{2}, \\sqrt{2}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 31.359075595462134,
+          "rwc_vote": 0.7419
+        },
+        {
+          "answer": "0 \\text{ and } 4",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 31.20233765681764,
+          "rwc_vote": 0.7097
+        },
+        {
+          "answer": "-1, \\sqrt{3}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 30.97835488278949,
+          "rwc_vote": 0.6452
+        },
+        {
+          "answer": "-1, -0.171, -0.49, 3.118",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 30.728603561692207,
+          "rwc_vote": 0.5484
+        },
+        {
+          "answer": "0 \\text{ and } 2",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 30.57355072140356,
+          "rwc_vote": 0.5161
+        },
+        {
+          "answer": "-1, 2",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 30.45477198037534,
+          "rwc_vote": 0.4516
+        },
+        {
+          "answer": "0 \\text{ and } 3",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 29.48592405260345,
+          "rwc_vote": 0.2903
+        },
+        {
+          "answer": "3",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 28.053395670513773,
+          "rwc_vote": 0.0968
+        }
+      ]
+    },
+    {
+      "question": "test:4516",
+      "text": "A tennis ball dipped in red paint rolls around on the coordinate plane, so that it is at\n\\[(x,y) = (3t^2 - 9t - 5, t^2 - 3t + 2)\\]at time $t,$ where $0 \\le t \\le 4.$  Find the length of the paint trail left by the tennis ball.",
+      "gold": "\\frac{25 \\sqrt{10}}{4}",
+      "self_consistency": "\\frac{17\\sqrt{10}}{2}",
+      "self_consistency_correct": false,
+      "quality_rwc": "4\\sqrt{10}",
+      "quality_rwc_correct": false,
+      "groups": [
+        {
+          "answer": "\\frac{17\\sqrt{10}}{2}",
+          "count": 15,
+          "correct": false,
+          "mean_quality": 29.961825859746757,
+          "rwc_vote": 6.4516
+        },
+        {
+          "answer": "4\\sqrt{10}",
+          "count": 9,
+          "correct": false,
+          "mean_quality": 31.22108287882813,
+          "rwc_vote": 7.3871
+        },
+        {
+          "answer": "NO_ANSWER",
+          "count": 2,
+          "correct": false,
+          "mean_quality": 26.368694488424808,
+          "rwc_vote": 0.0323
+        },
+        {
+          "answer": "18",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 31.045622149637953,
+          "rwc_vote": 0.7742
+        },
+        {
+          "answer": "20",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 30.261149785771014,
+          "rwc_vote": 0.5161
+        },
+        {
+          "answer": "10",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 29.86417887321285,
+          "rwc_vote": 0.3548
+        },
+        {
+          "answer": "10\\sqrt{5}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 29.659027738048728,
+          "rwc_vote": 0.3226
+        },
+        {
+          "answer": "15\\sqrt{6}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 28.927197779875982,
+          "rwc_vote": 0.0968
+        },
+        {
+          "answer": "48\\sqrt{3}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 28.41100441150648,
+          "rwc_vote": 0.0645
+        }
+      ]
+    },
+    {
+      "question": "test:2744",
+      "text": "Compute the sum of all possible values for $x,$ where $(x, y)$ is a solution to the system of equations \\[\\begin{aligned} x &= y^2 - 6y + 5, \\\\ y &= |x|. \\end{aligned}\\]",
+      "gold": "2",
+      "self_consistency": "0",
+      "self_consistency_correct": false,
+      "quality_rwc": "2",
+      "quality_rwc_correct": true,
+      "groups": [
+        {
+          "answer": "0",
+          "count": 16,
+          "correct": false,
+          "mean_quality": 30.066827398402943,
+          "rwc_vote": 5.5161
+        },
+        {
+          "answer": "2",
+          "count": 15,
+          "correct": true,
+          "mean_quality": 30.866797302904118,
+          "rwc_vote": 10.2581
+        },
+        {
+          "answer": "\\frac{7 + \\sqrt{29}}{2}",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 29.91389551174196,
+          "rwc_vote": 0.2258
+        }
+      ]
+    }
+  ],
+  "premature_stop": {
+    "policy": {
+      "tau": 0.5,
+      "gamma": 0.0
+    },
+    "cases": [
+      {
+        "question": "test:2732",
+        "text": "What is the average (mean) of all $5$-digit numbers that can be formed by using each of the digits $1$, $3$, $5$, $7$, and $8$ exactly once?",
+        "gold": "\\frac{266664}{5}",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "2222.2",
+        "support_at_stop": 0.5,
+        "rwc_margin_at_stop": 0.6666666666666667,
+        "fixed32_answer": "53332.8",
+        "revealed_groups": [
+          {
+            "answer": "2222.2",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 26.00520543579114,
+            "rwc_vote": 1.6667
+          },
+          {
+            "answer": "52853.63333333333",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.296957059512064,
+            "rwc_vote": 0.3333
+          },
+          {
+            "answer": "52920",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 23.44928891568318,
+            "rwc_vote": 0.0
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "53332.8",
+            "count": 7,
+            "correct": true,
+            "mean_quality": 25.56360198047265,
+            "rwc_vote": 4.5806
+          },
+          {
+            "answer": "2222.2",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 25.823204691198004,
+            "rwc_vote": 2.2903
+          },
+          {
+            "answer": "53760",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 25.039662647091163,
+            "rwc_vote": 0.7097
+          },
+          {
+            "answer": "54166.47",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 24.399852116226135,
+            "rwc_vote": 0.2581
+          },
+          {
+            "answer": "53333",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.490917468289716,
+            "rwc_vote": 0.9677
+          },
+          {
+            "answer": "6399336",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.654305026397942,
+            "rwc_vote": 0.8387
+          },
+          {
+            "answer": "52889.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.6188557993282,
+            "rwc_vote": 0.8065
+          },
+          {
+            "answer": "24",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.58322439129505,
+            "rwc_vote": 0.7742
+          },
+          {
+            "answer": "54040.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.554711260460103,
+            "rwc_vote": 0.7419
+          },
+          {
+            "answer": "54166.466666\\ldots",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.55033399644483,
+            "rwc_vote": 0.7097
+          },
+          {
+            "answer": "53327.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.470392156298693,
+            "rwc_vote": 0.6452
+          },
+          {
+            "answer": "48332.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.37207117534819,
+            "rwc_vote": 0.5161
+          },
+          {
+            "answer": "52853.63333333333",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.296957059512064,
+            "rwc_vote": 0.4516
+          },
+          {
+            "answer": "52943.6",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.23143293108259,
+            "rwc_vote": 0.4194
+          },
+          {
+            "answer": "54166",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 25.01649552618551,
+            "rwc_vote": 0.3226
+          },
+          {
+            "answer": "53352.05",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.89907492866999,
+            "rwc_vote": 0.2903
+          },
+          {
+            "answer": "58332.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.87670039338715,
+            "rwc_vote": 0.2581
+          },
+          {
+            "answer": "11111",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.546440094848442,
+            "rwc_vote": 0.1613
+          },
+          {
+            "answer": "48484.8",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.533343518460477,
+            "rwc_vote": 0.129
+          },
+          {
+            "answer": "1170328",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.24461925382445,
+            "rwc_vote": 0.0968
+          },
+          {
+            "answer": "53200",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.089719783546578,
+            "rwc_vote": 0.0323
+          },
+          {
+            "answer": "52920",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 23.44928891568318,
+            "rwc_vote": 0.0
+          }
+        ]
+      },
+      {
+        "question": "test:1903",
+        "text": "A belt is drawn tightly around three circles of radius $10$ cm each, as shown. The length of the belt, in cm, can be written in the form $a + b\\pi$ for rational numbers $a$ and $b$. What is the value of $a + b$? [asy]\n\nsize(120); defaultpen(linewidth(0.8));\npicture p; real r = 3^.5/2;\npair A = expi(-pi/6); draw(p, circle(A, r)); draw(p, (A.x,A.y - r) -- (-A.x,A.y - r));\nadd(p); add(rotate(120)*p); add(rotate(240)*p);\n[/asy]",
+        "gold": "80",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "90",
+        "support_at_stop": 0.5,
+        "rwc_margin_at_stop": 0.16666666666666669,
+        "fixed32_answer": "80",
+        "revealed_groups": [
+          {
+            "answer": "90",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 27.036591899654045,
+            "rwc_vote": 1.0
+          },
+          {
+            "answer": "100",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 27.554098578060376,
+            "rwc_vote": 0.6667
+          },
+          {
+            "answer": "75",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.72718486823069,
+            "rwc_vote": 0.3333
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "80",
+            "count": 7,
+            "correct": true,
+            "mean_quality": 27.497216384076733,
+            "rwc_vote": 5.1935
+          },
+          {
+            "answer": "75",
+            "count": 7,
+            "correct": false,
+            "mean_quality": 27.034512656632078,
+            "rwc_vote": 4.0645
+          },
+          {
+            "answer": "55",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 26.76649478154596,
+            "rwc_vote": 1.4194
+          },
+          {
+            "answer": "60",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 26.46451305430865,
+            "rwc_vote": 1.2903
+          },
+          {
+            "answer": "90",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 27.036591899654045,
+            "rwc_vote": 1.1935
+          },
+          {
+            "answer": "100",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 26.012894309225178,
+            "rwc_vote": 0.8065
+          },
+          {
+            "answer": "120",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 25.205057053501417,
+            "rwc_vote": 0.3548
+          },
+          {
+            "answer": "180",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 25.240451915355834,
+            "rwc_vote": 0.2258
+          },
+          {
+            "answer": "20",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 27.615544736219316,
+            "rwc_vote": 0.8065
+          },
+          {
+            "answer": "30",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.231148622061255,
+            "rwc_vote": 0.2903
+          },
+          {
+            "answer": "140",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.174582523769804,
+            "rwc_vote": 0.2581
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 24.907845377456397,
+            "rwc_vote": 0.0968
+          }
+        ]
+      },
+      {
+        "question": "test:2469",
+        "text": "Compute the number of ordered pairs $(a,b)$ of integers such that the polynomials $x^2 - ax + 24$ and $x^2 - bx + 36$ have one root in common.",
+        "gold": "12",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "24",
+        "support_at_stop": 0.5,
+        "rwc_margin_at_stop": 0.3333333333333333,
+        "fixed32_answer": "12",
+        "revealed_groups": [
+          {
+            "answer": "24",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 27.6245733861175,
+            "rwc_vote": 1.3333
+          },
+          {
+            "answer": "70",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.86046686360633,
+            "rwc_vote": 0.6667
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.392003456130624,
+            "rwc_vote": 0.0
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "12",
+            "count": 11,
+            "correct": true,
+            "mean_quality": 28.591460696298192,
+            "rwc_vote": 7.0
+          },
+          {
+            "answer": "24",
+            "count": 9,
+            "correct": false,
+            "mean_quality": 28.1358061355293,
+            "rwc_vote": 4.7419
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 26.87672788385923,
+            "rwc_vote": 0.5484
+          },
+          {
+            "answer": "8",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 29.27373265653155,
+            "rwc_vote": 1.6129
+          },
+          {
+            "answer": "144",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 27.952953410817308,
+            "rwc_vote": 0.9355
+          },
+          {
+            "answer": "132",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 28.117221633766764,
+            "rwc_vote": 0.4839
+          },
+          {
+            "answer": "120",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 27.651339006221615,
+            "rwc_vote": 0.2903
+          },
+          {
+            "answer": "70",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.86046686360633,
+            "rwc_vote": 0.1935
+          },
+          {
+            "answer": "4",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.573387808142826,
+            "rwc_vote": 0.129
+          },
+          {
+            "answer": "6",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 26.386547639576573,
+            "rwc_vote": 0.0645
+          }
+        ]
+      }
+    ]
+  }
+}

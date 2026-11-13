@@ -1,0 +1,351 @@
+{
+  "rules": "- disagreement: the first 3 held-out questions in split order where, with all 32 rollouts, self-consistency and the\n  quality-weighted RWC winner (self-certainty for MATH, VisConf for MathVista) differ.\n- premature stop: the first 3 held-out questions in split order where the selected quality-aware policy stops early in\n  order 0 with a wrong answer while fixed-32 self-consistency is correct.\n- revision: every wrong-to-correct transition, then the first 2 questions whose revised answer differs from the initial\n  answer without becoming correct, then the first question whose initial response was truncated.",
+  "quality_signal": "VisConf",
+  "selection_disagreement": [
+    {
+      "question": "552",
+      "text": "How many queries have a p-value lower than 0.50?",
+      "gold": "4",
+      "self_consistency": "4",
+      "self_consistency_correct": true,
+      "quality_rwc": "2",
+      "quality_rwc_correct": false,
+      "groups": [
+        {
+          "answer": "4",
+          "count": 14,
+          "correct": true,
+          "mean_quality": 0.059201535204106204,
+          "rwc_vote": 4.7742
+        },
+        {
+          "answer": "2",
+          "count": 9,
+          "correct": false,
+          "mean_quality": 0.06796364022826251,
+          "rwc_vote": 7.4194
+        },
+        {
+          "answer": "3",
+          "count": 9,
+          "correct": false,
+          "mean_quality": 0.0605856043949029,
+          "rwc_vote": 3.8065
+        }
+      ]
+    },
+    {
+      "question": "643",
+      "text": "As shown in the figure, CD is the diameter of \u2299O, chord DE \u2225 OA, if the degree of \u2220D is 50.0, then the degree of \u2220C is ()\nA. 25\u00b0\nB. 30\u00b0\nC. 40\u00b0\nD. 50\u00b0",
+      "gold": "A",
+      "self_consistency": "C",
+      "self_consistency_correct": false,
+      "quality_rwc": "A",
+      "quality_rwc_correct": true,
+      "groups": [
+        {
+          "answer": "C",
+          "count": 11,
+          "correct": false,
+          "mean_quality": 0.004532211510096611,
+          "rwc_vote": 4.129
+        },
+        {
+          "answer": "A",
+          "count": 10,
+          "correct": true,
+          "mean_quality": 0.005271201204387798,
+          "rwc_vote": 5.4516
+        },
+        {
+          "answer": "NO_ANSWER",
+          "count": 8,
+          "correct": false,
+          "mean_quality": 0.005550590290608043,
+          "rwc_vote": 5.1613
+        },
+        {
+          "answer": "D",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 0.004560092205875479,
+          "rwc_vote": 1.2581
+        }
+      ]
+    },
+    {
+      "question": "165",
+      "text": "Subtract all cyan rubber cylinders. Subtract all tiny shiny cubes. How many objects are left?",
+      "gold": "6",
+      "self_consistency": "9",
+      "self_consistency_correct": false,
+      "quality_rwc": "7",
+      "quality_rwc_correct": false,
+      "groups": [
+        {
+          "answer": "7",
+          "count": 5,
+          "correct": false,
+          "mean_quality": 0.03265595253716331,
+          "rwc_vote": 2.4839
+        },
+        {
+          "answer": "9",
+          "count": 5,
+          "correct": false,
+          "mean_quality": 0.030218611475797835,
+          "rwc_vote": 1.5484
+        },
+        {
+          "answer": "8",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 0.03887083780822315,
+          "rwc_vote": 2.3871
+        },
+        {
+          "answer": "6",
+          "count": 3,
+          "correct": true,
+          "mean_quality": 0.033855293465097594,
+          "rwc_vote": 1.7419
+        },
+        {
+          "answer": "1",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 0.03277664462714643,
+          "rwc_vote": 1.3871
+        },
+        {
+          "answer": "NO_ANSWER",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 0.02951185308024819,
+          "rwc_vote": 1.2903
+        },
+        {
+          "answer": "4",
+          "count": 3,
+          "correct": false,
+          "mean_quality": 0.028775051759027125,
+          "rwc_vote": 0.5161
+        },
+        {
+          "answer": "0",
+          "count": 2,
+          "correct": false,
+          "mean_quality": 0.036562433318620136,
+          "rwc_vote": 1.5161
+        },
+        {
+          "answer": "5",
+          "count": 2,
+          "correct": false,
+          "mean_quality": 0.03499111745750967,
+          "rwc_vote": 1.2581
+        },
+        {
+          "answer": "10",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 0.039353490313872516,
+          "rwc_vote": 0.9355
+        },
+        {
+          "answer": "3",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 0.03297573628585813,
+          "rwc_vote": 0.5806
+        },
+        {
+          "answer": "11",
+          "count": 1,
+          "correct": false,
+          "mean_quality": 0.030931799188405742,
+          "rwc_vote": 0.3548
+        }
+      ]
+    }
+  ],
+  "premature_stop": {
+    "policy": {
+      "tau": 0.625,
+      "gamma": 0.0
+    },
+    "cases": [
+      {
+        "question": "866",
+        "text": "For trapezoid $Q R S T, A$ and $B$ are midpoints of the legs. Find $m \\angle S$\nA. 45\nB. 60\nC. 120\nD. 135",
+        "gold": "D",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "C",
+        "support_at_stop": 0.75,
+        "rwc_margin_at_stop": 0.0,
+        "fixed32_answer": "D",
+        "revealed_groups": [
+          {
+            "answer": "C",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 0.011425983941021572,
+            "rwc_vote": 1.0
+          },
+          {
+            "answer": "D",
+            "count": 1,
+            "correct": true,
+            "mean_quality": 0.014007076532591232,
+            "rwc_vote": 1.0
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "D",
+            "count": 13,
+            "correct": true,
+            "mean_quality": 0.013838706641836127,
+            "rwc_vote": 8.7097
+          },
+          {
+            "answer": "C",
+            "count": 9,
+            "correct": false,
+            "mean_quality": 0.01106774168369336,
+            "rwc_vote": 2.6774
+          },
+          {
+            "answer": "A",
+            "count": 4,
+            "correct": false,
+            "mean_quality": 0.013448639804239354,
+            "rwc_vote": 2.5161
+          },
+          {
+            "answer": "B",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 0.013352718789980953,
+            "rwc_vote": 1.7419
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 0.007760102960704757,
+            "rwc_vote": 0.3548
+          }
+        ]
+      },
+      {
+        "question": "373",
+        "text": "As shown in the figure, in the quadrilateral ABCD, \u2220BAD = 120.0, \u2220B = \u2220D = 90.0, if you find a point M on BC and CD respectively, so that the perimeter of \u25b3AMN is the smallest, then the degree of \u2220AMN + \u2220ANM is ()\nA. 110\u00b0\nB. 120\u00b0\nC. 140\u00b0\nD. 150\u00b0",
+        "gold": "B",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "D",
+        "support_at_stop": 0.75,
+        "rwc_margin_at_stop": 1.0,
+        "fixed32_answer": "B",
+        "revealed_groups": [
+          {
+            "answer": "D",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 0.004920201306118825,
+            "rwc_vote": 2.0
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 1,
+            "correct": false,
+            "mean_quality": 0.0033223886692075916,
+            "rwc_vote": 0.0
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "B",
+            "count": 15,
+            "correct": true,
+            "mean_quality": 0.004487804755703462,
+            "rwc_vote": 7.6774
+          },
+          {
+            "answer": "D",
+            "count": 8,
+            "correct": false,
+            "mean_quality": 0.004584476081246997,
+            "rwc_vote": 4.6129
+          },
+          {
+            "answer": "NO_ANSWER",
+            "count": 7,
+            "correct": false,
+            "mean_quality": 0.003937855081987529,
+            "rwc_vote": 2.4516
+          },
+          {
+            "answer": "C",
+            "count": 2,
+            "correct": false,
+            "mean_quality": 0.0046118661545826774,
+            "rwc_vote": 1.2581
+          }
+        ]
+      },
+      {
+        "question": "124",
+        "text": "This type of leaf arrangement consists of at least three leaves attached to a node.\nA. Whorled\nB. Simple\nC. Opposite\nD. Alternate",
+        "gold": "A",
+        "order": 0,
+        "stopped_at": 4,
+        "answer_at_stop": "D",
+        "support_at_stop": 0.75,
+        "rwc_margin_at_stop": 0.3333333333333333,
+        "fixed32_answer": "A",
+        "revealed_groups": [
+          {
+            "answer": "D",
+            "count": 3,
+            "correct": false,
+            "mean_quality": 0.021680773889715125,
+            "rwc_vote": 1.3333
+          },
+          {
+            "answer": "A",
+            "count": 1,
+            "correct": true,
+            "mean_quality": 0.02315762223680503,
+            "rwc_vote": 0.6667
+          }
+        ],
+        "all_32_groups": [
+          {
+            "answer": "A",
+            "count": 16,
+            "correct": true,
+            "mean_quality": 0.02124234813400304,
+            "rwc_vote": 8.3548
+          },
+          {
+            "answer": "D",
+            "count": 10,
+            "correct": false,
+            "mean_quality": 0.02073949327016559,
+            "rwc_vote": 4.3871
+          },
+          {
+            "answer": "C",
+            "count": 6,
+            "correct": false,
+            "mean_quality": 0.021357264362915646,
+            "rwc_vote": 3.2581
+          }
+        ]
+      }
+    ]
+  }
+}
