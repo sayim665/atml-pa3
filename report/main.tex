@@ -390,9 +390,8 @@ correlation with length +0.23 on MATH, +0.33 on MathVista). Holding the score fi
 every signal from a loss into a gain: self-certainty goes from $-$3.2 to +1.8 on MATH, and VisConf from $-$4.0 to +1.5 on
 MathVista, the two improvements over SC whose intervals exclude zero. The signals carry real but weak information: the
 top quartile of rollouts by self-certainty is 12.0 points more often correct than the bottom quartile on MATH, but only
-3.5 points on MathVista, where VisConf (7.4) and token fusion (7.3) are about twice as informative. On their own they
-cannot overrule a majority, but they break near-ties well; a MATH example where 16 rollouts answer ``0'' and 15 answer
-``2'' is solved by self-certainty RWC and missed by SC (Appendix~\ref{app:t3examples}).
+3.5 points on MathVista, where VisConf (7.4) is twice as informative. They cannot overrule a majority but break
+near-ties: 16 votes for ``0'' against 15 for ``2'' is solved by RWC and missed by SC (Appendix~\ref{app:t3examples}).
 
 \textbf{Confidence and vision measure different things.} Within a rollout, calibrated confidence and visual engagement
 are negatively correlated (median per-question correlation $-$0.21; positive in only 11\% of questions), and visual
@@ -450,25 +449,18 @@ MATH 0.5 points [$-$1.1, +0.2] for 65\% fewer tokens (Table~\ref{tab:t3adaptive}
 1.2 points on MATH [$-$2.0, $-$0.4]; requiring the confidence-weighted vote to agree removes some bad early stops (1,192
 vs.\ 1,406 across orders). Most stops happen at $n{=}4$ (77\% MATH, 55\% MathVista). Wrong early stops are mostly
 questions the full pool also misses; only 142 of 1,192 on MATH would have been fixed by waiting, and they share one
-pattern, a 2-of-4 or 3-of-4 majority that the full pool reverses (stopped at ``90'', 2 of 4; full vote ``80''). Against fixed budgets
-at similar cost (Appendix Figure~\ref{fig:t3cost}), adaptive stopping on MATH reaches the accuracy of $N{\approx}16$ for
-the cost of $N{\approx}11$. The tolerance rule transferred even though MATH development questions were easier than
-held-out ones (SC 82.5\% vs.\ 73.8\%). Overall, the best accuracy--cost points combine cheap ingredients, consensus
-weighted by confidence plus early stopping, while every rule fails on the same residual: questions where a wrong
-answer holds the majority, which no internal signal we tested could identify.
+pattern, a 2-of-4 or 3-of-4 majority that the full pool reverses (stopped at ``90'', 2 of 4; full vote ``80''). At
+similar cost (Appendix Figure~\ref{fig:t3cost}), adaptive stopping on MATH matches $N{\approx}16$ for the cost of
+$N{\approx}11$. Every rule fails on the same residual: questions where a wrong answer holds the majority.
 
 % ======================================================================
-\section{Limitations and conclusion}
+\section{Conclusion}
 
-All results use a single seed. Task 1 retention is measured on three benchmarks and a 42-response annotation by one
-annotator; Task 2 evaluates 160 local pairs, so type-level numbers rest on 48--72 questions; Task 3's live comparison has
-50 questions and its intervals include zero. About 80 math-verify comparisons timed out (5\,s) and were treated as
-non-equivalent, identically in every run. Offline token counts ignore prefill and scoring costs.
-
-Across the three tasks, the measurement that mattered most was a matched control: the starting point for fine-tuning,
-the swapped image for grounding, and oracle coverage for selection. Restricting updates protected other capabilities
-without costing mathematics; visual grounding appeared only when the training objective required it; and extra
-inference compute paid off when it was spent on choosing among answers and on giving each answer room to finish.
+In every task the decisive measurement was a matched control: the starting point for fine-tuning, the swapped image
+for grounding, and oracle coverage for selection. Restricting updates protected other capabilities without costing
+mathematics; grounding appeared only when the objective required it; and inference compute paid off when spent on
+choosing among answers and on letting each answer finish. Limitations (single seed, small evaluation sets) are listed
+in Appendix~\ref{app:compute}.
 
 \begin{thebibliography}{99}
 \small
@@ -515,6 +507,11 @@ exported for inference. Task 2 caches SigLIP's \texttt{last\_hidden\_state}, whi
 applied to the final encoder output (difference 0.0); presence questions read ``Does this image contain a/an
 [object]?'' (article added for grammar). Task 3 extracts the last balanced-brace \texttt{\textbackslash boxed\{\}} for
 live responses and uses the supplied extractions offline.
+
+\textbf{Limitations.} All results use a single seed. Task 1 retention is measured on three benchmarks and a
+42-response annotation by one annotator; Task 2 evaluates 160 local pairs, so type-level numbers rest on 48--72
+questions; Task 3's live comparison has 50 questions and its intervals include zero. Offline token counts ignore
+prefill and scoring costs.
 
 \textbf{Deviations and incidents.} (i) About 80 math-verify comparisons exceeded the 5\,s timeout and were treated as
 non-equivalent; the grouping is deterministic and identical across runs. (ii) In Task 2 the first two GPU attempts were
